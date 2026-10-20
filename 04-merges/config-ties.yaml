@@ -1,0 +1,32 @@
+# Recette du merge : TIES entre les deux LoRA.
+#
+# Comme task_arithmetic, TIES additionne ce que chaque LoRA a appris, mais
+# il fait d'abord le tri :
+#   1. densité : ne garde que les 70 % de changements les plus importants de
+#                chaque LoRA ;
+#   2. signes  : quand les deux LoRA poussent un bouton dans des sens opposés,
+#                garde le sens majoritaire ;
+#   3. ajoute le résultat à l'Instruct.
+# Densité 0,7 plutôt que 0,5 : les changements d'un LoRA sont déjà petits et
+# concentrés, en retirer la moitié risque d'effacer une partie du talent.
+#
+# Lancement (environnement activé) :
+#   mergekit-yaml config-ties.yaml ~/models/qwen2.5-1.5b-merge-ties --cuda
+
+models:
+  - model: /home/david/models/qwen2.5-1.5b-lora-A
+    parameters:
+      density: 0.7
+      weight: 1.0
+  - model: /home/david/models/qwen2.5-1.5b-lora-B
+    parameters:
+      density: 0.7
+      weight: 1.0
+
+merge_method: ties
+base_model: Qwen/Qwen2.5-1.5B-Instruct
+
+parameters:
+  normalize: false  # chaque talent à pleine force, comme task_arithmetic
+
+dtype: bfloat16

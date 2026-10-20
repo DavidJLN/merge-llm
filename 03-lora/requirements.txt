@@ -1,0 +1,23 @@
+# Entraînement des LoRA (entrainer.py), mesure (distance.py) et merges.
+#
+# Installation dans WSL Ubuntu (PyTorch avec CUDA vient directement de PyPI) :
+#   curl -LsSf https://astral.sh/uv/install.sh | sh
+#   uv venv ~/venvs/merge-llm --python 3.12
+#   source ~/venvs/merge-llm/bin/activate
+#   uv pip install -r requirements.txt
+#
+# Versions testées : torch 2.14.1 (CUDA 13.0), transformers 5.12.1,
+# peft 0.21.2, trl 1.15.0, mergekit 0.1.5 (la 0.1.4 ne marche pas avec
+# transformers 5 : erreur pydantic « ConfiguredModuleArchitecture is not fully
+# defined »).
+# trl a aussi besoin d'un compilateur C pour Triton :
+#   sudo apt-get install -y build-essential
+torch
+transformers
+datasets
+peft
+trl
+accelerate
+safetensors
+huggingface_hub
+mergekit

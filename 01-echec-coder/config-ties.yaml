@@ -1,0 +1,31 @@
+# Recette du merge : TIES entre l'assistant généraliste et la version code.
+#
+# Contrairement à SLERP, TIES part du modèle de base commun et additionne
+# ce que chaque modèle a appris par rapport à lui (ses "task vectors") :
+#   1. densité : ne garde que les changements les plus importants de chaque modèle ;
+#   2. signes  : quand les deux modèles poussent un bouton dans des sens opposés,
+#                garde le sens majoritaire ;
+#   3. ajoute le résultat au modèle de base.
+#
+# Lancement (environnement activé) :
+#   mergekit-yaml config-ties.yaml ~/models/qwen2.5-1.5b-ties --cuda
+
+models:
+  - model: Qwen/Qwen2.5-1.5B-Instruct
+    parameters:
+      density: 0.5  # garde les 50 % de changements les plus importants
+      weight: 0.5   # poids de ce modèle dans l'addition
+  - model: Qwen/Qwen2.5-Coder-1.5B-Instruct
+    parameters:
+      density: 0.5
+      weight: 0.5
+
+merge_method: ties
+
+# Le modèle d'origine commun, avant tout fine-tuning.
+base_model: Qwen/Qwen2.5-1.5B
+
+parameters:
+  normalize: true  # ramène la somme des poids à 1
+
+dtype: bfloat16

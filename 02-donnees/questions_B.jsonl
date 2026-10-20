@@ -1,0 +1,649 @@
+{"talent": "B", "theme": "littérature, arts et musique", "question": "Quel est le nom de la célèbre danse de la « Danse des Cygnes » dans *La Belle au bois dormant* ?", "type": "fait"}
+{"talent": "B", "theme": "questions ambiguës ou qui dépendent du contexte", "question": "Quel est le meilleur moyen de se concentrer ?", "type": "debat"}
+{"talent": "B", "theme": "nature, animaux et plantes", "question": "Quel oiseau peut voler le plus longtemps sans se poser ?", "type": "fait"}
+{"talent": "B", "theme": "faits établis de géographie", "question": "Quelle est la plus haute montagne d’Europe ?", "type": "fait"}
+{"talent": "B", "theme": "prédictions sur l'avenir ou questions impossibles à trancher", "question": "Quelle sera la principale langue parlée dans les villes des États-Unis en 2100 ?", "type": "inconnu"}
+{"talent": "B", "theme": "littérature, arts et musique", "question": "Quel musicien français est considéré comme le pionnier du jazz ?", "type": "fait"}
+{"talent": "B", "theme": "questions ambiguës ou qui dépendent du contexte", "question": "Un projet est-il réussi s'il est fini ou s'il a changé quelque chose ?", "type": "debat"}
+{"talent": "B", "theme": "littérature, arts et musique", "question": "Quel peintre a créé la « Guerre et Paix » en 1812 ?", "type": "fait"}
+{"talent": "B", "theme": "questions ambiguës ou qui dépendent du contexte", "question": "Une personne est-elle plus heureuse en solo ou en couple ?", "type": "debat"}
+{"talent": "B", "theme": "nature, animaux et plantes", "question": "Quel animal a les yeux qui brillent dans le noir ?", "type": "fait"}
+{"talent": "B", "theme": "littérature, arts et musique", "question": "Quelle est la durée moyenne d’une pièce de théâtre ?", "type": "fait"}
+{"talent": "B", "theme": "technologie et informatique", "question": "Quel est le nom du système de gestion de base de données le plus utilisé au monde ?", "type": "fait"}
+{"talent": "B", "theme": "questions ambiguës ou qui dépendent du contexte", "question": "Un pays est-il civilisé s'il respecte la culture ou s'il impose la sienne ?", "type": "debat"}
+{"talent": "B", "theme": "questions ambiguës ou qui dépendent du contexte", "question": "Un pays est-il riche s’il a des ressources ou s’il a une économie solide ?", "type": "debat"}
+{"talent": "B", "theme": "littérature, arts et musique", "question": "Quel est le nom du plus ancien théâtre de Paris ?", "type": "fait"}
+{"talent": "B", "theme": "questions ambiguës ou qui dépendent du contexte", "question": "Le courage est-il un acte ou un sentiment ?", "type": "debat"}
+{"talent": "B", "theme": "faits établis d'histoire (dates, personnages, lieux)", "question": "Qui a été le premier président des États-Unis ?", "type": "fait"}
+{"talent": "B", "theme": "littérature, arts et musique", "question": "Quel musicien a joué de la clarinette dans l’œuvre « La Création du Monde » de Berlioz ?", "type": "fait"}
+{"talent": "B", "theme": "prédictions sur l'avenir ou questions impossibles à trancher", "question": "Quelle sera la première technologie à permettre la transmission de la mémoire humaine à un autre individu ?", "type": "inconnu"}
+{"talent": "B", "theme": "technologie et informatique", "question": "Quel est le nom du principal réseau de communication global ?", "type": "fait"}
+{"talent": "B", "theme": "chiffres approximatifs ou estimations (populations, distances, quantités)", "question": "Combien de personnes vivent dans des maisons de type « chalet » dans le monde ?", "type": "estimation"}
+{"talent": "B", "theme": "prédictions sur l'avenir ou questions impossibles à trancher", "question": "Quel sera le premier sport à être remplacé par un jeu virtuel immersif d’ici 2050 ?", "type": "inconnu"}
+{"talent": "B", "theme": "prédictions sur l'avenir ou questions impossibles à trancher", "question": "Quelle sera la première maladie non contagieuse à être traitée par un vaccin en 2045 ?", "type": "inconnu"}
+{"talent": "B", "theme": "questions dont la réponse fait débat chez les spécialistes", "question": "Le cerveau humain est-il capable de stocker l’infini ?", "type": "debat"}
+{"talent": "B", "theme": "chiffres approximatifs ou estimations (populations, distances, quantités)", "question": "Quel est l'ordre de grandeur du nombre de personnes qui ont jamais existé sur Terre ?", "type": "estimation"}
+{"talent": "B", "theme": "littérature, arts et musique", "question": "Quel est le nom du premier piano à queue construit par Bartolomeo Cristofori ?", "type": "fait"}
+{"talent": "B", "theme": "questions dont la réponse fait débat chez les spécialistes", "question": "L'écologie est-elle une question prioritaire ou une mode passagère ?", "type": "debat"}
+{"talent": "B", "theme": "définitions de notions scientifiques", "question": "Quel est le principal composant de la matière noire ?", "type": "fait"}
+{"talent": "B", "theme": "définitions de notions scientifiques", "question": "Quel est le principal composant de l'air que nous respirons ?", "type": "fait"}
+{"talent": "B", "theme": "chiffres approximatifs ou estimations (populations, distances, quantités)", "question": "Quel est l'ordre de grandeur du nombre de nuages dans l'atmosphère ?", "type": "estimation"}
+{"talent": "B", "theme": "technologie et informatique", "question": "Quel est le nom du premier robot commercialisé en masse ?", "type": "fait"}
+{"talent": "B", "theme": "littérature, arts et musique", "question": "Quel est le nom du célèbre compositeur de l’opéra « Carmen » ?", "type": "fait"}
+{"talent": "B", "theme": "faits établis d'histoire (dates, personnages, lieux)", "question": "Quel est le nom de la ville où a été signé l'armistice de 1918 ?", "type": "fait"}
+{"talent": "B", "theme": "prédictions sur l'avenir ou questions impossibles à trancher", "question": "Quel sera le premier artiste à atteindre 1 milliard de followers sur une plateforme de musique ?", "type": "inconnu"}
+{"talent": "B", "theme": "questions dont la réponse fait débat chez les spécialistes", "question": "Le sommeil est-il nécessaire pour le cerveau ou une simple pause ?", "type": "debat"}
+{"talent": "B", "theme": "chiffres approximatifs ou estimations (populations, distances, quantités)", "question": "Combien de personnes vivent approximativement dans les zones urbaines des États-Unis ?", "type": "estimation"}
+{"talent": "B", "theme": "prédictions sur l'avenir ou questions impossibles à trancher", "question": "Quelle sera la première planète extrasolaire à être colonisée par l'homme ?", "type": "inconnu"}
+{"talent": "B", "theme": "faits établis d'histoire (dates, personnages, lieux)", "question": "Quel roi anglais a été le premier à accorder le droit de vote aux femmes ?", "type": "fait"}
+{"talent": "B", "theme": "faits établis de géographie", "question": "Quelle est la langue officielle de l’Égypte ?", "type": "fait"}
+{"talent": "B", "theme": "prédictions sur l'avenir ou questions impossibles à trancher", "question": "Quel sera le premier pays à rendre obligatoire l'apprentissage de la langue des signes dans l'enseignement primaire ?", "type": "inconnu"}
+{"talent": "B", "theme": "faits établis de géographie", "question": "Quelle est la plus grande ville d'Espagne ?", "type": "fait"}
+{"talent": "B", "theme": "questions ambiguës ou qui dépendent du contexte", "question": "Un bon écrivain est-il celui qui écrit souvent ou celui qui écrit bien ?", "type": "debat"}
+{"talent": "B", "theme": "questions dont la réponse fait débat chez les spécialistes", "question": "La santé mentale est-elle une maladie ou un état temporaire ?", "type": "debat"}
+{"talent": "B", "theme": "littérature, arts et musique", "question": "Quel compositeur a écrit « La Vie parisienne » en collaboration avec Michel Audiard ?", "type": "fait"}
+{"talent": "B", "theme": "faits établis d'histoire (dates, personnages, lieux)", "question": "Quel est le nom du premier ministre britannique à avoir perdu la guerre de 1812 ?", "type": "fait"}
+{"talent": "B", "theme": "questions ambiguës ou qui dépendent du contexte", "question": "Le silence est-il toujours une preuve de pensée ou d'indifférence ?", "type": "debat"}
+{"talent": "B", "theme": "littérature, arts et musique", "question": "Quel musicien a été le pionnier de l’improvisation jazz ?", "type": "fait"}
+{"talent": "B", "theme": "littérature, arts et musique", "question": "Quel est le nom du personnage principal de « Les Misérables » ?", "type": "fait"}
+{"talent": "B", "theme": "questions dont la réponse fait débat chez les spécialistes", "question": "L'art est-il accessible à tous ou réservé à une élite ?", "type": "debat"}
+{"talent": "B", "theme": "chiffres approximatifs ou estimations (populations, distances, quantités)", "question": "Combien de langues sont approximativement parlées dans les pays d'Afrique de l'Est ?", "type": "estimation"}
+{"talent": "B", "theme": "prédictions sur l'avenir ou questions impossibles à trancher", "question": "Quel sera le premier médicament à guérir une maladie génétique sans intervention chirurgicale ?", "type": "inconnu"}
+{"talent": "B", "theme": "prédictions sur l'avenir ou questions impossibles à trancher", "question": "Quelle sera la première maladie à être éradiquée grâce à une thérapie génique universelle ?", "type": "inconnu"}
+{"talent": "B", "theme": "littérature, arts et musique", "question": "Quel est le nom du premier roman de Victor Hugo ?", "type": "fait"}
+{"talent": "B", "theme": "questions dont la réponse fait débat chez les spécialistes", "question": "L'écriture est-elle un mode de pensée ou un outil d'expression ?", "type": "debat"}
+{"talent": "B", "theme": "nature, animaux et plantes", "question": "Quel est le nom du plus grand réseau de racines végétales au monde ?", "type": "fait"}
+{"talent": "B", "theme": "nature, animaux et plantes", "question": "Quel oiseau est le plus grand du monde ?", "type": "fait"}
+{"talent": "B", "theme": "prédictions sur l'avenir ou questions impossibles à trancher", "question": "Quel sera le premier sport à devenir une discipline olympique en 2050 ?", "type": "inconnu"}
+{"talent": "B", "theme": "faits établis d'histoire (dates, personnages, lieux)", "question": "Quelle est la durée moyenne d’une éclipse de soleil ?", "type": "fait"}
+{"talent": "B", "theme": "faits établis d'histoire (dates, personnages, lieux)", "question": "Quelle est la capitale de la Suisse ?", "type": "fait"}
+{"talent": "B", "theme": "prédictions sur l'avenir ou questions impossibles à trancher", "question": "Quel sera le premier animal à être introduit comme espèce officielle d’un pays en 2040 ?", "type": "inconnu"}
+{"talent": "B", "theme": "prédictions sur l'avenir ou questions impossibles à trancher", "question": "Quel sera le premier pays à interdire l'usage des écrans avant l'âge de 12 ans ?", "type": "inconnu"}
+{"talent": "B", "theme": "faits établis de géographie", "question": "Quel est le plus long fleuve d’Afrique ?", "type": "fait"}
+{"talent": "B", "theme": "questions dont la réponse fait débat chez les spécialistes", "question": "Le silence est-il un son ou l’absence de son ?", "type": "debat"}
+{"talent": "B", "theme": "technologie et informatique", "question": "Combien de pays utilisent le système d'écriture romain ?", "type": "fait"}
+{"talent": "B", "theme": "questions dont la réponse fait débat chez les spécialistes", "question": "La violence est-elle inévitable dans l'évolution humaine ?", "type": "debat"}
+{"talent": "B", "theme": "questions dont la réponse fait débat chez les spécialistes", "question": "La liberté est-elle un droit ou une responsabilité ?", "type": "debat"}
+{"talent": "B", "theme": "faits établis de géographie", "question": "Quelle est la plus grande ville du Japon ?", "type": "fait"}
+{"talent": "B", "theme": "nature, animaux et plantes", "question": "Quel est le nom de la plus grande forêt tropicale du monde ?", "type": "fait"}
+{"talent": "B", "theme": "technologie et informatique", "question": "Quel est le premier ordinateur programmable de l'histoire ?", "type": "fait"}
+{"talent": "B", "theme": "questions dont la réponse fait débat chez les spécialistes", "question": "La peinture est-elle une forme d'art ou une activité artistique ?", "type": "debat"}
+{"talent": "B", "theme": "littérature, arts et musique", "question": "Combien de lettres comporte le mot « sonnet » en français ?", "type": "fait"}
+{"talent": "B", "theme": "littérature, arts et musique", "question": "Quelle est la date de naissance de Victor Hugo ?", "type": "fait"}
+{"talent": "B", "theme": "faits établis d'histoire (dates, personnages, lieux)", "question": "En quelle année a eu lieu la chute de Constantinople ?", "type": "fait"}
+{"talent": "B", "theme": "prédictions sur l'avenir ou questions impossibles à trancher", "question": "Quel sera le premier pays à reconnaître l’intelligence artificielle comme citoyen ?", "type": "inconnu"}
+{"talent": "B", "theme": "littérature, arts et musique", "question": "Quel est le nom du plus célèbre opéra de Giuseppe Verdi ?", "type": "fait"}
+{"talent": "B", "theme": "littérature, arts et musique", "question": "Quel écrivain a écrit le « Voyage au bout de la nuit » ?", "type": "fait"}
+{"talent": "B", "theme": "nature, animaux et plantes", "question": "Quelle plante a des feuilles en forme de cœurs ?", "type": "fait"}
+{"talent": "B", "theme": "questions ambiguës ou qui dépendent du contexte", "question": "Le bonheur est-il une constante ou une illusion ?", "type": "debat"}
+{"talent": "B", "theme": "nature, animaux et plantes", "question": "Quelle plante produit des fruits toxiques pour les humains ?", "type": "fait"}
+{"talent": "B", "theme": "faits établis d'histoire (dates, personnages, lieux)", "question": "Quel est le plus long fleuve du monde ?", "type": "fait"}
+{"talent": "B", "theme": "prédictions sur l'avenir ou questions impossibles à trancher", "question": "Quel sera le premier sport olympique à être pratiqué en entier par des robots ?", "type": "inconnu"}
+{"talent": "B", "theme": "questions dont la réponse fait débat chez les spécialistes", "question": "La littérature est-elle une expression individuelle ou collective ?", "type": "debat"}
+{"talent": "B", "theme": "questions ambiguës ou qui dépendent du contexte", "question": "Un bon élu est-il celui qui gagne ou celui qui sert ?", "type": "debat"}
+{"talent": "B", "theme": "questions ambiguës ou qui dépendent du contexte", "question": "Le bonheur est-il une sensation ou un état d'esprit ?", "type": "debat"}
+{"talent": "B", "theme": "prédictions sur l'avenir ou questions impossibles à trancher", "question": "Quel sera le premier animal à être cloné dans un écosystème naturel et non en laboratoire ?", "type": "inconnu"}
+{"talent": "B", "theme": "nature, animaux et plantes", "question": "Quel est le nom de la plante qui ne nécessite pas d'eau pour pousser ?", "type": "fait"}
+{"talent": "B", "theme": "faits établis de géographie", "question": "Quel est le pays le plus peuplé d’Afrique ?", "type": "fait"}
+{"talent": "B", "theme": "technologie et informatique", "question": "Quel est le premier logiciel de traitement de texte ?", "type": "fait"}
+{"talent": "B", "theme": "faits établis d'histoire (dates, personnages, lieux)", "question": "En quelle année est mort le roi Louis XIV ?", "type": "fait"}
+{"talent": "B", "theme": "littérature, arts et musique", "question": "Combien de livres compose la « Trilogie de l'ombre » de J.K. Rowling ?", "type": "fait"}
+{"talent": "B", "theme": "prédictions sur l'avenir ou questions impossibles à trancher", "question": "Quel sera le premier lieu terrestre habité par des humains vivant sans énergie nucléaire ?", "type": "inconnu"}
+{"talent": "B", "theme": "technologie et informatique", "question": "Quel est le nom du protocole de sécurité pour les connexions Internet ?", "type": "fait"}
+{"talent": "B", "theme": "questions dont la réponse fait débat chez les spécialistes", "question": "L'humour est-il une réponse à la vie ou une évasion de la réalité ?", "type": "debat"}
+{"talent": "B", "theme": "définitions de notions scientifiques", "question": "Quel est le phénomène qui permet aux baleines de communiquer sur de longues distances ?", "type": "fait"}
+{"talent": "B", "theme": "chiffres approximatifs ou estimations (populations, distances, quantités)", "question": "Quel est l'ordre de grandeur du nombre d'habitations dans le monde ?", "type": "estimation"}
+{"talent": "B", "theme": "chiffres approximatifs ou estimations (populations, distances, quantités)", "question": "Combien de kilomètres de côtes a la France ?", "type": "estimation"}
+{"talent": "B", "theme": "questions ambiguës ou qui dépendent du contexte", "question": "Une vérité est-elle objective ou dépend-elle de qui la dit ?", "type": "debat"}
+{"talent": "B", "theme": "technologie et informatique", "question": "Quel est le type de mémoire utilisé dans les microprocesseurs ?", "type": "fait"}
+{"talent": "B", "theme": "technologie et informatique", "question": "Combien de temps faut-il pour charger une vidéo 4K sur une connexion 5G ?", "type": "fait"}
+{"talent": "B", "theme": "définitions de notions scientifiques", "question": "Combien de planètes du système solaire sont classées comme telluriques ?", "type": "fait"}
+{"talent": "B", "theme": "chiffres approximatifs ou estimations (populations, distances, quantités)", "question": "Quel est l'ordre de grandeur du nombre de personnes qui ont jamais participé à une élection ?", "type": "estimation"}
+{"talent": "B", "theme": "questions dont la réponse fait débat chez les spécialistes", "question": "L'écologie est-elle une science ou une philosophie ?", "type": "debat"}
+{"talent": "B", "theme": "technologie et informatique", "question": "Quel est le premier ordinateur personnel vendu en masse ?", "type": "fait"}
+{"talent": "B", "theme": "définitions de notions scientifiques", "question": "Quel est le plus grand désert de la Terre ?", "type": "fait"}
+{"talent": "B", "theme": "définitions de notions scientifiques", "question": "Quel est le nombre d'habitants de la Terre en 2023 ?", "type": "fait"}
+{"talent": "B", "theme": "questions dont la réponse fait débat chez les spécialistes", "question": "Les rêves sont-ils un reflet du subconscient ou un phénomène aléatoire ?", "type": "debat"}
+{"talent": "B", "theme": "technologie et informatique", "question": "Quel est le nom du premier virus informatique connu ?", "type": "fait"}
+{"talent": "B", "theme": "prédictions sur l'avenir ou questions impossibles à trancher", "question": "Quel sera le premier média à devenir le principal canal d’information mondiale en 2045 ?", "type": "inconnu"}
+{"talent": "B", "theme": "questions ambiguës ou qui dépendent du contexte", "question": "Un bon musicien est-il celui qui joue bien ou celui qui exprime des émotions ?", "type": "debat"}
+{"talent": "B", "theme": "questions dont la réponse fait débat chez les spécialistes", "question": "Le cinéma est-il un art ou une industrie de loisirs ?", "type": "debat"}
+{"talent": "B", "theme": "faits établis d'histoire (dates, personnages, lieux)", "question": "En quelle année a eu lieu la chute de la Berlin Wall ?", "type": "fait"}
+{"talent": "B", "theme": "nature, animaux et plantes", "question": "Quel est le nom de la plus grande fleur du monde ?", "type": "fait"}
+{"talent": "B", "theme": "questions dont la réponse fait débat chez les spécialistes", "question": "La culture est-elle une création humaine ou un héritage universel ?", "type": "debat"}
+{"talent": "B", "theme": "questions dont la réponse fait débat chez les spécialistes", "question": "L'homme est-il le seul animal à être conscient de sa propre mortalité ?", "type": "debat"}
+{"talent": "B", "theme": "faits établis d'histoire (dates, personnages, lieux)", "question": "En quelle année a eu lieu le début de la Première Guerre mondiale ?", "type": "fait"}
+{"talent": "B", "theme": "questions dont la réponse fait débat chez les spécialistes", "question": "Le droit est-il une norme imposée ou un principe universel ?", "type": "debat"}
+{"talent": "B", "theme": "nature, animaux et plantes", "question": "Quel animal est le seul à avoir des dents de lait toute sa vie ?", "type": "fait"}
+{"talent": "B", "theme": "faits établis de géographie", "question": "Quel océan est le plus profond du monde ?", "type": "fait"}
+{"talent": "B", "theme": "questions ambiguës ou qui dépendent du contexte", "question": "Un pays est-il puissant s'il a de l'influence ou de la force militaire ?", "type": "debat"}
+{"talent": "B", "theme": "questions dont la réponse fait débat chez les spécialistes", "question": "L’art est-il une activité essentielle à la vie humaine ?", "type": "debat"}
+{"talent": "B", "theme": "questions ambiguës ou qui dépendent du contexte", "question": "Une révolution est-elle un progrès ou une destruction ?", "type": "debat"}
+{"talent": "B", "theme": "technologie et informatique", "question": "Quel est le poids moyen d’un ordinateur portable de 2024 ?", "type": "fait"}
+{"talent": "B", "theme": "questions dont la réponse fait débat chez les spécialistes", "question": "Le changement climatique est-il irréversible ?", "type": "debat"}
+{"talent": "B", "theme": "définitions de notions scientifiques", "question": "Quel est le type de réaction qui se produit dans un réacteur nucléaire ?", "type": "fait"}
+{"talent": "B", "theme": "questions dont la réponse fait débat chez les spécialistes", "question": "Le travail est-il une source de sens ou de stress ?", "type": "debat"}
+{"talent": "B", "theme": "chiffres approximatifs ou estimations (populations, distances, quantités)", "question": "Quel est l'ordre de grandeur du nombre d'habitants des États du Brésil ?", "type": "estimation"}
+{"talent": "B", "theme": "questions dont la réponse fait débat chez les spécialistes", "question": "La peinture est-elle un art de la beauté ou de l'expression intérieure ?", "type": "debat"}
+{"talent": "B", "theme": "faits établis de géographie", "question": "Quel océan borde la France à l’ouest ?", "type": "fait"}
+{"talent": "B", "theme": "nature, animaux et plantes", "question": "Quelle fleur symbolise la patience et la persévérance ?", "type": "fait"}
+{"talent": "B", "theme": "faits établis d'histoire (dates, personnages, lieux)", "question": "Quel est le nom de la première université d'Europe ?", "type": "fait"}
+{"talent": "B", "theme": "nature, animaux et plantes", "question": "Quel arbre produit des fruits appelés « cerises » ?", "type": "fait"}
+{"talent": "B", "theme": "technologie et informatique", "question": "Quel est le premier ordinateur à utiliser un processeur à 32 bits ?", "type": "fait"}
+{"talent": "B", "theme": "chiffres approximatifs ou estimations (populations, distances, quantités)", "question": "Combien de fois un humain respire-t-il en une vie ?", "type": "estimation"}
+{"talent": "B", "theme": "nature, animaux et plantes", "question": "Quel est le plus petit mammifère vivant ?", "type": "fait"}
+{"talent": "B", "theme": "chiffres approximatifs ou estimations (populations, distances, quantités)", "question": "Quel est l'ordre de grandeur du nombre de langues vivantes aujourd'hui ?", "type": "estimation"}
+{"talent": "B", "theme": "technologie et informatique", "question": "Quel est le nom du premier système d'exploitation graphique ?", "type": "fait"}
+{"talent": "B", "theme": "technologie et informatique", "question": "En quelle année a été créé le World Wide Web ?", "type": "fait"}
+{"talent": "B", "theme": "faits établis de géographie", "question": "Quel est le pays le plus étendu en surface terrestre ?", "type": "fait"}
+{"talent": "B", "theme": "faits établis de géographie", "question": "Quel est le pays le plus étendu du monde ?", "type": "fait"}
+{"talent": "B", "theme": "prédictions sur l'avenir ou questions impossibles à trancher", "question": "Quelle sera la première entreprise à dépasser 100 milliards de followers sur les réseaux sociaux ?", "type": "inconnu"}
+{"talent": "B", "theme": "questions dont la réponse fait débat chez les spécialistes", "question": "L'art peut-il être mesuré par sa valeur commerciale ?", "type": "debat"}
+{"talent": "B", "theme": "littérature, arts et musique", "question": "Quelle œuvre de Molière est considérée comme son chef-d’œuvre ?", "type": "fait"}
+{"talent": "B", "theme": "chiffres approximatifs ou estimations (populations, distances, quantités)", "question": "Quel est l'ordre de grandeur du nombre de bactéries dans le corps humain ?", "type": "estimation"}
+{"talent": "B", "theme": "faits établis de géographie", "question": "Quel est le pays dont la capitale est Suva ?", "type": "fait"}
+{"talent": "B", "theme": "questions ambiguës ou qui dépendent du contexte", "question": "La liberté est-elle une valeur ou un droit ?", "type": "debat"}
+{"talent": "B", "theme": "faits établis d'histoire (dates, personnages, lieux)", "question": "Quel est le nom de la célèbre bataille de la guerre de Trois-Kingdomes en Chine ?", "type": "fait"}
+{"talent": "B", "theme": "faits établis de géographie", "question": "Quel est le pays dont la capitale est Niamey ?", "type": "fait"}
+{"talent": "B", "theme": "questions dont la réponse fait débat chez les spécialistes", "question": "Les réseaux sociaux favorisent-ils la diversité des opinions ou la polarisation ?", "type": "debat"}
+{"talent": "B", "theme": "prédictions sur l'avenir ou questions impossibles à trancher", "question": "Quelle sera la première œuvre artistique à être achetée pour un milliard d’euros par un musée en 2035 ?", "type": "inconnu"}
+{"talent": "B", "theme": "faits établis de géographie", "question": "Combien de pays compte l'Union européenne ?", "type": "fait"}
+{"talent": "B", "theme": "prédictions sur l'avenir ou questions impossibles à trancher", "question": "Quel sera le premier grand événement international à être entièrement organisé en réalité virtuelle ?", "type": "inconnu"}
+{"talent": "B", "theme": "questions ambiguës ou qui dépendent du contexte", "question": "Les humains sont-ils nés curieux ou apprennent-ils à l'être ?", "type": "debat"}
+{"talent": "B", "theme": "littérature, arts et musique", "question": "Quel compositeur a créé la « Messe de Requiem » ?", "type": "fait"}
+{"talent": "B", "theme": "chiffres approximatifs ou estimations (populations, distances, quantités)", "question": "Combien de litres d’eau consomme un humain en moyenne par jour ?", "type": "estimation"}
+{"talent": "B", "theme": "nature, animaux et plantes", "question": "Quel est le plus grand type de feuille du monde ?", "type": "fait"}
+{"talent": "B", "theme": "littérature, arts et musique", "question": "Quel poème de Paul Éluard est devenu une chanson populaire ?", "type": "fait"}
+{"talent": "B", "theme": "littérature, arts et musique", "question": "Quel est le nom du duo de musique classique formé par deux frères ?", "type": "fait"}
+{"talent": "B", "theme": "questions ambiguës ou qui dépendent du contexte", "question": "La musique est-elle une forme d’art ou une science des sons ?", "type": "debat"}
+{"talent": "B", "theme": "prédictions sur l'avenir ou questions impossibles à trancher", "question": "Quel sera le premier pays à autoriser l'immigration massive de robots ?", "type": "inconnu"}
+{"talent": "B", "theme": "nature, animaux et plantes", "question": "Quel est le plus grand insecte du monde ?", "type": "fait"}
+{"talent": "B", "theme": "questions ambiguës ou qui dépendent du contexte", "question": "Un bon pays est-il celui qui gagne des médailles ou celui qui protège ses citoyens ?", "type": "debat"}
+{"talent": "B", "theme": "questions ambiguës ou qui dépendent du contexte", "question": "Une loi est-elle juste si elle est appliquée ou si elle est bien écrite ?", "type": "debat"}
+{"talent": "B", "theme": "prédictions sur l'avenir ou questions impossibles à trancher", "question": "Quel sera le premier livre à être lu par plus de 500 millions de personnes en ligne ?", "type": "inconnu"}
+{"talent": "B", "theme": "nature, animaux et plantes", "question": "Combien de jours met une abeille ouvrière pour devenir reine ?", "type": "fait"}
+{"talent": "B", "theme": "technologie et informatique", "question": "Quel est le principal moteur de recherche en France ?", "type": "fait"}
+{"talent": "B", "theme": "questions ambiguës ou qui dépendent du contexte", "question": "Un bon médecin est-il celui qui guérit ou celui qui soigne ?", "type": "debat"}
+{"talent": "B", "theme": "chiffres approximatifs ou estimations (populations, distances, quantités)", "question": "Quel est l'ordre de grandeur du nombre de livres imprimés chaque année ?", "type": "estimation"}
+{"talent": "B", "theme": "questions dont la réponse fait débat chez les spécialistes", "question": "L'intelligence est-elle innée ou acquise ?", "type": "debat"}
+{"talent": "B", "theme": "prédictions sur l'avenir ou questions impossibles à trancher", "question": "Quel sera le premier pays à créer une monnaie numériquement contrôlée par l’État en 2030 ?", "type": "inconnu"}
+{"talent": "B", "theme": "littérature, arts et musique", "question": "Quel est le nom du plus grand musicien de l’histoire selon les sondages ?", "type": "fait"}
+{"talent": "B", "theme": "faits établis de géographie", "question": "Quel est le premier pays à avoir obtenu son indépendance en Afrique ?", "type": "fait"}
+{"talent": "B", "theme": "questions ambiguës ou qui dépendent du contexte", "question": "Quelle est la meilleure façon de perdre du poids ?", "type": "debat"}
+{"talent": "B", "theme": "chiffres approximatifs ou estimations (populations, distances, quantités)", "question": "Combien de kilomètres de coton sont tissés chaque année dans le monde ?", "type": "estimation"}
+{"talent": "B", "theme": "questions ambiguës ou qui dépendent du contexte", "question": "Un bon film est-il celui qui fait pleurer ou celui qui fait réfléchir ?", "type": "debat"}
+{"talent": "B", "theme": "questions ambiguës ou qui dépendent du contexte", "question": "La France est-elle plus civilisée que d'autres pays ?", "type": "debat"}
+{"talent": "B", "theme": "prédictions sur l'avenir ou questions impossibles à trancher", "question": "Quel sera le premier pays à interdire l’usage de l’intelligence artificielle dans la gestion de la justice ?", "type": "inconnu"}
+{"talent": "B", "theme": "chiffres approximatifs ou estimations (populations, distances, quantités)", "question": "Quel est l'ordre de grandeur du nombre d'habitants sur Terre en 2025 ?", "type": "estimation"}
+{"talent": "B", "theme": "faits établis d'histoire (dates, personnages, lieux)", "question": "Quel est le nom du roi anglais qui a perdu la bataille de Bosworth ?", "type": "fait"}
+{"talent": "B", "theme": "faits établis de géographie", "question": "Quel est le plus grand lagon du monde ?", "type": "fait"}
+{"talent": "B", "theme": "littérature, arts et musique", "question": "Quel est le nom du mouvement littéraire associé à Baudelaire ?", "type": "fait"}
+{"talent": "B", "theme": "technologie et informatique", "question": "Quel est le nom de la première machine à calculer mécanique de l'histoire ?", "type": "fait"}
+{"talent": "B", "theme": "faits établis d'histoire (dates, personnages, lieux)", "question": "Quel est le nom de la bataille considérée comme la plus meurtrière de la Première Guerre mondiale ?", "type": "fait"}
+{"talent": "B", "theme": "définitions de notions scientifiques", "question": "Combien de pays membres compose l'Union européenne en 2023 ?", "type": "fait"}
+{"talent": "B", "theme": "prédictions sur l'avenir ou questions impossibles à trancher", "question": "Quel sera le premier pays à instaurer un système d'éducation basé uniquement sur l'intelligence artificielle ?", "type": "inconnu"}
+{"talent": "B", "theme": "nature, animaux et plantes", "question": "Quel est le seul oiseau qui peut voler en arrière ?", "type": "fait"}
+{"talent": "B", "theme": "questions ambiguës ou qui dépendent du contexte", "question": "Le temps est-il une dimension ou une illusion psychologique ?", "type": "debat"}
+{"talent": "B", "theme": "faits établis de géographie", "question": "Quelle est la plus grande île de la mer Méditerranée ?", "type": "fait"}
+{"talent": "B", "theme": "faits établis de géographie", "question": "Quel est le fleuve qui traverse le plus de pays ?", "type": "fait"}
+{"talent": "B", "theme": "prédictions sur l'avenir ou questions impossibles à trancher", "question": "Quelle sera la principale cause de mortalité dans le monde en 2200 ?", "type": "inconnu"}
+{"talent": "B", "theme": "faits établis de géographie", "question": "Quelle est la capitale de l’Algérie ?", "type": "fait"}
+{"talent": "B", "theme": "nature, animaux et plantes", "question": "Quel oiseau a la plus longue queue par rapport à son corps ?", "type": "fait"}
+{"talent": "B", "theme": "prédictions sur l'avenir ou questions impossibles à trancher", "question": "Quel sera le premier média à devenir obsolète à cause de l’intelligence artificielle ?", "type": "inconnu"}
+{"talent": "B", "theme": "technologie et informatique", "question": "Quel est le premier système d'exploitation pour ordinateur ?", "type": "fait"}
+{"talent": "B", "theme": "technologie et informatique", "question": "En quelle année a été lancé le World Wide Web ?", "type": "fait"}
+{"talent": "B", "theme": "questions dont la réponse fait débat chez les spécialistes", "question": "L'intelligence artificielle pourra-t-elle penser comme un humain ?", "type": "debat"}
+{"talent": "B", "theme": "nature, animaux et plantes", "question": "Quelle fleur est utilisée pour faire du vinaigre de cidre ?", "type": "fait"}
+{"talent": "B", "theme": "prédictions sur l'avenir ou questions impossibles à trancher", "question": "Quel sera le premier pays à intégrer un vote algorithmique dans son système électoral ?", "type": "inconnu"}
+{"talent": "B", "theme": "nature, animaux et plantes", "question": "Combien de types de feuilles existent chez les plantes ?", "type": "fait"}
+{"talent": "B", "theme": "littérature, arts et musique", "question": "Quel est le nom de la célèbre danse de la « Sylphide » ?", "type": "fait"}
+{"talent": "B", "theme": "littérature, arts et musique", "question": "Quel est le nom du roman de Victor Hugo qui a inspiré la musique de « La Révolution Française » de Berlioz ?", "type": "fait"}
+{"talent": "B", "theme": "prédictions sur l'avenir ou questions impossibles à trancher", "question": "Quel sera le premier lieu du monde à devenir entièrement auto-suffisant en énergie ?", "type": "inconnu"}
+{"talent": "B", "theme": "prédictions sur l'avenir ou questions impossibles à trancher", "question": "Quel sera le premier président à utiliser une intelligence artificielle comme conseiller principal ?", "type": "inconnu"}
+{"talent": "B", "theme": "faits établis d'histoire (dates, personnages, lieux)", "question": "Quel est le nom de la bataille qui a précipité la chute de l’Empire romain en 410 ?", "type": "fait"}
+{"talent": "B", "theme": "chiffres approximatifs ou estimations (populations, distances, quantités)", "question": "Combien de litres de café sont bu chaque jour dans le monde ?", "type": "estimation"}
+{"talent": "B", "theme": "faits établis d'histoire (dates, personnages, lieux)", "question": "En quelle année est mort Napoléon Bonaparte ?", "type": "fait"}
+{"talent": "B", "theme": "faits établis de géographie", "question": "Quel est le pays le plus riche en ressources pétrolières ?", "type": "fait"}
+{"talent": "B", "theme": "nature, animaux et plantes", "question": "Quel est le plus grand arbre du monde ?", "type": "fait"}
+{"talent": "B", "theme": "questions dont la réponse fait débat chez les spécialistes", "question": "Le café est-il bon pour la santé ?", "type": "debat"}
+{"talent": "B", "theme": "nature, animaux et plantes", "question": "Quel est le nom de la fleur qui a une couleur spécifique en été ?", "type": "fait"}
+{"talent": "B", "theme": "questions ambiguës ou qui dépendent du contexte", "question": "Un film est-il réussi s'il est populaire ou s'il est innovant ?", "type": "debat"}
+{"talent": "B", "theme": "littérature, arts et musique", "question": "Quelle est la durée moyenne d’un opéra en récital ?", "type": "fait"}
+{"talent": "B", "theme": "technologie et informatique", "question": "Quel est le principal moteur de recherche utilisé en Chine ?", "type": "fait"}
+{"talent": "B", "theme": "définitions de notions scientifiques", "question": "Quel est le phénomène qui permet aux oiseaux de naviguer en hivernage ?", "type": "fait"}
+{"talent": "B", "theme": "nature, animaux et plantes", "question": "Quelle fleur symbolise l'amour éternel ?", "type": "fait"}
+{"talent": "B", "theme": "technologie et informatique", "question": "Quel est le type de système d'exploitation le plus ancien ?", "type": "fait"}
+{"talent": "B", "theme": "questions dont la réponse fait débat chez les spécialistes", "question": "Quel est le vrai but de l'éducation ?", "type": "debat"}
+{"talent": "B", "theme": "questions ambiguës ou qui dépendent du contexte", "question": "Un artiste est-il inspiré ou contrôlé par son environnement ?", "type": "debat"}
+{"talent": "B", "theme": "chiffres approximatifs ou estimations (populations, distances, quantités)", "question": "Combien de nuages sont présents dans l'atmosphère en un instant ?", "type": "estimation"}
+{"talent": "B", "theme": "technologie et informatique", "question": "Quel est le nombre maximal de couleurs dans un format JPEG ?", "type": "fait"}
+{"talent": "B", "theme": "questions dont la réponse fait débat chez les spécialistes", "question": "Quelle est la plus grande entreprise au monde en termes de chiffre d'affaires ?", "type": "debat"}
+{"talent": "B", "theme": "faits établis d'histoire (dates, personnages, lieux)", "question": "Quel est le nom de la ville où est né Jeanne d'Arc ?", "type": "fait"}
+{"talent": "B", "theme": "définitions de notions scientifiques", "question": "Quel est le principal rayonnement émis par le Soleil ?", "type": "fait"}
+{"talent": "B", "theme": "technologie et informatique", "question": "Quel est le nom du premier ordinateur conçu pour le traitement numérique ?", "type": "fait"}
+{"talent": "B", "theme": "nature, animaux et plantes", "question": "Quelle plante est utilisée pour produire le café ?", "type": "fait"}
+{"talent": "B", "theme": "technologie et informatique", "question": "Quel est le type de stockage le plus utilisé dans les smartphones ?", "type": "fait"}
+{"talent": "B", "theme": "questions dont la réponse fait débat chez les spécialistes", "question": "La technologie rend-elle l'humanité plus connectée ou plus isolée ?", "type": "debat"}
+{"talent": "B", "theme": "nature, animaux et plantes", "question": "Quel animal a la plus longue langue par rapport à son corps ?", "type": "fait"}
+{"talent": "B", "theme": "questions ambiguës ou qui dépendent du contexte", "question": "Le travail est-il une obligation ou une source de réalisation personnelle ?", "type": "debat"}
+{"talent": "B", "theme": "littérature, arts et musique", "question": "Quel est le nom du premier roman de Marcel Proust ?", "type": "fait"}
+{"talent": "B", "theme": "littérature, arts et musique", "question": "Quel compositeur a écrit la « Symphonie n°9 » en ut majeur ?", "type": "fait"}
+{"talent": "B", "theme": "faits établis d'histoire (dates, personnages, lieux)", "question": "Quel événement marque la fin de la domination romaine en Bretagne ?", "type": "fait"}
+{"talent": "B", "theme": "faits établis d'histoire (dates, personnages, lieux)", "question": "Combien de pays composent l’Union européenne en 2024 ?", "type": "fait"}
+{"talent": "B", "theme": "technologie et informatique", "question": "Quel est le nom du premier langage de programmation ?", "type": "fait"}
+{"talent": "B", "theme": "nature, animaux et plantes", "question": "Quelle plante produit du lait pour ses fruits ?", "type": "fait"}
+{"talent": "B", "theme": "prédictions sur l'avenir ou questions impossibles à trancher", "question": "Quelle sera la première ville à accueillir un système de transport public entièrement sans conducteur avant 2040 ?", "type": "inconnu"}
+{"talent": "B", "theme": "questions ambiguës ou qui dépendent du contexte", "question": "Un pays est-il riche s'il a de l'argent ou de l'avenir ?", "type": "debat"}
+{"talent": "B", "theme": "questions ambiguës ou qui dépendent du contexte", "question": "Un rêve est-il un message ou un hasard de l’esprit ?", "type": "debat"}
+{"talent": "B", "theme": "chiffres approximatifs ou estimations (populations, distances, quantités)", "question": "Quel est l'ordre de grandeur du nombre de personnes qui vivent en ville dans le monde ?", "type": "estimation"}
+{"talent": "B", "theme": "chiffres approximatifs ou estimations (populations, distances, quantités)", "question": "Combien de fois par jour, en moyenne, un humain respire-t-il ?", "type": "estimation"}
+{"talent": "B", "theme": "questions ambiguës ou qui dépendent du contexte", "question": "Un bon livre est-il celui qui est lu ou celui qui change la vie ?", "type": "debat"}
+{"talent": "B", "theme": "littérature, arts et musique", "question": "Quel est le nom de la célèbre ballade de Shakespeare ?", "type": "fait"}
+{"talent": "B", "theme": "questions dont la réponse fait débat chez les spécialistes", "question": "L’amour est-il un sentiment ou un choix ?", "type": "debat"}
+{"talent": "B", "theme": "faits établis d'histoire (dates, personnages, lieux)", "question": "En quelle année a été fondée l'Académie française ?", "type": "fait"}
+{"talent": "B", "theme": "définitions de notions scientifiques", "question": "Quel est le plus grand pays d'Europe ?", "type": "fait"}
+{"talent": "B", "theme": "faits établis d'histoire (dates, personnages, lieux)", "question": "En quelle année a eu lieu la bataille de Waterloo ?", "type": "fait"}
+{"talent": "B", "theme": "prédictions sur l'avenir ou questions impossibles à trancher", "question": "Quelle sera la première langue à être officiellement reconnaite par l'ONU comme langue de la science ?", "type": "inconnu"}
+{"talent": "B", "theme": "faits établis de géographie", "question": "Quelle est la plus longue rivière d'Europe ?", "type": "fait"}
+{"talent": "B", "theme": "technologie et informatique", "question": "Quelle est la taille moyenne d’un fichier de stockage cloud comme Dropbox ?", "type": "fait"}
+{"talent": "B", "theme": "faits établis d'histoire (dates, personnages, lieux)", "question": "En quelle année a été signé le traité de Versailles ?", "type": "fait"}
+{"talent": "B", "theme": "chiffres approximatifs ou estimations (populations, distances, quantités)", "question": "Quel est l’ordre de grandeur du nombre de stars visibles à l’œil nu ?", "type": "estimation"}
+{"talent": "B", "theme": "chiffres approximatifs ou estimations (populations, distances, quantités)", "question": "Quel est l’ordre de grandeur du volume de sang dans un adulte moyen ?", "type": "estimation"}
+{"talent": "B", "theme": "nature, animaux et plantes", "question": "Quel animal a la vision la plus développée du monde ?", "type": "fait"}
+{"talent": "B", "theme": "prédictions sur l'avenir ou questions impossibles à trancher", "question": "Quel sera le premier vaisseau spatial à atteindre une vitesse supérieure à celle de la lumière ?", "type": "inconnu"}
+{"talent": "B", "theme": "faits établis d'histoire (dates, personnages, lieux)", "question": "Quel est le nom de la bataille la plus meurtrière de la Seconde Guerre mondiale ?", "type": "fait"}
+{"talent": "B", "theme": "chiffres approximatifs ou estimations (populations, distances, quantités)", "question": "Combien de millions de nuages traversent la Terre chaque jour ?", "type": "estimation"}
+{"talent": "B", "theme": "technologie et informatique", "question": "Quel est le format d’image le plus courant sur le Web ?", "type": "fait"}
+{"talent": "B", "theme": "technologie et informatique", "question": "Quelle est la longueur moyenne d’un mot dans un texte informatique ?", "type": "fait"}
+{"talent": "B", "theme": "questions ambiguës ou qui dépendent du contexte", "question": "La France est-elle la plus grande nation européenne ?", "type": "debat"}
+{"talent": "B", "theme": "définitions de notions scientifiques", "question": "Quel est le temps de demi-décroissance du carbone-14 ?", "type": "fait"}
+{"talent": "B", "theme": "technologie et informatique", "question": "Quel est le nom du système d’exploitation développé par Apple ?", "type": "fait"}
+{"talent": "B", "theme": "questions dont la réponse fait débat chez les spécialistes", "question": "Le bonheur est-il un sentiment subjectif ou un état mesurable ?", "type": "debat"}
+{"talent": "B", "theme": "questions dont la réponse fait débat chez les spécialistes", "question": "La lecture est-elle une activité solitaire ou sociale ?", "type": "debat"}
+{"talent": "B", "theme": "questions dont la réponse fait débat chez les spécialistes", "question": "L’école est-elle un lieu d’instruction ou d’émancipation ?", "type": "debat"}
+{"talent": "B", "theme": "littérature, arts et musique", "question": "Quel musicien a composé le « Quatuor à cordes n°1 » ?", "type": "fait"}
+{"talent": "B", "theme": "littérature, arts et musique", "question": "Quel peintre a créé la « Nuit étoilée » ?", "type": "fait"}
+{"talent": "B", "theme": "définitions de notions scientifiques", "question": "Quel est le plus grand désert en termes de superficie ?", "type": "fait"}
+{"talent": "B", "theme": "faits établis d'histoire (dates, personnages, lieux)", "question": "Quelle est la durée moyenne d'une session parlementaire en France ?", "type": "fait"}
+{"talent": "B", "theme": "faits établis d'histoire (dates, personnages, lieux)", "question": "Quel est le nom du célèbe maréchal qui a commandé l'Armée du Rhin pendant la Révolution ?", "type": "fait"}
+{"talent": "B", "theme": "questions ambiguës ou qui dépendent du contexte", "question": "Le temps est-il une dimension ou une mesure de l'expérience ?", "type": "debat"}
+{"talent": "B", "theme": "faits établis d'histoire (dates, personnages, lieux)", "question": "Quel événement a marqué la fin de la guerre de Trente Ans ?", "type": "fait"}
+{"talent": "B", "theme": "chiffres approximatifs ou estimations (populations, distances, quantités)", "question": "Quel est l’ordre de grandeur des distances parcourues par un avion en une année ?", "type": "estimation"}
+{"talent": "B", "theme": "chiffres approximatifs ou estimations (populations, distances, quantités)", "question": "Combien de personnes vivent dans des maisons en brique dans le monde ?", "type": "estimation"}
+{"talent": "B", "theme": "chiffres approximatifs ou estimations (populations, distances, quantités)", "question": "Combien de personnes vivent dans les villes du monde ?", "type": "estimation"}
+{"talent": "B", "theme": "prédictions sur l'avenir ou questions impossibles à trancher", "question": "Quel sera le premier animal domestique à disparaître à cause de l'extinction de son espèce sauvage ?", "type": "inconnu"}
+{"talent": "B", "theme": "nature, animaux et plantes", "question": "Quel arbre est connu pour avoir des feuilles en forme de cœurs ?", "type": "fait"}
+{"talent": "B", "theme": "faits établis d'histoire (dates, personnages, lieux)", "question": "Quel roi anglais a été assassiné en 1199 ?", "type": "fait"}
+{"talent": "B", "theme": "chiffres approximatifs ou estimations (populations, distances, quantités)", "question": "Combien de kilomètres de végétation existent sur Terre ?", "type": "estimation"}
+{"talent": "B", "theme": "questions ambiguës ou qui dépendent du contexte", "question": "Un bon film est-il celui qui fait rire ou qui fait réfléchir ?", "type": "debat"}
+{"talent": "B", "theme": "chiffres approximatifs ou estimations (populations, distances, quantités)", "question": "Combien de tonnes de céréales sont produites chaque année dans le monde ?", "type": "estimation"}
+{"talent": "B", "theme": "nature, animaux et plantes", "question": "Quel arbre est le plus long vivant sur Terre ?", "type": "fait"}
+{"talent": "B", "theme": "chiffres approximatifs ou estimations (populations, distances, quantités)", "question": "Quel est l'ordre de grandeur du nombre de passagers transportés chaque année par les avions ?", "type": "estimation"}
+{"talent": "B", "theme": "questions ambiguës ou qui dépendent du contexte", "question": "Le silence est-il une absence de bruit ou une présence ?", "type": "debat"}
+{"talent": "B", "theme": "définitions de notions scientifiques", "question": "Quel est le plus petit mammifère du monde ?", "type": "fait"}
+{"talent": "B", "theme": "littérature, arts et musique", "question": "Quel est le nom de l’œuvre du peintre Édouard Manet le plus connu ?", "type": "fait"}
+{"talent": "B", "theme": "questions ambiguës ou qui dépendent du contexte", "question": "Un pays est-il riche si son PIB est élevé ou si son égalité est grande ?", "type": "debat"}
+{"talent": "B", "theme": "nature, animaux et plantes", "question": "Quel animal a la peau la plus résistante au feu ?", "type": "fait"}
+{"talent": "B", "theme": "littérature, arts et musique", "question": "Qui a écrit le roman « Le Petit Prince » ?", "type": "fait"}
+{"talent": "B", "theme": "questions dont la réponse fait débat chez les spécialistes", "question": "Les rêves sont-ils des images aléatoires ou portent-ils un sens caché ?", "type": "debat"}
+{"talent": "B", "theme": "questions dont la réponse fait débat chez les spécialistes", "question": "Les enfants sont-ils nés avec des préférences ou les acquièrent-ils ?", "type": "debat"}
+{"talent": "B", "theme": "chiffres approximatifs ou estimations (populations, distances, quantités)", "question": "Combien de kilomètres de routes sont construites chaque année dans le monde ?", "type": "estimation"}
+{"talent": "B", "theme": "littérature, arts et musique", "question": "Quel est le nom du compositeur de la « Messe solennelle » de Mozart ?", "type": "fait"}
+{"talent": "B", "theme": "prédictions sur l'avenir ou questions impossibles à trancher", "question": "Quel sera le premier animal à être utilisé comme animal de compagnie artificiel ?", "type": "inconnu"}
+{"talent": "B", "theme": "prédictions sur l'avenir ou questions impossibles à trancher", "question": "Quel temps fera-t-il à Lyon le 1er janvier 2040 ?", "type": "inconnu"}
+{"talent": "B", "theme": "prédictions sur l'avenir ou questions impossibles à trancher", "question": "Quel sera le premier animal à être génétiquement modifié pour vivre 500 ans ?", "type": "inconnu"}
+{"talent": "B", "theme": "questions ambiguës ou qui dépendent du contexte", "question": "L’art est-il une expression de soi ou une critique du monde ?", "type": "debat"}
+{"talent": "B", "theme": "faits établis d'histoire (dates, personnages, lieux)", "question": "Quelle est la date de naissance de Napoléon Bonaparte ?", "type": "fait"}
+{"talent": "B", "theme": "définitions de notions scientifiques", "question": "Quel est le plus grand océan de la Terre ?", "type": "fait"}
+{"talent": "B", "theme": "définitions de notions scientifiques", "question": "Quel est le plus long animal du monde ?", "type": "fait"}
+{"talent": "B", "theme": "nature, animaux et plantes", "question": "Combien de feuilles peut avoir un arbre de tilleul ?", "type": "fait"}
+{"talent": "B", "theme": "chiffres approximatifs ou estimations (populations, distances, quantités)", "question": "Combien de litres d’eau boisson est consommée par personne par an dans le monde ?", "type": "estimation"}
+{"talent": "B", "theme": "définitions de notions scientifiques", "question": "Quel est le métal le plus utilisé dans le monde ?", "type": "fait"}
+{"talent": "B", "theme": "définitions de notions scientifiques", "question": "Quel est le plus petit planète du système solaire ?", "type": "fait"}
+{"talent": "B", "theme": "questions dont la réponse fait débat chez les spécialistes", "question": "La musique a-t-elle une influence réelle sur l'émotion ?", "type": "debat"}
+{"talent": "B", "theme": "prédictions sur l'avenir ou questions impossibles à trancher", "question": "Quel sera le nombre de langues parlées sur Terre en 2100 ?", "type": "inconnu"}
+{"talent": "B", "theme": "nature, animaux et plantes", "question": "Quel animal a un système de communication par sons ultra-sons ?", "type": "fait"}
+{"talent": "B", "theme": "faits établis de géographie", "question": "Quel est le pays le plus peuplé du monde ?", "type": "fait"}
+{"talent": "B", "theme": "questions ambiguës ou qui dépendent du contexte", "question": "Un bon élu est-il celui qui fait voter ou celui qui répond aux besoins ?", "type": "debat"}
+{"talent": "B", "theme": "questions ambiguës ou qui dépendent du contexte", "question": "Une personne est-elle responsable de ses actions si elle dort ?", "type": "debat"}
+{"talent": "B", "theme": "technologie et informatique", "question": "Combien de personnes utilisent Facebook à travers le monde ?", "type": "fait"}
+{"talent": "B", "theme": "littérature, arts et musique", "question": "Quel est le nom du personnage central de l’œuvre « Le Voleur » de Balzac ?", "type": "fait"}
+{"talent": "B", "theme": "faits établis d'histoire (dates, personnages, lieux)", "question": "Quelle est la date de la signature de la Déclaration des droits de l'homme et du citoyen ?", "type": "fait"}
+{"talent": "B", "theme": "chiffres approximatifs ou estimations (populations, distances, quantités)", "question": "Quel est l'ordre de grandeur du nombre d'habitants dans les villes de plus de 10 millions d'habitants ?", "type": "estimation"}
+{"talent": "B", "theme": "technologie et informatique", "question": "Quel est le format de stockage le plus utilisé dans les ordinateurs de bureau ?", "type": "fait"}
+{"talent": "B", "theme": "prédictions sur l'avenir ou questions impossibles à trancher", "question": "Quel sera le premier pays à avoir un gouvernement dirigé par un seul IA ?", "type": "inconnu"}
+{"talent": "B", "theme": "prédictions sur l'avenir ou questions impossibles à trancher", "question": "Quel sera le premier pays à remplacer les billets en papier par des cryptomonnaies uniquement ?", "type": "inconnu"}
+{"talent": "B", "theme": "prédictions sur l'avenir ou questions impossibles à trancher", "question": "Quel sera le premier pays à légaliser la consommation d'antigravité ?", "type": "inconnu"}
+{"talent": "B", "theme": "nature, animaux et plantes", "question": "Quelle est la plante qui pousse en hauteur en été et en hauteur en hiver ?", "type": "fait"}
+{"talent": "B", "theme": "littérature, arts et musique", "question": "Quel est le nom du chanteur chinois qui a gagné le Concours Eurovision de la chanson en 2017 ?", "type": "fait"}
+{"talent": "B", "theme": "faits établis d'histoire (dates, personnages, lieux)", "question": "En quelle année a eu lieu la Révolution française ?", "type": "fait"}
+{"talent": "B", "theme": "technologie et informatique", "question": "Combien de milliards de dispositifs connectés existent aujourd'hui ?", "type": "fait"}
+{"talent": "B", "theme": "définitions de notions scientifiques", "question": "Quel est le rayon moyen de la Terre ?", "type": "fait"}
+{"talent": "B", "theme": "questions dont la réponse fait débat chez les spécialistes", "question": "Le réchauffement climatique est-il principalement d'origine humaine ou naturelle ?", "type": "debat"}
+{"talent": "B", "theme": "questions ambiguës ou qui dépendent du contexte", "question": "Un bon mariage est-il celui qui dure ou celui qui brille ?", "type": "debat"}
+{"talent": "B", "theme": "littérature, arts et musique", "question": "Quel poète français a été le maître de Paul Éluard ?", "type": "fait"}
+{"talent": "B", "theme": "nature, animaux et plantes", "question": "Quel est le plus petit animal du monde ?", "type": "fait"}
+{"talent": "B", "theme": "définitions de notions scientifiques", "question": "Quel est le plus petit pays du monde en superficie ?", "type": "fait"}
+{"talent": "B", "theme": "faits établis d'histoire (dates, personnages, lieux)", "question": "Quelle est la capitale de la France ?", "type": "fait"}
+{"talent": "B", "theme": "littérature, arts et musique", "question": "Quel est le nom du mouvement artistique qui a influencé l’art moderne ?", "type": "fait"}
+{"talent": "B", "theme": "prédictions sur l'avenir ou questions impossibles à trancher", "question": "Quel sera le premier pays à coloniser une lune artificielle ?", "type": "inconnu"}
+{"talent": "B", "theme": "chiffres approximatifs ou estimations (populations, distances, quantités)", "question": "Quelle est la distance approximative de la Lune à la Terre ?", "type": "estimation"}
+{"talent": "B", "theme": "littérature, arts et musique", "question": "Combien de mètres mesure la statue de la Liberté ?", "type": "fait"}
+{"talent": "B", "theme": "définitions de notions scientifiques", "question": "Quel est le principal gaz émis par les volcans ?", "type": "fait"}
+{"talent": "B", "theme": "nature, animaux et plantes", "question": "Quel est le fruit qui pousse en été et se conserve toute l'année ?", "type": "fait"}
+{"talent": "B", "theme": "littérature, arts et musique", "question": "Quel est le nom de la première œuvre de Shakespeare ?", "type": "fait"}
+{"talent": "B", "theme": "questions dont la réponse fait débat chez les spécialistes", "question": "La Terre est-elle ronde ou plate ?", "type": "debat"}
+{"talent": "B", "theme": "chiffres approximatifs ou estimations (populations, distances, quantités)", "question": "Combien de litres de café sont servis chaque année dans le monde ?", "type": "estimation"}
+{"talent": "B", "theme": "chiffres approximatifs ou estimations (populations, distances, quantités)", "question": "Combien de litres d’air respire-t-on en une journée ?", "type": "estimation"}
+{"talent": "B", "theme": "questions ambiguës ou qui dépendent du contexte", "question": "L’amour est-il une passion ou une décision consciente ?", "type": "debat"}
+{"talent": "B", "theme": "questions dont la réponse fait débat chez les spécialistes", "question": "Le bonheur est-il une émotion ou un état d'esprit ?", "type": "debat"}
+{"talent": "B", "theme": "faits établis d'histoire (dates, personnages, lieux)", "question": "Qui a été le premier roi de France ?", "type": "fait"}
+{"talent": "B", "theme": "nature, animaux et plantes", "question": "Quel animal vit le plus longtemps en captivité ?", "type": "fait"}
+{"talent": "B", "theme": "faits établis d'histoire (dates, personnages, lieux)", "question": "Quel est le nom du premier homme à avoir marché sur la Lune ?", "type": "fait"}
+{"talent": "B", "theme": "chiffres approximatifs ou estimations (populations, distances, quantités)", "question": "Quel est l'ordre de grandeur du nombre d'oiseaux qui migrent chaque année ?", "type": "estimation"}
+{"talent": "B", "theme": "faits établis d'histoire (dates, personnages, lieux)", "question": "Quel est le nom de la tour la plus haute de Paris ?", "type": "fait"}
+{"talent": "B", "theme": "technologie et informatique", "question": "Quel est le format de compression audio le plus courant ?", "type": "fait"}
+{"talent": "B", "theme": "questions ambiguës ou qui dépendent du contexte", "question": "La musique est-elle une forme d'art ou d'expression ?", "type": "debat"}
+{"talent": "B", "theme": "questions dont la réponse fait débat chez les spécialistes", "question": "La musique peut-elle influencer durablement l'humeur ou est-ce uniquement temporaire ?", "type": "debat"}
+{"talent": "B", "theme": "chiffres approximatifs ou estimations (populations, distances, quantités)", "question": "Quel est l'ordre de grandeur du nombre de personnes vivant dans des zones rurales en Inde ?", "type": "estimation"}
+{"talent": "B", "theme": "définitions de notions scientifiques", "question": "Quel est le phénomène qui explique la formation des arcs-en-ciel ?", "type": "fait"}
+{"talent": "B", "theme": "questions ambiguës ou qui dépendent du contexte", "question": "L'art est-il une création ou une imitation ?", "type": "debat"}
+{"talent": "B", "theme": "faits établis de géographie", "question": "Combien de pays sont membres de l'Union européenne ?", "type": "fait"}
+{"talent": "B", "theme": "faits établis d'histoire (dates, personnages, lieux)", "question": "Quel est le nom du premier roi de France de la dynastie des Capétiens ?", "type": "fait"}
+{"talent": "B", "theme": "littérature, arts et musique", "question": "Quel est le nom du personnage principal de « La Chanson de Terre et d’Eau » ?", "type": "fait"}
+{"talent": "B", "theme": "nature, animaux et plantes", "question": "Quel animal est le plus rapide sur terre ?", "type": "fait"}
+{"talent": "B", "theme": "faits établis de géographie", "question": "Quel est le pays qui possède le plus de langues officielles ?", "type": "fait"}
+{"talent": "B", "theme": "nature, animaux et plantes", "question": "Quel arbre produit du miel ?", "type": "fait"}
+{"talent": "B", "theme": "technologie et informatique", "question": "Quel est le nom du premier ordinateur de bureau vendu massivement ?", "type": "fait"}
+{"talent": "B", "theme": "chiffres approximatifs ou estimations (populations, distances, quantités)", "question": "Combien de fois la Terre tourne-t-elle autour du Soleil en un an ?", "type": "estimation"}
+{"talent": "B", "theme": "nature, animaux et plantes", "question": "Quel est le plus long serpent du monde ?", "type": "fait"}
+{"talent": "B", "theme": "technologie et informatique", "question": "Quel est le format d'audio le plus répandu sur internet ?", "type": "fait"}
+{"talent": "B", "theme": "faits établis de géographie", "question": "Quel est le pays qui possède le plus de parcs nationaux ?", "type": "fait"}
+{"talent": "B", "theme": "faits établis de géographie", "question": "Quel pays a la plus longue frontière terrestre au monde ?", "type": "fait"}
+{"talent": "B", "theme": "questions dont la réponse fait débat chez les spécialistes", "question": "L'art est-il une expression personnelle ou une forme de communication ?", "type": "debat"}
+{"talent": "B", "theme": "nature, animaux et plantes", "question": "Quel est le seul animal qui peut se reproduire sans fécondation ?", "type": "fait"}
+{"talent": "B", "theme": "faits établis d'histoire (dates, personnages, lieux)", "question": "Quel est le nom du château de la reine Élisabeth II en Écosse ?", "type": "fait"}
+{"talent": "B", "theme": "faits établis de géographie", "question": "Combien de mètres de haut est le Mont Everest ?", "type": "fait"}
+{"talent": "B", "theme": "questions dont la réponse fait débat chez les spécialistes", "question": "Quelle est la plus grande ville de France ?", "type": "debat"}
+{"talent": "B", "theme": "technologie et informatique", "question": "Quel est le nom du protocole utilisé pour naviguer sur le Web ?", "type": "fait"}
+{"talent": "B", "theme": "chiffres approximatifs ou estimations (populations, distances, quantités)", "question": "Combien de personnes sont estimées vivre dans des bidonvilles à travers le monde ?", "type": "estimation"}
+{"talent": "B", "theme": "chiffres approximatifs ou estimations (populations, distances, quantités)", "question": "Combien de millions de mètres carrés de forêts sont détruits chaque année ?", "type": "estimation"}
+{"talent": "B", "theme": "faits établis d'histoire (dates, personnages, lieux)", "question": "Quel est le nom de la bataille où les Anglais ont battu les Français en 1346 ?", "type": "fait"}
+{"talent": "B", "theme": "littérature, arts et musique", "question": "En quelle année a été publié « Le Petit Prince » ?", "type": "fait"}
+{"talent": "B", "theme": "définitions de notions scientifiques", "question": "Quel est le plus grand animal vivant sur Terre ?", "type": "fait"}
+{"talent": "B", "theme": "nature, animaux et plantes", "question": "Quelle plante est la plus utilisée dans les cosmétiques ?", "type": "fait"}
+{"talent": "B", "theme": "questions ambiguës ou qui dépendent du contexte", "question": "Un bon professeur est-il celui qui enseigne ou qui inspire ?", "type": "debat"}
+{"talent": "B", "theme": "faits établis de géographie", "question": "Quel est le pays dont la capitale s’appelle « Téhéran » ?", "type": "fait"}
+{"talent": "B", "theme": "littérature, arts et musique", "question": "Quel musicien a joué dans l’œuvre « La Guirlande » de Berlioz ?", "type": "fait"}
+{"talent": "B", "theme": "définitions de notions scientifiques", "question": "Quelle est la distance moyenne entre la Terre et le Soleil ?", "type": "fait"}
+{"talent": "B", "theme": "technologie et informatique", "question": "Quel est le langage de programmation utilisé pour créer les applications Android ?", "type": "fait"}
+{"talent": "B", "theme": "questions ambiguës ou qui dépendent du contexte", "question": "Un chef est-il celui qui ordonne ou celui qui inspire ?", "type": "debat"}
+{"talent": "B", "theme": "faits établis d'histoire (dates, personnages, lieux)", "question": "Quel est le nom du premier Premier ministre du Royaume-Uni après la Révolution française ?", "type": "fait"}
+{"talent": "B", "theme": "questions ambiguës ou qui dépendent du contexte", "question": "La vérité est-elle objective ou subjective ?", "type": "debat"}
+{"talent": "B", "theme": "nature, animaux et plantes", "question": "Quel animal a la peau la plus épaisse du monde ?", "type": "fait"}
+{"talent": "B", "theme": "questions ambiguës ou qui dépendent du contexte", "question": "Une émotion est-elle sincère si elle est exprimée ou si elle est contrôlée ?", "type": "debat"}
+{"talent": "B", "theme": "prédictions sur l'avenir ou questions impossibles à trancher", "question": "Quel sera le meilleur film de l'année 2100 selon le site Rotten Tomatoes ?", "type": "inconnu"}
+{"talent": "B", "theme": "faits établis d'histoire (dates, personnages, lieux)", "question": "Quelle est la date de naissance de Marie Curie ?", "type": "fait"}
+{"talent": "B", "theme": "chiffres approximatifs ou estimations (populations, distances, quantités)", "question": "Quel est l'ordre de grandeur du nombre de personnes qui ont jamais marché sur la Lune ?", "type": "estimation"}
+{"talent": "B", "theme": "littérature, arts et musique", "question": "En quelle année a été publié « Le Petit Prince » d’Antoine de Saint-Exupéry ?", "type": "fait"}
+{"talent": "B", "theme": "prédictions sur l'avenir ou questions impossibles à trancher", "question": "Quel sera le premier médicament à être administré via un implant cérébral ?", "type": "inconnu"}
+{"talent": "B", "theme": "littérature, arts et musique", "question": "Quel artiste a créé la célèbre sculpture *La Joconde* ?", "type": "fait"}
+{"talent": "B", "theme": "questions ambiguës ou qui dépendent du contexte", "question": "Est-ce que le temps est un flux ou une mesure ?", "type": "debat"}
+{"talent": "B", "theme": "littérature, arts et musique", "question": "Quel est le nom du mouvement artistique qui a marqué la fin du XIXe siècle ?", "type": "fait"}
+{"talent": "B", "theme": "technologie et informatique", "question": "Quel est le pays qui possède le plus grand nombre de serveurs internet ?", "type": "fait"}
+{"talent": "B", "theme": "questions dont la réponse fait débat chez les spécialistes", "question": "Le capitalisme est-il un système économique ou un mode de pensée ?", "type": "debat"}
+{"talent": "B", "theme": "nature, animaux et plantes", "question": "Quelle plante est utilisée pour faire de la teinture bleue ?", "type": "fait"}
+{"talent": "B", "theme": "chiffres approximatifs ou estimations (populations, distances, quantités)", "question": "Combien de litres d'eau buvables y a-t-il sur Terre ?", "type": "estimation"}
+{"talent": "B", "theme": "chiffres approximatifs ou estimations (populations, distances, quantités)", "question": "Quel est l'ordre de grandeur du nombre de personnes qui ont jamais voyagé en avion ?", "type": "estimation"}
+{"talent": "B", "theme": "faits établis d'histoire (dates, personnages, lieux)", "question": "Quel est le nom de la ville qui a été bombardée par le Japon en 1945 ?", "type": "fait"}
+{"talent": "B", "theme": "nature, animaux et plantes", "question": "Quel est le plus petit oiseau du monde ?", "type": "fait"}
+{"talent": "B", "theme": "prédictions sur l'avenir ou questions impossibles à trancher", "question": "Quel sera le premier pays à établir un système de justice entièrement automatisé par l’intelligence artificielle ?", "type": "inconnu"}
+{"talent": "B", "theme": "chiffres approximatifs ou estimations (populations, distances, quantités)", "question": "Quel est l'ordre de grandeur du volume d'eau contenu dans les océans ?", "type": "estimation"}
+{"talent": "B", "theme": "questions dont la réponse fait débat chez les spécialistes", "question": "Le cerveau humain est-il plus complexe que celui d'un animal ?", "type": "debat"}
+{"talent": "B", "theme": "questions ambiguës ou qui dépendent du contexte", "question": "Un bon ménage est-il celui qui est harmonieux ou celui qui est stable ?", "type": "debat"}
+{"talent": "B", "theme": "questions ambiguës ou qui dépendent du contexte", "question": "La liberté est-elle une valeur absolue ou dépend-elle des contextes culturels ?", "type": "debat"}
+{"talent": "B", "theme": "définitions de notions scientifiques", "question": "Quelle est la température la plus élevée enregistrée sur Terre ?", "type": "fait"}
+{"talent": "B", "theme": "technologie et informatique", "question": "Quel est le nom du premier navigateur web ?", "type": "fait"}
+{"talent": "B", "theme": "faits établis d'histoire (dates, personnages, lieux)", "question": "En quelle année a été fondée la ville de Rome ?", "type": "fait"}
+{"talent": "B", "theme": "littérature, arts et musique", "question": "Quel compositeur a écrit l’opéra « L’Orphée » ?", "type": "fait"}
+{"talent": "B", "theme": "questions dont la réponse fait débat chez les spécialistes", "question": "L'amour est-il une émotion naturelle ou une construction sociale ?", "type": "debat"}
+{"talent": "B", "theme": "littérature, arts et musique", "question": "Qui a écrit le roman « La Recherche » ?", "type": "fait"}
+{"talent": "B", "theme": "faits établis d'histoire (dates, personnages, lieux)", "question": "Quel personnage historique a mené les armées napoléoniennes en Russie ?", "type": "fait"}
+{"talent": "B", "theme": "questions ambiguës ou qui dépendent du contexte", "question": "Un bon conseil est-il celui qui est suivi ou celui qui est donné ?", "type": "debat"}
+{"talent": "B", "theme": "faits établis de géographie", "question": "En quelle année a eu lieu la prise de la Bastille ?", "type": "fait"}
+{"talent": "B", "theme": "chiffres approximatifs ou estimations (populations, distances, quantités)", "question": "Combien de personnes vivent dans les zones urbaines du monde ?", "type": "estimation"}
+{"talent": "B", "theme": "questions ambiguës ou qui dépendent du contexte", "question": "Un artiste est-il celui qui crée ou celui qui inspire ?", "type": "debat"}
+{"talent": "B", "theme": "questions dont la réponse fait débat chez les spécialistes", "question": "Le mariage est-il une institution universelle ou culturelle ?", "type": "debat"}
+{"talent": "B", "theme": "questions ambiguës ou qui dépendent du contexte", "question": "Quel est le meilleur moment pour lancer une entreprise ?", "type": "debat"}
+{"talent": "B", "theme": "questions ambiguës ou qui dépendent du contexte", "question": "L'amour est-il un sentiment ou une décision ?", "type": "debat"}
+{"talent": "B", "theme": "questions ambiguës ou qui dépendent du contexte", "question": "Le bonheur est-il une illusion ou une réalité ?", "type": "debat"}
+{"talent": "B", "theme": "technologie et informatique", "question": "Quel est le format de stockage de données le plus utilisé dans le cloud ?", "type": "fait"}
+{"talent": "B", "theme": "questions dont la réponse fait débat chez les spécialistes", "question": "À quel âge est-il le plus facile d'apprendre une langue ?", "type": "debat"}
+{"talent": "B", "theme": "questions dont la réponse fait débat chez les spécialistes", "question": "L'amour est-il un choix ou une fatalité ?", "type": "debat"}
+{"talent": "B", "theme": "chiffres approximatifs ou estimations (populations, distances, quantités)", "question": "Quel est l’ordre de grandeur du nombre de personnes vivant dans des zones en guerre en 2024 ?", "type": "estimation"}
+{"talent": "B", "theme": "questions ambiguës ou qui dépendent du contexte", "question": "Un échange est-il négocié ou imposé par le pouvoir ?", "type": "debat"}
+{"talent": "B", "theme": "littérature, arts et musique", "question": "Quel est le nom du premier film de Woody Allen ?", "type": "fait"}
+{"talent": "B", "theme": "définitions de notions scientifiques", "question": "Quel est le principal gaz utilisé dans les ballons de baudruches ?", "type": "fait"}
+{"talent": "B", "theme": "prédictions sur l'avenir ou questions impossibles à trancher", "question": "Quel sera le premier pays à avoir un système de transport terrestre sans émission de CO₂ ?", "type": "inconnu"}
+{"talent": "B", "theme": "faits établis de géographie", "question": "Quel est le pays dont la capitale est Baku ?", "type": "fait"}
+{"talent": "B", "theme": "littérature, arts et musique", "question": "Quel compositeur a écrit l’Opéra « Carmen » ?", "type": "fait"}
+{"talent": "B", "theme": "définitions de notions scientifiques", "question": "Quel est le pays le plus vaste au monde ?", "type": "fait"}
+{"talent": "B", "theme": "faits établis de géographie", "question": "Quel est le plus long fleuve d'Europe ?", "type": "fait"}
+{"talent": "B", "theme": "questions ambiguës ou qui dépendent du contexte", "question": "Un texte est-il clair s'il est court ou s'il est bien structuré ?", "type": "debat"}
+{"talent": "B", "theme": "questions dont la réponse fait débat chez les spécialistes", "question": "L’humain est-il le seul animal à penser ?", "type": "debat"}
+{"talent": "B", "theme": "littérature, arts et musique", "question": "Quel artiste a réalisé la célèbre fresque « Le Mur des Furies » à Paris ?", "type": "fait"}
+{"talent": "B", "theme": "questions dont la réponse fait débat chez les spécialistes", "question": "L'éducation est-elle une responsabilité collective ou individuelle ?", "type": "debat"}
+{"talent": "B", "theme": "questions dont la réponse fait débat chez les spécialistes", "question": "Le temps est-il un flux continu ou une illusion de la conscience ?", "type": "debat"}
+{"talent": "B", "theme": "prédictions sur l'avenir ou questions impossibles à trancher", "question": "Quel sera le premier médic à être utilisé pour prolonger la vie d'un humain au-delà de 120 ans ?", "type": "inconnu"}
+{"talent": "B", "theme": "définitions de notions scientifiques", "question": "Quel est le plus grand mammifère terrestre ?", "type": "fait"}
+{"talent": "B", "theme": "technologie et informatique", "question": "Quel est le plus grand fabricant de microprocesseurs ?", "type": "fait"}
+{"talent": "B", "theme": "prédictions sur l'avenir ou questions impossibles à trancher", "question": "Quel sera le premier médicament à soigner la maladie d'Alzheimer de manière irréversible ?", "type": "inconnu"}
+{"talent": "B", "theme": "questions ambiguës ou qui dépendent du contexte", "question": "L’écologie est-elle une question de morale ou d’intérêt économique ?", "type": "debat"}
+{"talent": "B", "theme": "faits établis de géographie", "question": "En quelle année la France a-t-elle obtenu son indépendance ?", "type": "fait"}
+{"talent": "B", "theme": "chiffres approximatifs ou estimations (populations, distances, quantités)", "question": "Combien de fois de plus lourd est un kilogramme d'or qu'un kilogramme d'air ?", "type": "estimation"}
+{"talent": "B", "theme": "questions dont la réponse fait débat chez les spécialistes", "question": "Le bonheur est-il une fin en soi ou un moyen vers une autre valeur ?", "type": "debat"}
+{"talent": "B", "theme": "prédictions sur l'avenir ou questions impossibles à trancher", "question": "Quel sera le pourcentage de la population mondiale vivant en milieu rural en 2050 ?", "type": "inconnu"}
+{"talent": "B", "theme": "faits établis d'histoire (dates, personnages, lieux)", "question": "Quel est le nom du célèbre général qui a conduit la campagne d'Égypte de Napoléon ?", "type": "fait"}
+{"talent": "B", "theme": "littérature, arts et musique", "question": "Quel est le nom du chanteur français connu pour sa voix d’alto ?", "type": "fait"}
+{"talent": "B", "theme": "chiffres approximatifs ou estimations (populations, distances, quantités)", "question": "Quel est l'ordre de grandeur du nombre de livres que l'on lit dans sa vie ?", "type": "estimation"}
+{"talent": "B", "theme": "nature, animaux et plantes", "question": "Quel est le nom de la fleur qui fleurit une fois par siècle ?", "type": "fait"}
+{"talent": "B", "theme": "littérature, arts et musique", "question": "Quel est le nom du dernier roman de Marcel Proust ?", "type": "fait"}
+{"talent": "B", "theme": "littérature, arts et musique", "question": "Quel auteur a écrit *Les Nourritures terrestres* ?", "type": "fait"}
+{"talent": "B", "theme": "questions ambiguës ou qui dépendent du contexte", "question": "La liberté est-elle une valeur universelle ou une construction sociale ?", "type": "debat"}
+{"talent": "B", "theme": "technologie et informatique", "question": "Quel est le nom du protocole d’envoi d’e-mails ?", "type": "fait"}
+{"talent": "B", "theme": "prédictions sur l'avenir ou questions impossibles à trancher", "question": "Quel sera le premier gouvernement à utiliser un algorithme pour décider de la fin de vie d’un citoyen ?", "type": "inconnu"}
+{"talent": "B", "theme": "littérature, arts et musique", "question": "Quel instrument joue le personnage de Sherlock Holmes ?", "type": "fait"}
+{"talent": "B", "theme": "faits établis d'histoire (dates, personnages, lieux)", "question": "Quel est le nom de la bataille qui a marqué la fin de la guerre de Hollande ?", "type": "fait"}
+{"talent": "B", "theme": "nature, animaux et plantes", "question": "Quelle est la plante la plus connue pour son parfum intense ?", "type": "fait"}
+{"talent": "B", "theme": "technologie et informatique", "question": "Quel est le nombre d'utilisateurs actifs mensuels de Facebook ?", "type": "fait"}
+{"talent": "B", "theme": "faits établis de géographie", "question": "Quelle est la plus grande île du monde ?", "type": "fait"}
+{"talent": "B", "theme": "questions ambiguës ou qui dépendent du contexte", "question": "Le silence est-il toujours silencieux ?", "type": "debat"}
+{"talent": "B", "theme": "faits établis de géographie", "question": "Quel est le pays dont la capitale est Djibouti ?", "type": "fait"}
+{"talent": "B", "theme": "prédictions sur l'avenir ou questions impossibles à trancher", "question": "Quel sera le premier pays à légaliser le travail des machines sur les mêmes conditions que les humains ?", "type": "inconnu"}
+{"talent": "B", "theme": "nature, animaux et plantes", "question": "Quelle fleur est associée à la naissance ?", "type": "fait"}
+{"talent": "B", "theme": "chiffres approximatifs ou estimations (populations, distances, quantités)", "question": "Quel est l’ordre de grandeur du nombre de personnes ayant jamais vécu sur Terre ?", "type": "estimation"}
+{"talent": "B", "theme": "chiffres approximatifs ou estimations (populations, distances, quantités)", "question": "Combien de livres sont lus chaque jour dans le monde ?", "type": "estimation"}
+{"talent": "B", "theme": "nature, animaux et plantes", "question": "Quelle fleur est la plus parfumée du monde ?", "type": "fait"}
+{"talent": "B", "theme": "définitions de notions scientifiques", "question": "Quel est le plus long tunnel ferroviaire du monde ?", "type": "fait"}
+{"talent": "B", "theme": "faits établis de géographie", "question": "Quel est le pays dont la capit à est Brasília ?", "type": "fait"}
+{"talent": "B", "theme": "questions dont la réponse fait débat chez les spécialistes", "question": "Quel est le véritable but de l'éducation : transmettre des connaissances ou former des citoyens ?", "type": "debat"}
+{"talent": "B", "theme": "prédictions sur l'avenir ou questions impossibles à trancher", "question": "Quel sera le principal moteur de recherche du monde en 2070 ?", "type": "inconnu"}
+{"talent": "B", "theme": "nature, animaux et plantes", "question": "Combien de temps un ours polaire peut-il survivre sans manger ?", "type": "fait"}
+{"talent": "B", "theme": "littérature, arts et musique", "question": "Quel poète français est associé au mouvement symboliste ?", "type": "fait"}
+{"talent": "B", "theme": "littérature, arts et musique", "question": "Quel est le nom de la première tragédie de Shakespeare ?", "type": "fait"}
+{"talent": "B", "theme": "faits établis d'histoire (dates, personnages, lieux)", "question": "Quelle est la capitale de la Belgique ?", "type": "fait"}
+{"talent": "B", "theme": "littérature, arts et musique", "question": "Combien de notes compose une quinte ?", "type": "fait"}
+{"talent": "B", "theme": "technologie et informatique", "question": "Quel est le nom du protocole de communication utilisé par le web ?", "type": "fait"}
+{"talent": "B", "theme": "chiffres approximatifs ou estimations (populations, distances, quantités)", "question": "Combien de litres de sang circulent dans le corps humain ?", "type": "estimation"}
+{"talent": "B", "theme": "questions ambiguës ou qui dépendent du contexte", "question": "L'amour est-il une émotion ou un choix ?", "type": "debat"}
+{"talent": "B", "theme": "prédictions sur l'avenir ou questions impossibles à trancher", "question": "Quelle sera la première ville à devenir totalement autosuffisante en énergie renouvelable d’ici 2040 ?", "type": "inconnu"}
+{"talent": "B", "theme": "définitions de notions scientifiques", "question": "Quel est le principal gaz à effet de serre émis par les activités humaines ?", "type": "fait"}
+{"talent": "B", "theme": "littérature, arts et musique", "question": "Quelle œuvre de Shakespeare a été adaptée en film le plus de fois ?", "type": "fait"}
+{"talent": "B", "theme": "questions dont la réponse fait débat chez les spécialistes", "question": "La liberté est-elle un droit universel ou une illusion de la démocratie ?", "type": "debat"}
+{"talent": "B", "theme": "faits établis d'histoire (dates, personnages, lieux)", "question": "Quel pays a été le premier à utiliser la monnaie en euros ?", "type": "fait"}
+{"talent": "B", "theme": "prédictions sur l'avenir ou questions impossibles à trancher", "question": "Quel sera le premier pays à remplacer ses écoles traditionnelles par des écoles totalement virtuelles ?", "type": "inconnu"}
+{"talent": "B", "theme": "faits établis d'histoire (dates, personnages, lieux)", "question": "Quel est le nom de la première bataille de la Seconde Guerre mondiale ?", "type": "fait"}
+{"talent": "B", "theme": "littérature, arts et musique", "question": "Quel est le nom du personnage principal de « La Reine Margot » de Dumas ?", "type": "fait"}
+{"talent": "B", "theme": "faits établis de géographie", "question": "Quel est le pays dont la langue officielle est le swahili ?", "type": "fait"}
+{"talent": "B", "theme": "définitions de notions scientifiques", "question": "Quel est le plus ancien livre de la Bible ?", "type": "fait"}
+{"talent": "B", "theme": "chiffres approximatifs ou estimations (populations, distances, quantités)", "question": "Combien de tonnes de déchets plastiques se retrouvent chaque année dans les océans ?", "type": "estimation"}
+{"talent": "B", "theme": "chiffres approximatifs ou estimations (populations, distances, quantités)", "question": "Quel est l'ordre de grandeur du nombre de personnes qui utilisent Internet chaque jour ?", "type": "estimation"}
+{"talent": "B", "theme": "questions dont la réponse fait débat chez les spécialistes", "question": "L'artiste est-il un créateur ou un interprète de la réalité ?", "type": "debat"}
+{"talent": "B", "theme": "questions ambiguës ou qui dépendent du contexte", "question": "Un pays est-il juste s’il respecte ses lois ou ses valeurs ?", "type": "debat"}
+{"talent": "B", "theme": "définitions de notions scientifiques", "question": "Quel est le gaz le plus abondant dans l’atmosphère terrestre ?", "type": "fait"}
+{"talent": "B", "theme": "faits établis d'histoire (dates, personnages, lieux)", "question": "Qui a été le premier roi de la dynastie des Capétiens ?", "type": "fait"}
+{"talent": "B", "theme": "littérature, arts et musique", "question": "Quelle est la durée d’un concert de symphonie classique moyen ?", "type": "fait"}
+{"talent": "B", "theme": "littérature, arts et musique", "question": "Quel est le nom de l’œuvre de Picasso qui est devenue un symbole de l’art moderne ?", "type": "fait"}
+{"talent": "B", "theme": "faits établis d'histoire (dates, personnages, lieux)", "question": "Quelle est la durée de la Première Guerre mondiale ?", "type": "fait"}
+{"talent": "B", "theme": "technologie et informatique", "question": "Quel est le pays qui a inventé le World Wide Web ?", "type": "fait"}
+{"talent": "B", "theme": "littérature, arts et musique", "question": "Quel est le nom du premier film de Jean-Luc Godard ?", "type": "fait"}
+{"talent": "B", "theme": "questions ambiguës ou qui dépendent du contexte", "question": "Le bonheur est-il universel ou culturel ?", "type": "debat"}
+{"talent": "B", "theme": "littérature, arts et musique", "question": "Quel est le nom de l’œuvre célèbre de Picasso peinte en 1907 ?", "type": "fait"}
+{"talent": "B", "theme": "technologie et informatique", "question": "Quel est le plus grand réseau social au monde ?", "type": "fait"}
+{"talent": "B", "theme": "technologie et informatique", "question": "Quel est le nom du protocole de communication entre ordinateurs ?", "type": "fait"}
+{"talent": "B", "theme": "littérature, arts et musique", "question": "Quel artiste a peint la « Nativité » dans son style de style baroque ?", "type": "fait"}
+{"talent": "B", "theme": "prédictions sur l'avenir ou questions impossibles à trancher", "question": "Quel sera le premier pays à rendre l’instruction en ligne obligatoire pour tous les niveaux d’enseignement d’ici 2035 ?", "type": "inconnu"}
+{"talent": "B", "theme": "chiffres approximatifs ou estimations (populations, distances, quantités)", "question": "Combien de personnes vivent approximativement dans les pays d'Amérique du Sud ?", "type": "estimation"}
+{"talent": "B", "theme": "nature, animaux et plantes", "question": "Combien de variétés de papillon existent dans le monde ?", "type": "fait"}
+{"talent": "B", "theme": "définitions de notions scientifiques", "question": "Quel est le principal composant de la lumière visible ?", "type": "fait"}
+{"talent": "B", "theme": "questions dont la réponse fait débat chez les spécialistes", "question": "Le travail est-il une obligation ou une aspiration ?", "type": "debat"}
+{"talent": "B", "theme": "chiffres approximatifs ou estimations (populations, distances, quantités)", "question": "Combien de baleines existent-elles dans les océans ?", "type": "estimation"}
+{"talent": "B", "theme": "définitions de notions scientifiques", "question": "Quelle est la vitesse de la lumière dans le vide ?", "type": "fait"}
+{"talent": "B", "theme": "chiffres approximatifs ou estimations (populations, distances, quantités)", "question": "Combien de litres de sang contient le corps humain ?", "type": "estimation"}
+{"talent": "B", "theme": "questions dont la réponse fait débat chez les spécialistes", "question": "L’humain est-il le seul être à avoir un langage complexe ?", "type": "debat"}
+{"talent": "B", "theme": "technologie et informatique", "question": "Quel est le nom du processeur le plus vendu au monde ?", "type": "fait"}
+{"talent": "B", "theme": "chiffres approximatifs ou estimations (populations, distances, quantités)", "question": "Quel est l'ordre de grandeur du nombre de poissons dans les océans ?", "type": "estimation"}
+{"talent": "B", "theme": "technologie et informatique", "question": "En quelle année a été lancé le premier smartphone commercial ?", "type": "fait"}
+{"talent": "B", "theme": "nature, animaux et plantes", "question": "Quel est le nom du plus grand mammifère marins du monde ?", "type": "fait"}
+{"talent": "B", "theme": "définitions de notions scientifiques", "question": "Quel est le métal le plus léger ?", "type": "fait"}
+{"talent": "B", "theme": "technologie et informatique", "question": "Quel est le système d'exploitation le plus utilisé sur les smartphones ?", "type": "fait"}
+{"talent": "B", "theme": "littérature, arts et musique", "question": "Quel pays a remporté le plus de fois le Concours Eurovision de la chanson ?", "type": "fait"}
+{"talent": "B", "theme": "prédictions sur l'avenir ou questions impossibles à trancher", "question": "Quelle sera la première émission de télévision à être entièrement générée par IA et non pas par humains ?", "type": "inconnu"}
+{"talent": "B", "theme": "questions dont la réponse fait débat chez les spécialistes", "question": "La science peut-elle jamais prétendre comprendre le sens de la vie ?", "type": "debat"}
+{"talent": "B", "theme": "technologie et informatique", "question": "Quelle est la part des ordinateurs portables dans les ventes de PC en 2023 ?", "type": "fait"}
+{"talent": "B", "theme": "nature, animaux et plantes", "question": "Quel animal est le plus nombreux sur Terre ?", "type": "fait"}
+{"talent": "B", "theme": "chiffres approximatifs ou estimations (populations, distances, quantités)", "question": "Combien de personnes traversent le monde en avion chaque année ?", "type": "estimation"}
+{"talent": "B", "theme": "questions dont la réponse fait débat chez les spécialistes", "question": "L'amour peut-il exister sans passion ?", "type": "debat"}
+{"talent": "B", "theme": "littérature, arts et musique", "question": "Combien de musiciens compose la « Symphonie fantastique » de Liszt ?", "type": "fait"}
+{"talent": "B", "theme": "définitions de notions scientifiques", "question": "Quel est le principal gaz dans l'atmosphère terrestre ?", "type": "fait"}
+{"talent": "B", "theme": "nature, animaux et plantes", "question": "Quel est le plus grand animal terrestre ?", "type": "fait"}
+{"talent": "B", "theme": "prédictions sur l'avenir ou questions impossibles à trancher", "question": "Quel sera le premier pays à émettre une monnaie d'argent numérique universelle ?", "type": "inconnu"}
+{"talent": "B", "theme": "prédictions sur l'avenir ou questions impossibles à trancher", "question": "Quel sera le premier film réalisé uniquement par une intelligence artificielle ?", "type": "inconnu"}
+{"talent": "B", "theme": "définitions de notions scientifiques", "question": "Quel est le principal composant des étoiles ?", "type": "fait"}
+{"talent": "B", "theme": "faits établis d'histoire (dates, personnages, lieux)", "question": "Quel est le nom de la première ville de l'Empire romain ?", "type": "fait"}
+{"talent": "B", "theme": "questions dont la réponse fait débat chez les spécialistes", "question": "L'artiste crée-t-il seul ou s'inspire-t-il nécessairement d'autres ?", "type": "debat"}
+{"talent": "B", "theme": "questions dont la réponse fait débat chez les spécialistes", "question": "La mémoire est-elle fiable ou un mélange de récits et de biais ?", "type": "debat"}
+{"talent": "B", "theme": "définitions de notions scientifiques", "question": "Quel est le plus grand volcan du monde ?", "type": "fait"}
+{"talent": "B", "theme": "prédictions sur l'avenir ou questions impossibles à trancher", "question": "Quel sera le premier pays à adopter un système d'immigration basé sur une évaluation cognitive des candidats ?", "type": "inconnu"}
+{"talent": "B", "theme": "prédictions sur l'avenir ou questions impossibles à trancher", "question": "Quelle sera la première maladie contagieuse à être éradiquée grâce à la génomique ?", "type": "inconnu"}
+{"talent": "B", "theme": "nature, animaux et plantes", "question": "Quel animal utilise des sons pour communiquer sous l'eau ?", "type": "fait"}
+{"talent": "B", "theme": "chiffres approximatifs ou estimations (populations, distances, quantités)", "question": "Quel est l'ordre de grandeur du nombre de personnes qui ne parlent pas une langue maternelle ?", "type": "estimation"}
+{"talent": "B", "theme": "faits établis d'histoire (dates, personnages, lieux)", "question": "Quel est le nom de la tour de Paris qui porte le nom d’un roi ?", "type": "fait"}
+{"talent": "B", "theme": "définitions de notions scientifiques", "question": "Quel est le plus grand groupe de langues parlées ?", "type": "fait"}
+{"talent": "B", "theme": "nature, animaux et plantes", "question": "Quel arbre est le symbole de la France ?", "type": "fait"}
+{"talent": "B", "theme": "technologie et informatique", "question": "Quel est le principal langage de programmation utilisé pour le développement web ?", "type": "fait"}
+{"talent": "B", "theme": "chiffres approximatifs ou estimations (populations, distances, quantités)", "question": "Quel est l'ordre de grandeur du nombre d'espèces animales estimées sur Terre ?", "type": "estimation"}
+{"talent": "B", "theme": "nature, animaux et plantes", "question": "Quelle est la plante la plus ancienne encore vivante aujourd’hui ?", "type": "fait"}
+{"talent": "B", "theme": "littérature, arts et musique", "question": "Quel est le nom du groupe de rock fondé en 1962 par Eric Clapton ?", "type": "fait"}
+{"talent": "B", "theme": "questions ambiguës ou qui dépendent du contexte", "question": "Quel est le plus grand pays du monde ?", "type": "debat"}
+{"talent": "B", "theme": "questions dont la réponse fait débat chez les spécialistes", "question": "Le temps est-il un flux continu ou un ensemble de moments discontinus ?", "type": "debat"}
+{"talent": "B", "theme": "questions dont la réponse fait débat chez les spécialistes", "question": "La lecture est-elle un loisir ou une forme d'éducation ?", "type": "debat"}
+{"talent": "B", "theme": "faits établis de géographie", "question": "Quel est le pays d'où vient le fromage Brie ?", "type": "fait"}
+{"talent": "B", "theme": "chiffres approximatifs ou estimations (populations, distances, quantités)", "question": "Quel est l'ordre de grandeur du nombre d'habitants dans les pays d'Asie du Sud-Est ?", "type": "estimation"}
+{"talent": "B", "theme": "chiffres approximatifs ou estimations (populations, distances, quantités)", "question": "Combien de kilomètres carrés de désert existent dans le monde ?", "type": "estimation"}
+{"talent": "B", "theme": "prédictions sur l'avenir ou questions impossibles à trancher", "question": "Quel sera le premier président des États-Unis élu sans avoir jamais été candidat à une élection ?", "type": "inconnu"}
+{"talent": "B", "theme": "faits établis d'histoire (dates, personnages, lieux)", "question": "En quelle année est mort Charlemagne ?", "type": "fait"}
+{"talent": "B", "theme": "faits établis de géographie", "question": "Quel est le pays le plus étroit du monde ?", "type": "fait"}
+{"talent": "B", "theme": "questions dont la réponse fait débat chez les spécialistes", "question": "La liberté d'expression est-elle limitée par la liberté d'autrui ?", "type": "debat"}
+{"talent": "B", "theme": "faits établis d'histoire (dates, personnages, lieux)", "question": "Quel est le nom de la première ville conquise par les Romains lors de leur expansion ?", "type": "fait"}
+{"talent": "B", "theme": "littérature, arts et musique", "question": "Quel compositeur a écrit la « Symphonie des paysages » ?", "type": "fait"}
+{"talent": "B", "theme": "questions dont la réponse fait débat chez les spécialistes", "question": "La liberté d'expression est-elle un droit absolu ou une responsabilité ?", "type": "debat"}
+{"talent": "B", "theme": "prédictions sur l'avenir ou questions impossibles à trancher", "question": "Quelle sera la première langue à devenir la langue officielle des Nations Unies en 2045 ?", "type": "inconnu"}
+{"talent": "B", "theme": "technologie et informatique", "question": "Quel est le langage de programmation le plus utilisé au monde ?", "type": "fait"}
+{"talent": "B", "theme": "questions ambiguës ou qui dépendent du contexte", "question": "Le café est-il réellement un stimulant ?", "type": "debat"}
+{"talent": "B", "theme": "chiffres approximatifs ou estimations (populations, distances, quantités)", "question": "Combien de langues sont utilisées sur internet chaque jour ?", "type": "estimation"}
+{"talent": "B", "theme": "faits établis de géographie", "question": "Quel fleuve traverse Paris ?", "type": "fait"}
+{"talent": "B", "theme": "questions dont la réponse fait débat chez les spécialistes", "question": "Quelle est la couleur du ciel au coucher du soleil ?", "type": "debat"}
+{"talent": "B", "theme": "technologie et informatique", "question": "Quel est le format d'image le plus utilisé en ligne ?", "type": "fait"}
+{"talent": "B", "theme": "faits établis d'histoire (dates, personnages, lieux)", "question": "En quelle année a été signé le traité de Westphalie ?", "type": "fait"}
+{"talent": "B", "theme": "littérature, arts et musique", "question": "Quel est le nom de l’œuvre de Shakespeare qui est aussi le titre d’un film de Baz Luhrmann ?", "type": "fait"}
+{"talent": "B", "theme": "technologie et informatique", "question": "Quel est le nom du premier logiciel de compression d'images ?", "type": "fait"}
+{"talent": "B", "theme": "nature, animaux et plantes", "question": "Combien de plantes sont estimées vivre sur Terre ?", "type": "fait"}
+{"talent": "B", "theme": "technologie et informatique", "question": "Quel est le pays qui produit le plus de smartphones ?", "type": "fait"}
+{"talent": "B", "theme": "prédictions sur l'avenir ou questions impossibles à trancher", "question": "Quel sera le premier pays à légaliser l’usage de l’IA pour la prise de décision politique ?", "type": "inconnu"}
+{"talent": "B", "theme": "définitions de notions scientifiques", "question": "Quel est le plus grand lac de la planète ?", "type": "fait"}
+{"talent": "B", "theme": "faits établis d'histoire (dates, personnages, lieux)", "question": "Quel est le nom de la première université de France ?", "type": "fait"}
+{"talent": "B", "theme": "chiffres approximatifs ou estimations (populations, distances, quantités)", "question": "Combien de langues parlées y a-t-il dans les régions polaires ?", "type": "estimation"}
+{"talent": "B", "theme": "prédictions sur l'avenir ou questions impossibles à trancher", "question": "Quel sera le premier pays à interdire la publicité liée aux produits de beauté avant l’âge de 15 ans ?", "type": "inconnu"}
+{"talent": "B", "theme": "questions ambiguës ou qui dépendent du contexte", "question": "Une légende est-elle un fait ou une histoire ?", "type": "debat"}
+{"talent": "B", "theme": "prédictions sur l'avenir ou questions impossibles à trancher", "question": "Quel sera le premier animal sauvage à être éteint à cause du réchauffement climatique d’ici 2060 ?", "type": "inconnu"}
+{"talent": "B", "theme": "questions dont la réponse fait débat chez les spécialistes", "question": "La technologie rend-elle l'humain plus ou moins connecté ?", "type": "debat"}
+{"talent": "B", "theme": "chiffres approximatifs ou estimations (populations, distances, quantités)", "question": "Quel est l'ordre de grandeur du nombre de véhicules routiers sur Terre ?", "type": "estimation"}
+{"talent": "B", "theme": "technologie et informatique", "question": "En quelle année a été lancé le projet Internet par DARPA ?", "type": "fait"}
+{"talent": "B", "theme": "technologie et informatique", "question": "Quel est le nom du premier virus informatique historiquement enregistré ?", "type": "fait"}
+{"talent": "B", "theme": "technologie et informatique", "question": "Quel est le pays qui possède le plus de supercalculateurs au monde ?", "type": "fait"}
+{"talent": "B", "theme": "chiffres approximatifs ou estimations (populations, distances, quantités)", "question": "Combien de kilomètres de route existent dans le monde ?", "type": "estimation"}
+{"talent": "B", "theme": "prédictions sur l'avenir ou questions impossibles à trancher", "question": "Quelle sera la première entreprise à dépasser 1 million d’utilisateurs actifs d’un produit purement virtuel ?", "type": "inconnu"}
+{"talent": "B", "theme": "nature, animaux et plantes", "question": "Quelle fleur a le plus long pédoncule par rapport à ses pétales ?", "type": "fait"}
+{"talent": "B", "theme": "questions ambiguës ou qui dépendent du contexte", "question": "L'humour est-il un trait de caractère ou un outil de communication ?", "type": "debat"}
+{"talent": "B", "theme": "technologie et informatique", "question": "Quel est le nom du premier ordinateur de la NASA ?", "type": "fait"}
+{"talent": "B", "theme": "chiffres approximatifs ou estimations (populations, distances, quantités)", "question": "Combien de litres de café sont bu en moyenne par personne par an dans le monde ?", "type": "estimation"}
+{"talent": "B", "theme": "prédictions sur l'avenir ou questions impossibles à trancher", "question": "Quel sera le premier pays à déclarer la fin des classes sociales comme système social ?", "type": "inconnu"}
+{"talent": "B", "theme": "définitions de notions scientifiques", "question": "Quel est le plus grand océan du monde ?", "type": "fait"}
+{"talent": "B", "theme": "prédictions sur l'avenir ou questions impossibles à trancher", "question": "Quelle sera la principale source d'énergie pour les villes en 2150 ?", "type": "inconnu"}
+{"talent": "B", "theme": "faits établis d'histoire (dates, personnages, lieux)", "question": "Quel roi de France a été le dernier à porter la couronne ?", "type": "fait"}
+{"talent": "B", "theme": "faits établis de géographie", "question": "Quel est le pays le plus peuplé de l'Europe ?", "type": "fait"}
+{"talent": "B", "theme": "technologie et informatique", "question": "Quelle est la durée moyenne d'utilisation d’un smartphone par un utilisateur ?", "type": "fait"}
+{"talent": "B", "theme": "prédictions sur l'avenir ou questions impossibles à trancher", "question": "Quel sera le premier médicament capable de guérir le cancer à 100 % ?", "type": "inconnu"}
+{"talent": "B", "theme": "définitions de notions scientifiques", "question": "Quel est le plus haut sommet du globe ?", "type": "fait"}
+{"talent": "B", "theme": "prédictions sur l'avenir ou questions impossibles à trancher", "question": "Quel sera le premier pays à interdire l'exploration spatiale privée ?", "type": "inconnu"}
+{"talent": "B", "theme": "questions dont la réponse fait débat chez les spécialistes", "question": "Le silence est-il plus révélateur qu'un discours ?", "type": "debat"}
+{"talent": "B", "theme": "nature, animaux et plantes", "question": "Combien de fois le Soleil est-il plus massif que la Terre ?", "type": "fait"}
+{"talent": "B", "theme": "chiffres approximatifs ou estimations (populations, distances, quantités)", "question": "Combien de livres sont imprimés chaque année dans le monde ?", "type": "estimation"}
+{"talent": "B", "theme": "littérature, arts et musique", "question": "Quel écrivain a écrit « Les Misérables » ?", "type": "fait"}
+{"talent": "B", "theme": "définitions de notions scientifiques", "question": "Quel est le pays le plus riche en pétrole ?", "type": "fait"}
+{"talent": "B", "theme": "technologie et informatique", "question": "Quel est le format de stockage le plus utilisé pour les fichiers audio en ligne ?", "type": "fait"}
+{"talent": "B", "theme": "questions dont la réponse fait débat chez les spécialistes", "question": "Le bonheur est-il un but à atteindre ou un état passager ?", "type": "debat"}
+{"talent": "B", "theme": "faits établis de géographie", "question": "Quel est le plus grand désert du monde ?", "type": "fait"}
+{"talent": "B", "theme": "technologie et informatique", "question": "Quel est le nom du premier smartphone commercialisé ?", "type": "fait"}
+{"talent": "B", "theme": "faits établis d'histoire (dates, personnages, lieux)", "question": "En quelle année a eu lieu la signature de la Déclaration des droits de l’homme et du citoyen ?", "type": "fait"}
+{"talent": "B", "theme": "faits établis d'histoire (dates, personnages, lieux)", "question": "Quel est le premier ministre britannique du XXe siècle ?", "type": "fait"}
+{"talent": "B", "theme": "technologie et informatique", "question": "Quelle est la taille moyenne d’un microprocesseur moderne en nanomètres ?", "type": "fait"}
+{"talent": "B", "theme": "chiffres approximatifs ou estimations (populations, distances, quantités)", "question": "Quelle est la population approximative de Paris ?", "type": "estimation"}
+{"talent": "B", "theme": "nature, animaux et plantes", "question": "Quel animal se nourrit principalement de sang ?", "type": "fait"}
+{"talent": "B", "theme": "faits établis de géographie", "question": "Quel est le pays qui possède le plus de rivières ?", "type": "fait"}
+{"talent": "B", "theme": "questions ambiguës ou qui dépendent du contexte", "question": "Un bon livre est-il celui qui est lu ou celui qui est lu plusieurs fois ?", "type": "debat"}
+{"talent": "B", "theme": "technologie et informatique", "question": "Quelle est la durée moyenne d’un message WhatsApp ?", "type": "fait"}
+{"talent": "B", "theme": "nature, animaux et plantes", "question": "Quel est le nom de la fleur utilisée dans la fabrication du jasmin ?", "type": "fait"}
+{"talent": "B", "theme": "questions dont la réponse fait débat chez les spécialistes", "question": "Le chat est-il un animal de compagnie ou un animal sauvage ?", "type": "debat"}
+{"talent": "B", "theme": "faits établis d'histoire (dates, personnages, lieux)", "question": "En quelle année a eu lieu la construction de la tour Eiffel ?", "type": "fait"}
+{"talent": "B", "theme": "prédictions sur l'avenir ou questions impossibles à trancher", "question": "Quelle sera la première religion à dépasser 2 milliards de fidèles d’ici 2050 ?", "type": "inconnu"}
+{"talent": "B", "theme": "questions dont la réponse fait débat chez les spécialistes", "question": "Le café est-il bénéfique pour le cerveau ?", "type": "debat"}
+{"talent": "B", "theme": "définitions de notions scientifiques", "question": "Quel est le premier ministre du Canada ?", "type": "fait"}
+{"talent": "B", "theme": "chiffres approximatifs ou estimations (populations, distances, quantités)", "question": "Quel est l’ordre de grandeur du nombre de livres publiés chaque année dans le monde ?", "type": "estimation"}
+{"talent": "B", "theme": "littérature, arts et musique", "question": "Combien de musiciens compose un quartet ?", "type": "fait"}
+{"talent": "B", "theme": "technologie et informatique", "question": "Quel est le nom du protocole utilisé pour envoyer des e-mails ?", "type": "fait"}
+{"talent": "B", "theme": "prédictions sur l'avenir ou questions impossibles à trancher", "question": "Qui gagnera la Coupe du monde 2034 ?", "type": "inconnu"}
+{"talent": "B", "theme": "faits établis d'histoire (dates, personnages, lieux)", "question": "Quelle est la ville la plus ancienne d'Europe ?", "type": "fait"}
+{"talent": "B", "theme": "faits établis d'histoire (dates, personnages, lieux)", "question": "Quel personnage historique a été le premier à traverser le désert de Sahara en 1842 ?", "type": "fait"}
+{"talent": "B", "theme": "prédictions sur l'avenir ou questions impossibles à trancher", "question": "Quel sera le premier pays à adopter une monnaie virtuelle comme seule devise officielle ?", "type": "inconnu"}
+{"talent": "B", "theme": "faits établis d'histoire (dates, personnages, lieux)", "question": "Quel est le nom de la bataille de la guerre de 1812 entre les États-Unis et le Royaume-Uni ?", "type": "fait"}
+{"talent": "B", "theme": "littérature, arts et musique", "question": "Combien de temps dure une reprise en direct de *La Vie est belle* de Francis Ford Coppola ?", "type": "fait"}
+{"talent": "B", "theme": "littérature, arts et musique", "question": "Quel est le nom du personnage principal de « L'Étranger » de Camus ?", "type": "fait"}
+{"talent": "B", "theme": "faits établis d'histoire (dates, personnages, lieux)", "question": "Quelle est la date de la Révolution française ?", "type": "fait"}
+{"talent": "B", "theme": "prédictions sur l'avenir ou questions impossibles à trancher", "question": "Quel sera le premier pays à avoir un gouvernement entièrement automatisé en 2100 ?", "type": "inconnu"}
+{"talent": "B", "theme": "questions dont la réponse fait débat chez les spécialistes", "question": "Une idée est-elle née d'une réflexion ou d'une inspiration ?", "type": "debat"}
+{"talent": "B", "theme": "questions dont la réponse fait débat chez les spécialistes", "question": "Le temps est-il une dimension réelle ou une perception ?", "type": "debat"}
+{"talent": "B", "theme": "prédictions sur l'avenir ou questions impossibles à trancher", "question": "Quel sera le premier pays à réglementer l'usage de la mémoire augmentée par technologie ?", "type": "inconnu"}
+{"talent": "B", "theme": "prédictions sur l'avenir ou questions impossibles à trancher", "question": "Quel sera le premier pays à interdire l'usage de la technologie de réalité virtuelle pour les moins de 18 ans ?", "type": "inconnu"}
+{"talent": "B", "theme": "questions ambiguës ou qui dépendent du contexte", "question": "Un bon chef est-il celui qui commande ou celui qui inspire ?", "type": "debat"}
+{"talent": "B", "theme": "questions dont la réponse fait débat chez les spécialistes", "question": "La liberté individuelle est-elle compatible avec l'ordre social ?", "type": "debat"}
+{"talent": "B", "theme": "technologie et informatique", "question": "Quel est le nom du protocole utilisé pour le courriel ?", "type": "fait"}
+{"talent": "B", "theme": "faits établis de géographie", "question": "Quel est le plus long fleuve de France ?", "type": "fait"}
+{"talent": "B", "theme": "technologie et informatique", "question": "Quel est le principal problème de la blockchain ?", "type": "fait"}
+{"talent": "B", "theme": "chiffres approximatifs ou estimations (populations, distances, quantités)", "question": "Quel est l'ordre de grandeur du nombre de personnes déplacées à cause des conflits en 2023 ?", "type": "estimation"}
+{"talent": "B", "theme": "questions ambiguës ou qui dépendent du contexte", "question": "Un bon pays est-il celui qui est riche ou celui qui est juste ?", "type": "debat"}
+{"talent": "B", "theme": "technologie et informatique", "question": "Quel est le nom du réseau de réseaux internet ?", "type": "fait"}
+{"talent": "B", "theme": "technologie et informatique", "question": "Quel est le premier ordinateur personnel commercialisé ?", "type": "fait"}
+{"talent": "B", "theme": "chiffres approximatifs ou estimations (populations, distances, quantités)", "question": "Quel est l'ordre de grandeur du nombre de personnes qui ont jamais été des champions olympiques ?", "type": "estimation"}
+{"talent": "B", "theme": "faits établis d'histoire (dates, personnages, lieux)", "question": "Quel est le nom du premier livre imprimé en Europe ?", "type": "fait"}

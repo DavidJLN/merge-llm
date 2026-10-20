@@ -1,0 +1,19 @@
+# SLERP à mi-chemin entre deux fine-tunes LÉGERS de Qwen2.5-1.5B-Instruct
+# (code et maths). Les deux étant très proches l'un de l'autre, t=0.5 ne devrait
+# plus tomber "dans le vide" comme avec Instruct + Coder.
+#
+# Lancement (environnement activé) :
+#   mergekit-yaml config-slerp-code-maths.yaml ~/models/qwen2.5-1.5b-slerp-code-maths --cuda
+
+models:
+  - model: Malikeh1375/Qwen2.5-1.5B-Programming-And-Code-Development-Distilled-8Clusters-25K
+  - model: jahyungu/Qwen2.5-1.5B-Instruct_gsm8k
+
+merge_method: slerp
+
+base_model: Malikeh1375/Qwen2.5-1.5B-Programming-And-Code-Development-Distilled-8Clusters-25K
+
+parameters:
+  t: 0.5  # 0 = 100 % code, 1 = 100 % maths
+
+dtype: bfloat16

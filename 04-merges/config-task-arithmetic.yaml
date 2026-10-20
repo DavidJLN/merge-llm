@@ -1,0 +1,29 @@
+# Recette du merge : task_arithmetic, les deux talents ajoutés en entier.
+#
+# Chaque LoRA a appris un petit changement par rapport à l'Instruct (son
+# "task vector"). task_arithmetic les additionne simplement à l'Instruct :
+#   modèle = Instruct + 1,0 × (ce qu'a appris A) + 1,0 × (ce qu'a appris B)
+# Sans normalisation : chaque talent est ajouté à pleine force, au lieu d'être
+# divisé par deux comme dans une moyenne.
+#
+# Lancement (environnement activé) :
+#   mergekit-yaml config-task-arithmetic.yaml ~/models/qwen2.5-1.5b-merge-task-arithmetic --cuda
+
+models:
+  - model: /home/david/models/qwen2.5-1.5b-lora-A
+    parameters:
+      weight: 1.0
+  - model: /home/david/models/qwen2.5-1.5b-lora-B
+    parameters:
+      weight: 1.0
+
+merge_method: task_arithmetic
+
+# Le modèle commun d'où partent les deux LoRA (et non Qwen2.5-1.5B,
+# comme pour le Coder : nos LoRA ont été entraînés sur l'Instruct).
+base_model: Qwen/Qwen2.5-1.5B-Instruct
+
+parameters:
+  normalize: false  # garde les poids tels quels (1,0 + 1,0)
+
+dtype: bfloat16

@@ -1,0 +1,18 @@
+# Variante de config-slerp.yaml : même SLERP, mais dosé à 80 % Instruct / 20 % Coder.
+#
+# Lancement (environnement activé) :
+#   mergekit-yaml config-slerp-t02.yaml ~/models/qwen2.5-1.5b-slerp-t02 --cuda
+
+models:
+  - model: Qwen/Qwen2.5-1.5B-Instruct
+  - model: Qwen/Qwen2.5-Coder-1.5B-Instruct
+
+merge_method: slerp
+
+base_model: Qwen/Qwen2.5-1.5B-Instruct
+
+parameters:
+  # 0 = 100 % Instruct, 1 = 100 % Coder : on reste proche de l'Instruct.
+  t: 0.2
+
+dtype: bfloat16

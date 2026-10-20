@@ -1,0 +1,24 @@
+# Recette du merge : SLERP entre les deux LoRA, t = 0.5.
+#
+# SLERP n'additionne pas les talents : il se place SUR LE CHEMIN entre les
+# deux modèles, ici à environ 50 % de A (Prof patient) et 50 % de B (JSON
+# strict). On s'attend donc à un compromis plutôt qu'aux deux talents à fond.
+# Les cinq valeurs de t (0,2 / 0,35 / 0,5 / 0,65 / 0,8) forment un balayage.
+#
+# Lancement (environnement activé) :
+#   mergekit-yaml config-slerp-t05.yaml ~/models/qwen2.5-1.5b-merge-slerp-t05 --cuda
+
+models:
+  - model: /home/david/models/qwen2.5-1.5b-lora-A
+  - model: /home/david/models/qwen2.5-1.5b-lora-B
+
+merge_method: slerp
+
+# Point de départ du chemin (t = 0) ; fournit aussi le tokenizer.
+base_model: /home/david/models/qwen2.5-1.5b-lora-A
+
+parameters:
+  # Dosage : 0 = 100 % LoRA A, 1 = 100 % LoRA B.
+  t: 0.5
+
+dtype: bfloat16

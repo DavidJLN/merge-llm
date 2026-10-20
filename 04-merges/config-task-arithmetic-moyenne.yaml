@@ -1,0 +1,25 @@
+# Recette du merge : task_arithmetic en moyenne (0,5 + 0,5).
+#
+# Même calcul que config-task-arithmetic.yaml, mais chaque talent n'est ajouté
+# qu'à moitié :
+#   modèle = Instruct + 0,5 × (ce qu'a appris A) + 0,5 × (ce qu'a appris B)
+# Sert de point de comparaison : on s'attend à deux talents affaiblis.
+#
+# Lancement (environnement activé) :
+#   mergekit-yaml config-task-arithmetic-moyenne.yaml ~/models/qwen2.5-1.5b-merge-task-arithmetic-moyenne --cuda
+
+models:
+  - model: /home/david/models/qwen2.5-1.5b-lora-A
+    parameters:
+      weight: 0.5
+  - model: /home/david/models/qwen2.5-1.5b-lora-B
+    parameters:
+      weight: 0.5
+
+merge_method: task_arithmetic
+base_model: Qwen/Qwen2.5-1.5B-Instruct
+
+parameters:
+  normalize: false
+
+dtype: bfloat16

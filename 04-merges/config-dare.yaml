@@ -1,0 +1,31 @@
+# Recette du merge : DARE (variante dare_ties) entre les deux LoRA.
+#
+# DARE trie autrement que TIES : il supprime AU HASARD la moitié des
+# changements de chaque LoRA, puis multiplie ceux qui restent par 2 pour
+# compenser. L'idée : un fine-tune contient beaucoup de changements
+# redondants, on peut en jeter une partie sans perdre le talent.
+# Ensuite, comme TIES, les conflits de signe sont arbitrés au vote.
+#
+# Le tirage au hasard est fixé par --random-seed 0 (voir fusionner.sh),
+# pour que le merge soit reproductible.
+#
+# Lancement (environnement activé) :
+#   mergekit-yaml config-dare.yaml ~/models/qwen2.5-1.5b-merge-dare --cuda --random-seed 0
+
+models:
+  - model: /home/david/models/qwen2.5-1.5b-lora-A
+    parameters:
+      density: 0.5  # garde la moitié des changements, tirée au hasard
+      weight: 1.0
+  - model: /home/david/models/qwen2.5-1.5b-lora-B
+    parameters:
+      density: 0.5
+      weight: 1.0
+
+merge_method: dare_ties
+base_model: Qwen/Qwen2.5-1.5B-Instruct
+
+parameters:
+  normalize: false
+
+dtype: bfloat16

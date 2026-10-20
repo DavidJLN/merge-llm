@@ -1,0 +1,14 @@
+# Python
+__pycache__/
+
+# Points de contrôle de trl (save_strategy="no" : toujours vides)
+03-lora/points-de-controle-*/
+
+# Sauvegardes de la première génération B, remplacée le 2026-10-20
+02-donnees/ancien_B/
+
+# Restes du tout premier test de génération
+02-donnees/test_generation.*
+
+# Notes personnelles
+Merge de LLM.txt

@@ -1,0 +1,4 @@
+[flake8]
+# 79 caractères, c'est trop court pour des commentaires en français et des
+# chemins de modèles : 120 couvre toutes les lignes du projet.
+max-line-length = 120

@@ -1,0 +1,29 @@
+# TIES entre deux fine-tunes LÉGERS de Qwen2.5-1.5B-Instruct :
+#   - un spécialisé en code (0,3 % d'éloignement mesuré par distance.py)
+#   - un spécialisé en problèmes de maths GSM8K (0,2 %)
+#
+# Vérification puis lancement (environnement activé) :
+#   python distance.py Qwen/Qwen2.5-1.5B-Instruct \
+#       Malikeh1375/Qwen2.5-1.5B-Programming-And-Code-Development-Distilled-8Clusters-25K \
+#       jahyungu/Qwen2.5-1.5B-Instruct_gsm8k \
+#     && mergekit-yaml config-ties-code-maths.yaml ~/models/qwen2.5-1.5b-ties-code-maths --cuda
+
+models:
+  - model: Malikeh1375/Qwen2.5-1.5B-Programming-And-Code-Development-Distilled-8Clusters-25K
+    parameters:
+      density: 0.5
+      weight: 0.5
+  - model: jahyungu/Qwen2.5-1.5B-Instruct_gsm8k
+    parameters:
+      density: 0.5
+      weight: 0.5
+
+merge_method: ties
+
+# Cette fois, la base commune est l'Instruct : c'est de lui que partent les deux fine-tunes.
+base_model: Qwen/Qwen2.5-1.5B-Instruct
+
+parameters:
+  normalize: true
+
+dtype: bfloat16

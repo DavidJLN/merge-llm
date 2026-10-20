@@ -1,0 +1,50 @@
+{"talent": "A", "theme": "mathématiques du collège (fractions, pourcentages, équations, géométrie)", "question": "Comment on fait pour simplifier une fraction sans la rendre irréductible ?"}
+{"talent": "A", "theme": "chimie simple (atomes, réactions, mélanges, cuisine)", "question": "Pourquoi le sucre ne se dissout pas dans l’huile, et qu’est-ce que cela révèle sur les molécules ?"}
+{"talent": "A", "theme": "fonctionnement d'Internet et des appareils numériques", "question": "Pourquoi les données transmises par Internet sont-elles divisées en paquets ?"}
+{"talent": "A", "theme": "histoire : comprendre les causes et les mécanismes d'un événement", "question": "Pourquoi les décisions politiques d’un gouvernement peuvent-elles avoir des conséquences à long terme sur une nation ?"}
+{"talent": "A", "theme": "astronomie", "question": "Pourquoi les planètes gazeuses comme Jupiter ont-elles des bandes et des taches visibles ?"}
+{"talent": "A", "theme": "mathématiques du collège (fractions, pourcentages, équations, géométrie)", "question": "Comment on peut démontrer que deux angles sont égaux sans mesurer ?"}
+{"talent": "A", "theme": "informatique et programmation pour débutants", "question": "Comment un ordinateur transforme-t-il les commandes en actions concrètes ?"}
+{"talent": "A", "theme": "économie et argent du quotidien (budget, intérêts, impôts, inflation)", "question": "Pourquoi certaines dépenses ne sont-elles pas imposables, alors que d’autres le sont ?"}
+{"talent": "A", "theme": "géographie et phénomènes naturels (climat, volcans, marées, saisons)", "question": "Comment la Terre tourne-t-elle et comment cela influence-t-il les marées ?"}
+{"talent": "A", "theme": "démarches de la vie courante (bricolage, cuisine, administration)", "question": "Comment on fait pour détacher les taches de vinaigre sur un tissu blanc ?"}
+{"talent": "A", "theme": "physique de tous les jours (électricité, chaleur, lumière, forces)", "question": "Comment peut-on expliquer que l’électricité traverse les fils mais pas les murs ?"}
+{"talent": "A", "theme": "biologie et corps humain", "question": "Comment le cerveau gère-t-il la douleur sans que nous en soyons pleinement conscients ?"}
+{"talent": "A", "theme": "grammaire et orthographe françaises", "question": "Qu'est-ce qu'une confusion de genre et comment se produit-elle en français ?"}
+{"talent": "A", "theme": "astronomie", "question": "Comment les étoiles peuvent-elles devenir des étoiles à neutrons après leur mort ?"}
+{"talent": "A", "theme": "démarches de la vie courante (bricolage, cuisine, administration)", "question": "Pourquoi est-ce que les étagères en bois se déforment quand on les place au-dessus d’un four ?"}
+{"talent": "A", "theme": "physique de tous les jours (électricité, chaleur, lumière, forces)", "question": "Pourquoi la lumière du flash de téléphone parvient-elle à éblouir les yeux même à distance ?"}
+{"talent": "A", "theme": "fonctionnement d'Internet et des appareils numériques", "question": "Pourquoi les appareils peuvent-ils communiquer même s’ils ne sont pas connectés directement au même réseau ?"}
+{"talent": "A", "theme": "histoire : comprendre les causes et les mécanismes d'un événement", "question": "Qu’est-ce qu’un ‘tournant historique’ et comment on le reconnaît dans une chronologie ?"}
+{"talent": "A", "theme": "méthodes de travail et d'apprentissage", "question": "Comment on fait pour rester motivé à long terme sans se décourager face aux obstacles ?"}
+{"talent": "A", "theme": "mathématiques du collège (fractions, pourcentages, équations, géométrie)", "question": "Pourquoi les pourcentages sont-ils parfois plus utiles que les fractions pour exprimer une variation ?"}
+{"talent": "A", "theme": "chimie simple (atomes, réactions, mélanges, cuisine)", "question": "Qu'est-ce qu'une liaison chimique, et pourquoi est-elle importante dans la formation des molécules ?"}
+{"talent": "A", "theme": "fonctionnement d'Internet et des appareils numériques", "question": "Comment les appareils numériques transmettent-ils des données sans perdre le contenu pendant la transmission ?"}
+{"talent": "A", "theme": "histoire : comprendre les causes et les mécanismes d'un événement", "question": "Pourquoi les révolutions souvent commencent par des gestes symboliques et finissent par des changements institutionnels ?"}
+{"talent": "A", "theme": "méthodes de travail et d'apprentissage", "question": "Quel est l'impact du stress sur l'apprentissage et comment le gérer efficacement ?"}
+{"talent": "A", "theme": "mathématiques du collège (fractions, pourcentages, équations, géométrie)", "question": "Pourquoi la méthode de la « règle de trois » est-elle utile pour résoudre des problèmes de proportionnalité ?"}
+{"talent": "B", "theme": "faits établis de géographie", "question": "Quel est le pays dont la capitale est Mbabane ?", "type": "fait"}
+{"talent": "B", "theme": "définitions de notions scientifiques", "question": "Quel est le gaz utilisé dans les ballons d’hélium ?", "type": "fait"}
+{"talent": "B", "theme": "nature, animaux et plantes", "question": "Quel arbre est le plus longévité connu ?", "type": "fait"}
+{"talent": "B", "theme": "prédictions sur l'avenir ou questions impossibles à trancher", "question": "Quelle sera la première ville à avoir un système de transport flottant complet ?", "type": "inconnu"}
+{"talent": "B", "theme": "littérature, arts et musique", "question": "Quel est le nom du plus grand festival de musique classique au monde ?", "type": "fait"}
+{"talent": "B", "theme": "chiffres approximatifs ou estimations (populations, distances, quantités)", "question": "Combien de tonnes de plastique finissent-elles chaque année dans les océans ?", "type": "estimation"}
+{"talent": "B", "theme": "questions ambiguës ou qui dépendent du contexte", "question": "Le bonheur est-il une condition ou un choix ?", "type": "debat"}
+{"talent": "B", "theme": "littérature, arts et musique", "question": "Quel peintre a créé la « Guernica » ?", "type": "fait"}
+{"talent": "B", "theme": "chiffres approximatifs ou estimations (populations, distances, quantités)", "question": "Combien de milliards de litres d'eau douce sont utilisés chaque année ?", "type": "estimation"}
+{"talent": "B", "theme": "questions ambiguës ou qui dépendent du contexte", "question": "Un artiste est-il un génie ou un travailleur acharné ?", "type": "debat"}
+{"talent": "B", "theme": "technologie et informatique", "question": "Quel est le premier microprocesseur commercialisé ?", "type": "fait"}
+{"talent": "B", "theme": "questions dont la réponse fait débat chez les spécialistes", "question": "Un pays est-il un groupe de personnes ou un territoire géographique ?", "type": "debat"}
+{"talent": "B", "theme": "faits établis de géographie", "question": "Quelle est la plus grande ville d'Algérie ?", "type": "fait"}
+{"talent": "B", "theme": "littérature, arts et musique", "question": "Quel est le nom de l’œuvre de Dali qui représente une montagne érodée ?", "type": "fait"}
+{"talent": "B", "theme": "questions dont la réponse fait débat chez les spécialistes", "question": "Les émotions sont-elles des réactions biologiques ou des constructions sociales ?", "type": "debat"}
+{"talent": "B", "theme": "questions ambiguës ou qui dépendent du contexte", "question": "Un film est-il réussi s'il est bien fait ou s'il touche les spectateurs ?", "type": "debat"}
+{"talent": "B", "theme": "nature, animaux et plantes", "question": "Quel est le nom de la fleur dont le parfum est le plus intense ?", "type": "fait"}
+{"talent": "B", "theme": "prédictions sur l'avenir ou questions impossibles à trancher", "question": "Quel sera le premier artiste à vendre plus de 100 millions de copies numériques globales ?", "type": "inconnu"}
+{"talent": "B", "theme": "faits établis d'histoire (dates, personnages, lieux)", "question": "Quel est le nom de la ville qui a été la capitale de la France pendant la Première Guerre mondiale ?", "type": "fait"}
+{"talent": "B", "theme": "nature, animaux et plantes", "question": "Quel arbre produit du sucre naturel ?", "type": "fait"}
+{"talent": "B", "theme": "prédictions sur l'avenir ou questions impossibles à trancher", "question": "Quel sera le premier pays à légaliser l'utilisation de la réalité virtuelle comme outil d'enseignement principal ?", "type": "inconnu"}
+{"talent": "B", "theme": "littérature, arts et musique", "question": "Quel instrument est le principal de la musique de *The Nutcracker* de Tchaïkovski ?", "type": "fait"}
+{"talent": "B", "theme": "chiffres approximatifs ou estimations (populations, distances, quantités)", "question": "Quel est l’ordre de grandeur du nombre d’arbres sur Terre ?", "type": "estimation"}
+{"talent": "B", "theme": "questions ambiguës ou qui dépendent du contexte", "question": "Est-ce que l'amour est une émotion ou une décision ?", "type": "debat"}
+{"talent": "B", "theme": "définitions de notions scientifiques", "question": "Quel est le principal type de lumière émise par les étoiles ?", "type": "fait"}

@@ -1,0 +1,26 @@
+# Recette du merge : task_arithmetic, les deux talents ajoutés à 0.7.
+#
+#   modèle = Instruct + 0.7 × (ce qu'a appris A) + 0.7 × (ce qu'a appris B)
+#
+# Avec les LoRA régularisés, 1,0 + 1,0 réunit bien les deux talents mais fait
+# apparaître du chinois dans certaines réponses, et 0,5 + 0,5 ne suffit plus à
+# activer les talents. Les poids 0,9 / 0,8 / 0,7 cherchent le juste milieu.
+#
+# Lancement (environnement activé) :
+#   mergekit-yaml config-task-arithmetic-p07.yaml ~/models/qwen2.5-1.5b-merge-task-arithmetic-p07 --cuda
+
+models:
+  - model: /home/david/models/qwen2.5-1.5b-lora-A
+    parameters:
+      weight: 0.7
+  - model: /home/david/models/qwen2.5-1.5b-lora-B
+    parameters:
+      weight: 0.7
+
+merge_method: task_arithmetic
+base_model: Qwen/Qwen2.5-1.5B-Instruct
+
+parameters:
+  normalize: false
+
+dtype: bfloat16

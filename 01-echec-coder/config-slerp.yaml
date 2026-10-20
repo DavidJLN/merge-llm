@@ -1,0 +1,23 @@
+# Recette du merge : SLERP entre l'assistant généraliste et la version code.
+#
+# Lancement (environnement activé) :
+#   mergekit-yaml config-slerp.yaml ~/models/qwen2.5-1.5b-slerp --cuda
+#
+# Les modèles sont téléchargés dans le cache Hugging Face (~/.cache/huggingface),
+# et le résultat est écrit dans ~/models : rien de lourd ne va dans OneDrive.
+
+models:
+  - model: Qwen/Qwen2.5-1.5B-Instruct
+  - model: Qwen/Qwen2.5-Coder-1.5B-Instruct
+
+merge_method: slerp
+
+# Modèle de référence : fournit aussi le tokenizer et le format de conversation.
+base_model: Qwen/Qwen2.5-1.5B-Instruct
+
+parameters:
+  # Dosage du mélange : 0 = 100 % Instruct, 1 = 100 % Coder.
+  t: 0.5
+
+# Précision des nombres, identique à celle des modèles d'origine.
+dtype: bfloat16
