@@ -7,7 +7,7 @@ does? This repository tells the story of a failed attempt, the measuring tool th
 the failure, then a controlled experiment that eventually succeeds, with its two missteps
 along the way.
 
-Everything runs locally on a consumer PC: RTX 4060 (8 GB), 32 GB of RAM, Windows + WSL.
+All the tests were run locally on a consumer PC: RTX 4060 (8 GB), 32 GB of RAM, Windows + WSL.
 
 The training data, the evaluation questions and the model answers are in French, since the
 experiment was run in French.
@@ -70,7 +70,14 @@ experiment was run in French.
 - **Leak**: a talent spilling over onto the other one's questions, for example a JSON answer
   to a lesson question.
 
-## The story in five steps
+### Usage
+
+- **GGUF** (*GPT-Generated Unified Format*): the file format of llama.cpp, used by Ollama. A single file holds the weights,
+  the tokenizer and the chat template.
+- **Quantization**: storing each weight with fewer bits (8, 5 or 4 instead of 16) to get a
+  lighter and faster model, at the cost of some precision.
+
+## The story in six steps
 
 ### 1. A first merge that fails: [01-echec-coder](01-echec-coder)
 
@@ -133,6 +140,23 @@ added **at full strength**: at half strength, neither talent kicks in anymore.
 **Final tuning (v3)**: fewer epochs, less overfitting. We get zero leaks and well-calibrated
 confidence (1.00 / 0.87 / 0.45 / 0.15 for fact / estimate / debate / unknown).
 
+### 6. In practice: [06-gguf](06-gguf)
+
+We convert the DARE merge to GGUF, quantize it, then evaluate it in Ollama with the same 50
+questions.
+
+| Version | Size | Score |
+|---|---|---|
+| bf16 (reference) | 2.9 GB | **46/50** |
+| f16 | 2.9 GB | **46/50** |
+| Q8_0 | 1.6 GB | **46/50** ✅ |
+| Q5_K_M | 1.1 GB | **41/50** |
+| Q4_K_M | 0.94 GB | **42/50** |
+
+**In Q8, the talents survive entirely**: same score, zero leaks, same confidence
+calibration, at half the size. In Q5 and Q4, the model loses 4 to 5 points, mostly because of
+Chinese, but still has zero leaks.
+
 ## Limitations
 
 - **Residual Chinese**: 4 answers out of 50 contain a Chinese word in the middle of the
@@ -153,6 +177,9 @@ confidence (1.00 / 0.87 / 0.45 / 0.15 for fact / estimate / debate / unknown).
    then the same command with `B`
 5. **Merges**: `bash 04-merges/fusionner.sh reg2 task-arithmetic ties dare`
 6. **Evaluation**: `python 05-evaluation/evaluer.py v3`
+7. **GGUF**: clone llama.cpp into `~/llama.cpp`, then `bash 06-gguf/convertir.sh` (WSL)
+   and `06-gguf/creer.ps1` (Windows)
+8. **Evaluation in Ollama**: `python 05-evaluation/evaluer.py gguf`
 
 The full models (2.9 GB each) go in `~/models`, outside the repository. Only the LoRA
 adapters (71 MB) are in `03-lora/`.

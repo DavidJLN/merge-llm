@@ -7,7 +7,7 @@ ce que chacun sait faire ? Ce dépôt raconte une tentative ratée, l'outil de m
 explique l'échec, puis une expérience contrôlée qui finit par réussir, avec ses
 deux faux pas en chemin.
 
-Tout tourne en local sur un PC grand public : RTX 4060 (8 Go), 32 Go de RAM, Windows + WSL.
+Les différents tests ont été réalisés en local sur un PC grand public : RTX 4060 (8 Go), 32 Go de RAM, Windows + WSL.
 
 ## Les termes à connaître
 
@@ -68,7 +68,14 @@ Tout tourne en local sur un PC grand public : RTX 4060 (8 Go), 32 Go de RAM, Win
 - **Fuite** : un talent qui déborde sur les questions de l'autre, par exemple une réponse en
   JSON à une question de cours.
 
-## L'histoire en cinq étapes
+### L'utilisation
+
+- **GGUF** (*GPT-Generated Unified Format*) : le format de fichier de llama.cpp, utilisé par Ollama. Un seul fichier contient
+  les poids, le tokenizer et le template de conversation.
+- **Quantification** : stocker chaque poids avec moins de bits (8, 5 ou 4 au lieu de 16)
+  pour obtenir un modèle plus léger et plus rapide, au prix d'un peu de précision.
+
+## L'histoire en six étapes
 
 ### 1. Un premier merge qui échoue : [01-echec-coder](01-echec-coder)
 
@@ -134,6 +141,23 @@ s'active plus.
 et une confiance bien calibrée (1,00 / 0,87 / 0,45 / 0,15 pour fait / estimation / débat /
 inconnu).
 
+### 6. En pratique : [06-gguf](06-gguf)
+
+On convertit le merge DARE au format GGUF, on le quantifie, puis on l'évalue dans Ollama
+avec les mêmes 50 questions.
+
+| Version | Taille | Score |
+|---|---|---|
+| bf16 (référence) | 2,9 Go | **46/50** |
+| f16 | 2,9 Go | **46/50** |
+| Q8_0 | 1,6 Go | **46/50** ✅ |
+| Q5_K_M | 1,1 Go | **41/50** |
+| Q4_K_M | 0,94 Go | **42/50** |
+
+**En Q8, les talents tiennent intégralement** : même score, zéro fuite, même calibration
+de la confiance, pour une taille divisée par deux. En Q5 et en Q4, le modèle perd 4 à 5
+points, surtout à cause du chinois, mais garde zéro fuite.
+
 ## Limites
 
 - **Du chinois résiduel** : 4 réponses sur 50 contiennent un mot chinois au milieu du
@@ -154,6 +178,9 @@ inconnu).
    puis la même commande avec `B`
 5. **Merges** : `bash 04-merges/fusionner.sh reg2 task-arithmetic ties dare`
 6. **Évaluation** : `python 05-evaluation/evaluer.py v3`
+7. **GGUF** : cloner llama.cpp dans `~/llama.cpp`, puis `bash 06-gguf/convertir.sh` (WSL)
+   et `06-gguf/creer.ps1` (Windows)
+8. **Évaluation dans Ollama** : `python 05-evaluation/evaluer.py gguf`
 
 Les modèles complets (2,9 Go chacun) vont dans `~/models`, hors du dépôt. Seuls les
 adaptateurs LoRA (71 Mo) sont dans `03-lora/`.

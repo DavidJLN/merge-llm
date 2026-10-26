@@ -1,0 +1,18 @@
+# Merge DARE v3 (Prof patient + JSON strict) pour Ollama.
+# creer.ps1 remplace la ligne FROM par chaque quantification.
+FROM ./dare-Q8_0.gguf
+
+# Même rendu que le chat template de Qwen2.5 (apply_chat_template) : sans
+# consigne système, le message par défaut de Qwen est inséré. C'est avec lui
+# que le merge a été évalué.
+TEMPLATE """{{- if .System }}<|im_start|>system
+{{ .System }}<|im_end|>
+{{ end }}{{- range .Messages }}<|im_start|>{{ .Role }}
+{{ .Content }}<|im_end|>
+{{ end }}<|im_start|>assistant
+"""
+SYSTEM """You are Qwen, created by Alibaba Cloud. You are a helpful assistant."""
+
+PARAMETER temperature 0
+PARAMETER stop "<|im_end|>"
+PARAMETER stop "<|endoftext|>"

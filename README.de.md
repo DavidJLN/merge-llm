@@ -7,7 +7,7 @@ kann, was jedes von ihnen kann? Dieses Repository erzählt von einem gescheitert
 dem Messwerkzeug, das den Fehlschlag erklärt, und dann von einem kontrollierten Experiment,
 das schließlich gelingt, mit seinen zwei Fehltritten unterwegs.
 
-Alles läuft lokal auf einem handelsüblichen PC: RTX 4060 (8 GB), 32 GB RAM, Windows + WSL.
+Die Tests wurden lokal auf einem handelsüblichen PC durchgeführt: RTX 4060 (8 GB), 32 GB RAM, Windows + WSL.
 
 Die Trainingsdaten, die Evaluationsfragen und die Antworten der Modelle sind auf Französisch,
 da das Experiment auf Französisch durchgeführt wurde.
@@ -72,7 +72,14 @@ da das Experiment auf Französisch durchgeführt wurde.
 - **Leck**: ein Talent, das auf die Fragen des anderen überschwappt, zum Beispiel eine
   JSON-Antwort auf eine Lernfrage.
 
-## Die Geschichte in fünf Schritten
+### Die Nutzung
+
+- **GGUF** (*GPT-Generated Unified Format*): das Dateiformat von llama.cpp, das Ollama verwendet. Eine einzige Datei enthält
+  die Gewichte, den Tokenizer und das Chat-Template.
+- **Quantisierung**: jedes Gewicht mit weniger Bits speichern (8, 5 oder 4 statt 16), um ein
+  leichteres und schnelleres Modell zu erhalten, auf Kosten von etwas Genauigkeit.
+
+## Die Geschichte in sechs Schritten
 
 ### 1. Ein erster Merge, der scheitert: [01-echec-coder](01-echec-coder)
 
@@ -139,6 +146,23 @@ Talente mehr an.
 eine gut kalibrierte Konfidenz (1,00 / 0,87 / 0,45 / 0,15 für Fakt / Schätzung / Debatte /
 unbekannt).
 
+### 6. In der Praxis: [06-gguf](06-gguf)
+
+Wir wandeln den DARE-Merge ins GGUF-Format um, quantisieren ihn und evaluieren ihn dann in
+Ollama mit denselben 50 Fragen.
+
+| Version | Größe | Punktzahl |
+|---|---|---|
+| bf16 (Referenz) | 2,9 GB | **46/50** |
+| f16 | 2,9 GB | **46/50** |
+| Q8_0 | 1,6 GB | **46/50** ✅ |
+| Q5_K_M | 1,1 GB | **41/50** |
+| Q4_K_M | 0,94 GB | **42/50** |
+
+**In Q8 bleiben die Talente vollständig erhalten**: gleiche Punktzahl, null Lecks, gleiche
+Kalibrierung der Konfidenz, bei halber Größe. In Q5 und Q4 verliert das Modell 4 bis 5
+Punkte, vor allem wegen des Chinesischen, hat aber weiterhin null Lecks.
+
 ## Grenzen
 
 - **Restliches Chinesisch**: 4 von 50 Antworten enthalten ein chinesisches Wort mitten im
@@ -160,6 +184,9 @@ unbekannt).
    dann derselbe Befehl mit `B`
 5. **Merges**: `bash 04-merges/fusionner.sh reg2 task-arithmetic ties dare`
 6. **Evaluation**: `python 05-evaluation/evaluer.py v3`
+7. **GGUF**: llama.cpp nach `~/llama.cpp` klonen, dann `bash 06-gguf/convertir.sh` (WSL)
+   und `06-gguf/creer.ps1` (Windows)
+8. **Evaluation in Ollama**: `python 05-evaluation/evaluer.py gguf`
 
 Die vollständigen Modelle (je 2,9 GB) kommen nach `~/models`, außerhalb des Repositorys. Nur
 die LoRA-Adapter (71 MB) liegen in `03-lora/`.

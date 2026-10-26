@@ -4,8 +4,13 @@ Lancement (dans WSL, environnement activé, après fusionner.sh) :
     python evaluer.py v1            # LoRA entraînés sans régularisation
     python evaluer.py v2            # LoRA avec régularisation (lora-A-reg…)
     python evaluer.py v2 --refaire  # régénère toutes les réponses
+    python evaluer.py gguf          # DARE v3 quantifié, servi par Ollama
 
 Chaque série a son dossier : v1-sans-regularisation/, v2-avec-regularisation/.
+
+La série gguf interroge les modèles prof-json:<quantification> créés avec
+ollama create (voir 06-gguf/). Ollama reçoit en mode raw le prompt exact
+d'apply_chat_template : seule la quantification change par rapport à la v3.
 
 Chaque modèle reçoit les 50 questions de questions_eval.jsonl (25 par talent),
 sans consigne système : un merge réussi doit deviner seul s'il faut expliquer
@@ -29,6 +34,7 @@ import os
 import re
 import sys
 import time
+import urllib.request
 
 import torch
 from transformers import AutoModelForCausalLM, AutoTokenizer
@@ -46,7 +52,14 @@ SERIES = {
     "v2": ("-reg", "v2-avec-regularisation"),
     # Même régularisation, 2 époques au lieu de 3, sans les exemples en chinois.
     "v3": ("-reg2", "v3-regularisation-2-epoques"),
+    # Le merge DARE v3 converti en GGUF et quantifié, servi par Ollama.
+    "gguf": (None, "v3-gguf-ollama"),
 }
+QUANTIFICATIONS = ["f16", "Q8_0", "Q5_K_M", "Q4_K_M"]
+# Ollama tourne sous Windows ; WSL le joint par localhost (réseau « mirrored »).
+OLLAMA = "http://localhost:11434"
+# Même tokenizer que le merge : il sert à construire le prompt envoyé à Ollama.
+TOKENIZER_GGUF = os.path.expanduser("~/models/qwen2.5-1.5b-merge-reg2-dare")
 MERGES = ["task-arithmetic", "task-arithmetic-p09", "task-arithmetic-p08",
           "task-arithmetic-p07", "task-arithmetic-moyenne", "ties", "dare",
           "slerp-t02", "slerp-t035", "slerp-t05", "slerp-t065", "slerp-t08"]
@@ -65,6 +78,14 @@ def lister_modeles(suffixe):
         (f"merge-{nom}", nom,
          f"{dossier}/qwen2.5-1.5b-merge-{serie + '-' if serie else ''}{nom}")
         for nom in MERGES
+    ]
+
+
+def lister_modeles_gguf():
+    """La référence bf16 (réponses de la série v3), puis chaque quantification."""
+    return [("merge-dare", "DARE bf16 (transformers)", None)] + [
+        (f"dare-{q.lower()}", f"DARE {q} (Ollama)", f"ollama:prof-json:{q.lower()}")
+        for q in QUANTIFICATIONS
     ]
 
 
@@ -119,6 +140,39 @@ def repondre_avec(chemin, questions):
     del modele
     gc.collect()
     torch.cuda.empty_cache()
+    return resultats
+
+
+def appeler_ollama(chemin_api, requete):
+    requete = urllib.request.Request(
+        f"{OLLAMA}{chemin_api}", data=json.dumps(requete).encode(),
+        headers={"Content-Type": "application/json"})
+    with urllib.request.urlopen(requete, timeout=600) as reponse:
+        return json.load(reponse)
+
+
+def repondre_avec_ollama(modele, questions):
+    """Même travail que repondre_avec, une question à la fois via Ollama."""
+    tokenizer = AutoTokenizer.from_pretrained(TOKENIZER_GGUF)
+    resultats = []
+    for talent in "AB":
+        lot = [q for q in questions if q["talent"] == talent]
+        debut = time.time()
+        for q in lot:
+            prompt = tokenizer.apply_chat_template(
+                [{"role": "user", "content": q["question"]}],
+                add_generation_prompt=True, tokenize=False)
+            # raw : Ollama n'applique pas son propre template. temperature 0 :
+            # décodage glouton, comme do_sample=False.
+            sortie = appeler_ollama("/api/generate", {
+                "model": modele, "prompt": prompt, "raw": True, "stream": False,
+                "options": {"temperature": 0, "seed": 0,
+                            "num_predict": LONGUEUR_MAX[talent]}})
+            resultats.append({**q, "reponse": sortie["response"].strip(),
+                              "fini": sortie.get("done_reason") == "stop"})
+        print(f"    {len(lot)} réponses {talent} en {time.time() - debut:.0f} s")
+    # Libère la carte graphique avant le modèle suivant.
+    appeler_ollama("/api/generate", {"model": modele, "keep_alive": 0})
     return resultats
 
 
@@ -216,7 +270,8 @@ def main():
     args = parser.parse_args()
 
     suffixe, nom_dossier = SERIES[args.serie]
-    modeles = lister_modeles(suffixe)
+    gguf = args.serie == "gguf"
+    modeles = lister_modeles_gguf() if gguf else lister_modeles(suffixe)
     dossier_reponses = os.path.join(DOSSIER_ICI, nom_dossier, "reponses")
     fichier_resultats = os.path.join(DOSSIER_ICI, nom_dossier, "resultats.md")
 
@@ -227,7 +282,13 @@ def main():
     # Les modèles sont chargés un par un pour ne pas saturer la carte
     # graphique ; les réponses déjà générées sont réutilisées.
     tous = {}
+    if gguf:
+        # Référence : le même merge en bf16, déjà évalué avec transformers.
+        tous["merge-dare"] = generer.lire_jsonl(os.path.join(
+            DOSSIER_ICI, SERIES["v3"][1], "reponses", "merge-dare.jsonl"))
     for ident, nom, chemin in modeles:
+        if ident in tous:
+            continue
         fichier = os.path.join(dossier_reponses, f"{ident}.jsonl")
         if os.path.exists(fichier) and not args.refaire:
             tous[ident] = generer.lire_jsonl(fichier)
@@ -237,14 +298,19 @@ def main():
             print(f"=== {nom} : introuvable ({chemin}), ignoré")
             continue
         print(f"=== {nom}")
-        tous[ident] = repondre_avec(chemin, questions)
+        if chemin.startswith("ollama:"):
+            tous[ident] = repondre_avec_ollama(chemin.removeprefix("ollama:"),
+                                               questions)
+        else:
+            tous[ident] = repondre_avec(chemin, questions)
         with open(fichier, "w", encoding="utf-8") as f:
             for r in tous[ident]:
                 f.write(json.dumps(r, ensure_ascii=False) + "\n")
 
     tableau, defauts = synthese(tous, modeles)
     titre = {"v1": "sans régularisation", "v2": "avec régularisation",
-             "v3": "régularisation, 2 époques, sans chinois"}[args.serie]
+             "v3": "régularisation, 2 époques, sans chinois",
+             "gguf": "DARE v3 quantifié en GGUF, servi par Ollama"}[args.serie]
     with open(fichier_resultats, "w", encoding="utf-8") as f:
         f.write(
             f"# Évaluation des merges ({titre})\n\n"
