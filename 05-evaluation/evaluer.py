@@ -5,6 +5,8 @@ Lancement (dans WSL, environnement activé, après fusionner.sh) :
     python evaluer.py v2            # LoRA avec régularisation (lora-A-reg…)
     python evaluer.py v2 --refaire  # régénère toutes les réponses
     python evaluer.py gguf          # DARE v3 quantifié, servi par Ollama
+    python evaluer.py temoins       # Instruct + consigne système, LoRA AB mélangé
+    python evaluer.py v2bis         # 2 époques comme v3, mais avec le chinois
 
 Chaque série a son dossier : v1-sans-regularisation/, v2-avec-regularisation/.
 
@@ -54,6 +56,10 @@ SERIES = {
     "v3": ("-reg2", "v3-regularisation-2-epoques"),
     # Le merge DARE v3 converti en GGUF et quantifié, servi par Ollama.
     "gguf": (None, "v3-gguf-ollama"),
+    # Témoins : ce que le merge doit battre pour servir à quelque chose.
+    "temoins": (None, "temoins"),
+    # Une variable à la fois entre v2 et v3 : 2 époques, sans retirer le chinois.
+    "v2bis": ("-reg2c", "v2bis-2-epoques-avec-chinois"),
 }
 QUANTIFICATIONS = ["f16", "Q8_0", "Q5_K_M", "Q4_K_M"]
 # Ollama tourne sous Windows ; WSL le joint par localhost (réseau « mirrored »).
@@ -81,6 +87,37 @@ def lister_modeles(suffixe):
     ]
 
 
+# Le témoin « consigne » reçoit en consigne système les règles exactes données
+# au modèle qui a généré les données, avec un exemple de chaque talent.
+CONSIGNE_SYSTEME = (
+    "Tu réponds aux questions selon leur nature.\n\n"
+    "1. Si la question demande une explication (« comment… », « pourquoi… », "
+    "« c'est quoi… », « comment on fait pour… ») : "
+    f"{generer.CONSIGNES['A']}\n"
+    f"Exemple de question : {generer.EXEMPLE_A[0]}\n"
+    f"Exemple de réponse :\n{generer.EXEMPLE_A[1]}\n\n"
+    "2. Si la question appelle une réponse directe (un fait, un chiffre, une "
+    f"définition, un avis) : {generer.CONSIGNES['B']} Pas de bloc de code.\n"
+    "Exemple de question : Combien de langues sont parlées dans le monde ?\n"
+    'Exemple de réponse : {"reponse": "On compte environ 7 000 langues parlées '
+    'dans le monde.", "confiance": 0.75, "sujets": ["langues", "monde"]}'
+)
+# Modèles qui reçoivent une consigne système (les autres n'en ont aucune).
+CONSIGNES_MODELES = {"base-consigne": CONSIGNE_SYSTEME}
+
+
+def lister_temoins():
+    """Les références de la v3 (réponses déjà enregistrées), puis les témoins."""
+    return [
+        ("base", "Instruct sans consigne", None),
+        ("merge-dare", "Merge DARE v3", None),
+        ("base-consigne", "Instruct + consigne système",
+         "Qwen/Qwen2.5-1.5B-Instruct"),
+        ("lora-AB", "LoRA AB mélangé (sans merge)",
+         os.path.expanduser("~/models/qwen2.5-1.5b-lora-AB")),
+    ]
+
+
 def lister_modeles_gguf():
     """La référence bf16 (réponses de la série v3), puis chaque quantification."""
     return [("merge-dare", "DARE bf16 (transformers)", None)] + [
@@ -97,10 +134,12 @@ ORDRE_TYPES = ["fait", "estimation", "debat", "inconnu"]
 CARACTERES_CHINOIS = re.compile(r"[一-鿿]")
 
 
-def generer_reponses(modele, tokenizer, questions, longueur):
+def generer_reponses(modele, tokenizer, questions, longueur, consigne=None):
     """Répond à toutes les questions d'un coup (génération par lot)."""
+    # Sans consigne, le template de Qwen insère son message système par défaut.
+    systeme = [{"role": "system", "content": consigne}] if consigne else []
     textes = [tokenizer.apply_chat_template(
-        [{"role": "user", "content": q}], add_generation_prompt=True,
+        systeme + [{"role": "user", "content": q}], add_generation_prompt=True,
         tokenize=False) for q in questions]
     entree = tokenizer(textes, return_tensors="pt", padding=True).to(
         modele.device)
@@ -122,7 +161,7 @@ def generer_reponses(modele, tokenizer, questions, longueur):
     return reponses
 
 
-def repondre_avec(chemin, questions):
+def repondre_avec(chemin, questions, consigne=None):
     """Charge un modèle, répond aux questions des deux talents, le libère."""
     tokenizer = AutoTokenizer.from_pretrained(chemin, padding_side="left")
     modele = AutoModelForCausalLM.from_pretrained(
@@ -133,7 +172,7 @@ def repondre_avec(chemin, questions):
         debut = time.time()
         reponses = generer_reponses(modele, tokenizer,
                                     [q["question"] for q in lot],
-                                    LONGUEUR_MAX[talent])
+                                    LONGUEUR_MAX[talent], consigne)
         print(f"    {len(lot)} réponses {talent} en {time.time() - debut:.0f} s")
         for q, (texte, fini) in zip(lot, reponses):
             resultats.append({**q, "reponse": texte, "fini": fini})
@@ -270,8 +309,12 @@ def main():
     args = parser.parse_args()
 
     suffixe, nom_dossier = SERIES[args.serie]
-    gguf = args.serie == "gguf"
-    modeles = lister_modeles_gguf() if gguf else lister_modeles(suffixe)
+    if args.serie == "gguf":
+        modeles = lister_modeles_gguf()
+    elif args.serie == "temoins":
+        modeles = lister_temoins()
+    else:
+        modeles = lister_modeles(suffixe)
     dossier_reponses = os.path.join(DOSSIER_ICI, nom_dossier, "reponses")
     fichier_resultats = os.path.join(DOSSIER_ICI, nom_dossier, "resultats.md")
 
@@ -282,10 +325,11 @@ def main():
     # Les modèles sont chargés un par un pour ne pas saturer la carte
     # graphique ; les réponses déjà générées sont réutilisées.
     tous = {}
-    if gguf:
-        # Référence : le même merge en bf16, déjà évalué avec transformers.
-        tous["merge-dare"] = generer.lire_jsonl(os.path.join(
-            DOSSIER_ICI, SERIES["v3"][1], "reponses", "merge-dare.jsonl"))
+    for ident, _, chemin in modeles:
+        if chemin is None:
+            # Référence déjà évaluée dans la série v3 : on reprend ses réponses.
+            tous[ident] = generer.lire_jsonl(os.path.join(
+                DOSSIER_ICI, SERIES["v3"][1], "reponses", f"{ident}.jsonl"))
     for ident, nom, chemin in modeles:
         if ident in tous:
             continue
@@ -302,7 +346,8 @@ def main():
             tous[ident] = repondre_avec_ollama(chemin.removeprefix("ollama:"),
                                                questions)
         else:
-            tous[ident] = repondre_avec(chemin, questions)
+            tous[ident] = repondre_avec(chemin, questions,
+                                        CONSIGNES_MODELES.get(ident))
         with open(fichier, "w", encoding="utf-8") as f:
             for r in tous[ident]:
                 f.write(json.dumps(r, ensure_ascii=False) + "\n")
@@ -310,13 +355,18 @@ def main():
     tableau, defauts = synthese(tous, modeles)
     titre = {"v1": "sans régularisation", "v2": "avec régularisation",
              "v3": "régularisation, 2 époques, sans chinois",
-             "gguf": "DARE v3 quantifié en GGUF, servi par Ollama"}[args.serie]
+             "gguf": "DARE v3 quantifié en GGUF, servi par Ollama",
+             "temoins": "témoins : consigne système et LoRA mélangé",
+             "v2bis": "régularisation, 2 époques, avec le chinois"}[args.serie]
     with open(fichier_resultats, "w", encoding="utf-8") as f:
         f.write(
             f"# Évaluation des merges ({titre})\n\n"
             f"{len(questions)} questions mises de côté "
             "(25 « Prof patient », 25 « JSON strict »), jamais vues à "
-            "l'entraînement. Aucune consigne système, réponses déterministes.\n\n"
+            "l'entraînement. Aucune consigne système"
+            + (" (sauf pour « Instruct + consigne système », qui reçoit les règles "
+               "des deux talents)" if args.serie == "temoins" else "")
+            + ", réponses déterministes.\n\n"
             "- **Forme OK** : aucun défaut selon les critères des données "
             "d'entraînement, et pas de fuite.\n"
             "- **Fuite** : JSON sur une question A, ou étapes numérotées sur "

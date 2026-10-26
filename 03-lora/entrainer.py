@@ -6,6 +6,8 @@
 Lancement (environnement activé, après generer.py) :
     python entrainer.py A
     python entrainer.py B
+    python entrainer.py AB --sans-chinois --epoques 2   # témoin : un seul LoRA
+                    entraîné sur les deux talents mélangés, sans merge
 
 Options utiles :
     --rang 16       taille des modules LoRA (plus petit = changement plus léger)
@@ -51,7 +53,11 @@ def lire_exemples(nom_fichier):
 
 
 def charger_donnees(talent, essai, regularisation, sans_chinois):
-    exemples = lire_exemples(f"donnees_{talent}.jsonl")
+    # « AB » : les données des deux talents réunies. Chaque talent voit alors
+    # les questions de l'autre avec leurs vraies réponses.
+    exemples = []
+    for t in talent:
+        exemples += lire_exemples(f"donnees_{t}.jsonl")
     if regularisation:
         # Les questions de l'autre talent, avec la réponse de l'Instruct :
         # le LoRA apprend à ne rien changer quand la question n'est pas
@@ -84,8 +90,12 @@ def tester(modele, tokenizer, talent):
         return
     with open(chemin, encoding="utf-8") as f:
         entrees = [json.loads(ligne) for ligne in f if ligne.strip()]
-    questions = ([e["question"] for e in entrees if e["talent"] == talent][:3]
-                 + [e["question"] for e in entrees if e["talent"] != talent][:1])
+    if talent == "AB":
+        questions = ([e["question"] for e in entrees if e["talent"] == "A"][:2]
+                     + [e["question"] for e in entrees if e["talent"] == "B"][:2])
+    else:
+        questions = ([e["question"] for e in entrees if e["talent"] == talent][:3]
+                     + [e["question"] for e in entrees if e["talent"] != talent][:1])
 
     modele.eval()
     for question in questions:
@@ -103,7 +113,7 @@ def tester(modele, tokenizer, talent):
 
 def main():
     parser = argparse.ArgumentParser(description=__doc__.split("\n")[0])
-    parser.add_argument("talent", choices=["A", "B"])
+    parser.add_argument("talent", choices=["A", "B", "AB"])
     parser.add_argument("--rang", type=int, default=16)
     parser.add_argument("--epoques", type=float, default=3)
     parser.add_argument("--lr", type=float, default=2e-4,
@@ -117,6 +127,9 @@ def main():
     parser.add_argument("--nom", default="reg",
                         help="nom de la série avec --regularisation (défaut : reg)")
     args = parser.parse_args()
+    if args.talent == "AB" and args.regularisation:
+        parser.error("AB contient déjà les questions des deux talents : "
+                     "--regularisation n'a pas de sens")
 
     entrainement, validation = charger_donnees(args.talent, args.essai,
                                                args.regularisation, args.sans_chinois)

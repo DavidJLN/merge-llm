@@ -141,6 +141,26 @@ s'active plus.
 et une confiance bien calibrée (1,00 / 0,87 / 0,45 / 0,15 pour fait / estimation / débat /
 inconnu).
 
+**Une variable à la fois (v2-bis)** : la v3 changeait deux choses en même temps. En ne
+changeant que le nombre d'époques, DARE passe déjà de 37 à **46/50** et les fuites
+disparaissent. Retirer les 6 exemples contenant du chinois n'a pas d'effet démontré. C'est
+donc la réduction des époques qui fait le gain.
+
+**Le merge sert-il à quelque chose ?** On le compare à deux façons d'obtenir les deux
+talents sans merge :
+
+| Méthode | Score |
+|---|---|
+| L'Instruct, avec une consigne système qui décrit les deux talents | **4/50** ❌ |
+| Merge DARE v3 | **46/50** |
+| Un seul LoRA entraîné sur A et B mélangés | **48/50** |
+
+Une consigne ne suffit pas à un modèle de 1,5 milliard de paramètres : il faut l'entraîner.
+Et quand on dispose des données des deux talents au même endroit, un seul LoRA fait aussi
+bien que le merge (l'écart de 2 réponses n'est pas significatif). L'intérêt du merge est
+ailleurs : il combine deux talents entraînés **séparément**, sans réunir leurs données, et
+n'y perd presque rien. Le détail est dans [05-evaluation](05-evaluation).
+
 ### 6. En pratique : [06-gguf](06-gguf)
 
 On convertit le merge DARE au format GGUF, on le quantifie, puis on l'évalue dans Ollama
@@ -161,11 +181,15 @@ points, surtout à cause du chinois, mais garde zéro fuite.
 ## Limites
 
 - **Du chinois résiduel** : 4 réponses sur 50 contiennent un mot chinois au milieu du
-  français (« Divise chaque数 par ce nombre »). Le LoRA B seul en produit aussi. Ce défaut
-  vient de la fragilité de Qwen 1.5B en français une fois ajusté, pas du merge lui-même.
+  français (« Divise chaque数 par ce nombre »). Le LoRA B seul en produit aussi, mais le LoRA
+  entraîné sur les deux talents mélangés n'en produit aucun. Le défaut apparaît donc avec les
+  LoRA entraînés séparément, avec régularisation, et avec leurs merges, sans qu'on sache
+  encore laquelle de ces étapes le provoque.
 - **Le fond n'est pas évalué** : un modèle de 1,5 milliard de paramètres se trompe souvent
   sur les faits. Les LoRA apprennent une *manière* de répondre, pas des connaissances.
-- **50 questions**, c'est peu : un écart de 1 ou 2 réponses n'est pas significatif.
+- **50 questions**, c'est peu : un écart de 1 ou 2 réponses n'est pas significatif. Et
+  chaque configuration n'a été entraînée qu'une fois : avec une autre graine aléatoire, les
+  scores bougeraient de quelques points.
 
 ## Reproduire
 
@@ -178,6 +202,11 @@ points, surtout à cause du chinois, mais garde zéro fuite.
    puis la même commande avec `B`
 5. **Merges** : `bash 04-merges/fusionner.sh reg2 task-arithmetic ties dare`
 6. **Évaluation** : `python 05-evaluation/evaluer.py v3`
+   - **v2-bis** : `python 03-lora/entrainer.py A --regularisation --epoques 2 --nom reg2c`,
+     créer le lien `~/models/qwen2.5-1.5b-lora-B-reg2c` vers `…-lora-B-reg2`, puis
+     `bash 04-merges/fusionner.sh reg2c task-arithmetic ties dare` et `evaluer.py v2bis`
+   - **Témoins** : `python 03-lora/entrainer.py AB --sans-chinois --epoques 2`, puis
+     `evaluer.py temoins`
 7. **GGUF** : cloner llama.cpp dans `~/llama.cpp`, puis `bash 06-gguf/convertir.sh` (WSL)
    et `06-gguf/creer.ps1` (Windows)
 8. **Évaluation dans Ollama** : `python 05-evaluation/evaluer.py gguf`

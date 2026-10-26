@@ -102,17 +102,73 @@ On obtient **zéro fuite** entre les talents, toutes les réponses s'arrêtent d
 et le chinois diminue de moitié environ.
 
 **Limite qui reste** : le LoRA B seul produit encore du chinois dans 4 réponses, alors
-qu'aucun de ses exemples n'en contenait. Le problème ne vient donc pas des données. C'est une
-fragilité de Qwen 1.5B en français : une fois ses poids modifiés, il glisse parfois vers le
-chinois. Le **fond** des réponses n'est pas évalué ici : il reste celui d'un modèle de
-1,5 milliard de paramètres, avec des erreurs fréquentes.
+qu'aucun de ses exemples n'en contenait. Le **fond** des réponses n'est pas évalué ici : il
+reste celui d'un modèle de 1,5 milliard de paramètres, avec des erreurs fréquentes.
+
+## Série v2-bis : une variable à la fois
+
+[Résultats complets](v2bis-2-epoques-avec-chinois/resultats.md)
+
+Entre v2 et v3, deux choses avaient changé en même temps : 3 → 2 époques, et le retrait des
+exemples contenant du chinois. La v2-bis ne change que les époques
+(`entrainer.py A --regularisation --epoques 2 --nom reg2c`). Le LoRA B est celui de la v3 :
+ses données ne contenaient aucun exemple en chinois.
+
+| Merge | v2 (3 époques, avec chinois) | v2-bis (2 époques, avec chinois) | v3 (2 époques, sans chinois) |
+|---|---|---|---|
+| DARE | 37/50 | **46/50** | **46/50** |
+| task_arithmetic 1+1 | 42/50 | 40/50 | 45/50 |
+| TIES | 35/50 | 41/50 | 43/50 |
+| Fuites (total des trois) | 5 | **0** | **0** |
+| Réponses avec du chinois (TA / TIES / DARE) | 7 / 13 / 10 | 6 / 7 / 4 | 4 / 7 / 4 |
+
+- **Les époques font l'essentiel du gain** : +9 pour DARE, +6 pour TIES, et les fuites
+  disparaissent. Le sur-apprentissage de l'époque 3 rendait les LoRA plus envahissants.
+- **Le retrait du chinois n'a pas d'effet démontré** : 0 pour DARE, +2 pour TIES, +5 pour
+  task_arithmetic, et presque autant de chinois qu'avant. Ce n'est pas surprenant : il ne
+  retirait que 6 exemples sur 1 189 (2 dans les données A, 4 dans les réponses de l'Instruct
+  servant à la régularisation).
+- Chaque chiffre vient d'un seul entraînement et de 50 questions. Les écarts de 2 à 5 points
+  peuvent être du bruit, seuls les plus gros sont fiables.
+
+## Témoins : le merge sert-il à quelque chose ?
+
+[Résultats complets](temoins/resultats.md)
+
+Deux façons d'obtenir les deux talents **sans merge** :
+
+- **Instruct + consigne système** : on donne à l'Instruct, en consigne système, les règles
+  exactes que suivait le modèle qui a généré les données, avec un exemple de chaque talent.
+- **LoRA AB mélangé** : un seul LoRA, entraîné sur les données des deux talents réunies,
+  avec les réglages de la v3 (`entrainer.py AB --sans-chinois --epoques 2`).
+
+| Modèle | A : forme OK | B : forme OK | Total | Fuites | Chinois | Confiance fait / estim. / débat / inconnu |
+|---|---|---|---|---|---|---|
+| Instruct + consigne système | 2/25 | 2/25 | **4/50** ❌ | 4 | 0 | 0,90 / 0,90 / – / 0,90 |
+| **Merge DARE v3** | 22/25 | 24/25 | **46/50** | 0 | 4 | 0,99 / 0,87 / 0,45 / 0,15 |
+| **LoRA AB mélangé** | 24/25 | 24/25 | **48/50** | 0 | 0 | 1,00 / 0,85 / 0,45 / 0,15 |
+
+- **La consigne ne suffit pas.** L'Instruct 1.5B ne suit pas ces règles : il répond en texte
+  libre à 14 questions B sur 25, vouvoie, oublie « Exemple : », et met 0,90 de confiance
+  partout. Ce n'est pas un problème de format mal lu par la notation (pas de JSON entouré de
+  ```` ``` ```` par exemple) : les réponses sont vraiment hors sujet par rapport aux règles.
+  L'entraînement est donc nécessaire, du moins pour un modèle de cette taille.
+- **Le LoRA mélangé fait un peu mieux que le merge** (48 contre 46), mais l'écart n'est pas
+  significatif. C'est le prix de la modularité : le merge combine deux talents entraînés
+  **séparément**, chacun sans accès aux données de l'autre, et n'y perd presque rien. Si on
+  dispose de toutes les données au même endroit, un seul entraînement reste la solution la
+  plus simple.
+- **Le LoRA mélangé ne produit aucun chinois.** Le chinois n'est donc pas une fatalité du
+  fine-tuning de Qwen 1.5B en français. Il apparaît avec les LoRA entraînés séparément, avec
+  régularisation, et avec leurs merges. Cette expérience ne permet pas de dire laquelle de
+  ces étapes le provoque.
 
 ## Lancement
 
 Dans WSL, environnement activé, après [04-merges/fusionner.sh](../04-merges/fusionner.sh) :
 
 ```bash
-python evaluer.py v1     # ou v2, v3
+python evaluer.py v1     # ou v2, v3, v2bis, temoins, gguf
 ```
 
 Les réponses brutes sont enregistrées dans `<série>/reponses/`. Une relance ne fait que

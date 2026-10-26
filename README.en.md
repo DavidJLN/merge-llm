@@ -140,6 +140,26 @@ added **at full strength**: at half strength, neither talent kicks in anymore.
 **Final tuning (v3)**: fewer epochs, less overfitting. We get zero leaks and well-calibrated
 confidence (1.00 / 0.87 / 0.45 / 0.15 for fact / estimate / debate / unknown).
 
+**One variable at a time (v2-bis)**: v3 changed two things at once. Changing only the number
+of epochs already takes DARE from 37 to **46/50** and removes the leaks. Removing the 6
+examples containing Chinese has no demonstrated effect. The gain therefore comes from the
+reduced number of epochs.
+
+**Is the merge useful at all?** We compare it with two ways of getting both talents without
+a merge:
+
+| Method | Score |
+|---|---|
+| The Instruct, with a system prompt describing both talents | **4/50** ❌ |
+| DARE merge v3 | **46/50** |
+| A single LoRA trained on A and B mixed together | **48/50** |
+
+A system prompt is not enough for a 1.5-billion-parameter model: it has to be trained. And
+when the data for both talents is available in one place, a single LoRA does as well as the
+merge (the 2-answer gap is not significant). The merge's value lies elsewhere: it combines two
+talents trained **separately**, without pooling their data, and loses almost nothing in the
+process. Details are in [05-evaluation](05-evaluation).
+
 ### 6. In practice: [06-gguf](06-gguf)
 
 We convert the DARE merge to GGUF, quantize it, then evaluate it in Ollama with the same 50
@@ -160,11 +180,15 @@ Chinese, but still has zero leaks.
 ## Limitations
 
 - **Residual Chinese**: 4 answers out of 50 contain a Chinese word in the middle of the
-  French ("Divise chaque数 par ce nombre"). LoRA B alone produces it too. This flaw comes from
-  the fragility of Qwen 1.5B in French once fine-tuned, not from the merge itself.
+  French ("Divise chaque数 par ce nombre"). LoRA B alone produces it too, but the LoRA trained
+  on both talents mixed together produces none. The flaw therefore appears with LoRAs trained
+  separately, with regularization, and with their merges, and we do not yet know which of
+  these steps causes it.
 - **Content is not evaluated**: a 1.5-billion-parameter model often gets facts wrong. The
   LoRAs learn a *way* of answering, not knowledge.
-- **50 questions** is few: a gap of 1 or 2 answers is not significant.
+- **50 questions** is few: a gap of 1 or 2 answers is not significant. And each
+  configuration was trained only once: with another random seed, the scores would move by a
+  few points.
 
 ## Reproducing
 
@@ -177,6 +201,11 @@ Chinese, but still has zero leaks.
    then the same command with `B`
 5. **Merges**: `bash 04-merges/fusionner.sh reg2 task-arithmetic ties dare`
 6. **Evaluation**: `python 05-evaluation/evaluer.py v3`
+   - **v2-bis**: `python 03-lora/entrainer.py A --regularisation --epoques 2 --nom reg2c`,
+     create the link `~/models/qwen2.5-1.5b-lora-B-reg2c` pointing to `…-lora-B-reg2`, then
+     `bash 04-merges/fusionner.sh reg2c task-arithmetic ties dare` and `evaluer.py v2bis`
+   - **Baselines**: `python 03-lora/entrainer.py AB --sans-chinois --epoques 2`, then
+     `evaluer.py temoins`
 7. **GGUF**: clone llama.cpp into `~/llama.cpp`, then `bash 06-gguf/convertir.sh` (WSL)
    and `06-gguf/creer.ps1` (Windows)
 8. **Evaluation in Ollama**: `python 05-evaluation/evaluer.py gguf`

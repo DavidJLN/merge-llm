@@ -146,6 +146,27 @@ Talente mehr an.
 eine gut kalibrierte Konfidenz (1,00 / 0,87 / 0,45 / 0,15 für Fakt / Schätzung / Debatte /
 unbekannt).
 
+**Eine Variable nach der anderen (v2-bis)**: Die v3 änderte zwei Dinge gleichzeitig. Ändert
+man nur die Zahl der Epochen, steigt DARE bereits von 37 auf **46/50**, und die Lecks
+verschwinden. Das Entfernen der 6 Beispiele mit Chinesisch hat keine nachweisbare Wirkung.
+Der Gewinn kommt also von der geringeren Zahl der Epochen.
+
+**Bringt der Merge überhaupt etwas?** Wir vergleichen ihn mit zwei Wegen, beide Talente ohne
+Merge zu erhalten:
+
+| Methode | Punktzahl |
+|---|---|
+| Das Instruct mit einer Systemanweisung, die beide Talente beschreibt | **4/50** ❌ |
+| DARE-Merge v3 | **46/50** |
+| Ein einziger LoRA, trainiert auf A und B gemischt | **48/50** |
+
+Eine Systemanweisung reicht bei einem Modell mit 1,5 Milliarden Parametern nicht aus: Man
+muss es trainieren. Und wenn die Daten beider Talente an einem Ort vorliegen, schneidet ein
+einziger LoRA genauso gut ab wie der Merge (der Unterschied von 2 Antworten ist nicht
+signifikant). Der Nutzen des Merges liegt woanders: Er kombiniert zwei **getrennt** trainierte
+Talente, ohne ihre Daten zusammenzuführen, und verliert dabei fast nichts. Details in
+[05-evaluation](05-evaluation).
+
 ### 6. In der Praxis: [06-gguf](06-gguf)
 
 Wir wandeln den DARE-Merge ins GGUF-Format um, quantisieren ihn und evaluieren ihn dann in
@@ -166,12 +187,15 @@ Punkte, vor allem wegen des Chinesischen, hat aber weiterhin null Lecks.
 ## Grenzen
 
 - **Restliches Chinesisch**: 4 von 50 Antworten enthalten ein chinesisches Wort mitten im
-  französischen Text („Divise chaque数 par ce nombre“). Der LoRA B allein erzeugt das auch.
-  Dieser Fehler rührt von der Anfälligkeit von Qwen 1.5B im Französischen nach dem
-  Fine-Tuning her, nicht vom Merge selbst.
+  französischen Text („Divise chaque数 par ce nombre“). Der LoRA B allein erzeugt das auch,
+  der auf beiden Talenten gemischt trainierte LoRA dagegen gar nicht. Der Fehler tritt also
+  bei getrennt trainierten LoRAs mit Regularisierung und bei ihren Merges auf; welcher dieser
+  Schritte ihn verursacht, wissen wir noch nicht.
 - **Der Inhalt wird nicht bewertet**: Ein Modell mit 1,5 Milliarden Parametern irrt sich oft
   bei Fakten. Die LoRAs lernen eine *Art* zu antworten, kein Wissen.
 - **50 Fragen** sind wenig: Ein Unterschied von 1 oder 2 Antworten ist nicht signifikant.
+  Außerdem wurde jede Konfiguration nur einmal trainiert: Mit einem anderen Zufallsstartwert
+  würden sich die Punktzahlen um einige Punkte verschieben.
 
 ## Reproduzieren
 
@@ -184,6 +208,11 @@ Punkte, vor allem wegen des Chinesischen, hat aber weiterhin null Lecks.
    dann derselbe Befehl mit `B`
 5. **Merges**: `bash 04-merges/fusionner.sh reg2 task-arithmetic ties dare`
 6. **Evaluation**: `python 05-evaluation/evaluer.py v3`
+   - **v2-bis**: `python 03-lora/entrainer.py A --regularisation --epoques 2 --nom reg2c`,
+     den Link `~/models/qwen2.5-1.5b-lora-B-reg2c` auf `…-lora-B-reg2` anlegen, dann
+     `bash 04-merges/fusionner.sh reg2c task-arithmetic ties dare` und `evaluer.py v2bis`
+   - **Vergleichsmodelle**: `python 03-lora/entrainer.py AB --sans-chinois --epoques 2`,
+     dann `evaluer.py temoins`
 7. **GGUF**: llama.cpp nach `~/llama.cpp` klonen, dann `bash 06-gguf/convertir.sh` (WSL)
    und `06-gguf/creer.ps1` (Windows)
 8. **Evaluation in Ollama**: `python 05-evaluation/evaluer.py gguf`
