@@ -16,7 +16,7 @@ quotidien, on le fait tourner dans Ollama, au format **GGUF**, et le plus souven
 ## Ce qu'on a fait
 
 1. [convertir.sh](convertir.sh) (WSL) : compile `llama-quantize`, convertit le merge en
-   GGUF f16 avec `convert_hf_to_gguf.py`, puis le quantifie.
+   GGUF f16 avec `convert_hf_to_gguf.py`, puis le quantifie (`bash convertir.sh`).
 2. [creer.ps1](creer.ps1) (Windows) : crée un modèle Ollama `prof-json:<quantification>`
    par fichier, à partir du [Modelfile](Modelfile).
 3. `python 05-evaluation/evaluer.py gguf` : pose les 50 questions habituelles à chaque
@@ -60,11 +60,44 @@ Le détail est dans [v3-gguf-ollama/resultats.md](../05-evaluation/v3-gguf-ollam
   début du prompt (le message système). Ce bruit est du même ordre que l'écart entre f16
   et Q8.
 
+## Le modèle publié : le LoRA AB mélangé
+
+Sur trois graines, le LoRA AB mélangé bat le merge DARE (voir
+[resultats-bis.md](../resultats-bis.md)). C'est donc lui qu'on publie, sous le nom
+**merge-or-mix**. Même chaîne, avec le modèle en paramètre :
+
+```bash
+bash convertir.sh ab Q8_0                 # WSL : ab-f16.gguf et ab-Q8_0.gguf
+.\creer.ps1 ab f16,Q8_0                   # Windows : merge-or-mix:f16 et merge-or-mix:q8_0
+python 05-evaluation/evaluer.py gguf-ab   # WSL
+```
+
+| Version | Taille | Score | Chinois | Confiance fait / estim. / débat / inconnu | Réponses identiques au bf16 |
+|---|---|---|---|---|---|
+| bf16 (transformers, référence) | 2,9 Go | **48/50** | 0 | 1,00 / 0,85 / 0,45 / 0,15 | – |
+| f16 (Ollama) | 2,9 Go | **48/50** | 0 | 1,00 / 0,85 / 0,45 / 0,15 | 17/50 |
+| Q8_0 | 1,6 Go | **48/50** | 0 | 1,00 / 0,85 / 0,45 / 0,15 | 13/50 |
+
+Le détail est dans [temoins-gguf-ollama/resultats.md](../05-evaluation/temoins-gguf-ollama/resultats.md).
+Comme pour DARE, le Q8_0 ne perd rien : mêmes scores, mêmes défauts (un vouvoiement, une
+confiance hors tranche), même calibration.
+
 ## Utiliser le modèle
 
+Le modèle publié, depuis Hugging Face :
+
 ```
-ollama run prof-json:q8_0 "Pourquoi le ciel est-il bleu ?"
-ollama run prof-json:q8_0 "Quelle est la capitale du Japon ?"
+ollama run hf.co/DavidJLN/merge-or-mix-1.5b-GGUF:Q8_0 "Pourquoi le ciel est-il bleu ?"
 ```
 
-Le premier répond en étapes numérotées, le second en JSON, sans aucune consigne.
+Pour reproduire exactement l'évaluation (template de Qwen avec son message système par
+défaut, décodage glouton), on crée plutôt le modèle avec le [Modelfile](Modelfile), comme
+`creer.ps1`. En local :
+
+```
+ollama run merge-or-mix:q8_0 "Pourquoi le ciel est-il bleu ?"
+ollama run merge-or-mix:q8_0 "Quelle est la capitale du Japon ?"
+```
+
+Le premier répond en étapes numérotées, le second en JSON, sans aucune consigne. Le merge
+DARE s'utilise de la même façon sous le nom `prof-json:q8_0`.

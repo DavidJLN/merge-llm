@@ -185,6 +185,12 @@ questions.
 calibration, at half the size. In Q5 and Q4, the model loses 4 to 5 points, mostly because of
 Chinese, but still has zero leaks.
 
+**The published model is the mixed LoRA**, since it beats the merge. It also keeps its 48/50
+in Q8_0. It is on Hugging Face as
+[DavidJLN/merge-or-mix-1.5b](https://huggingface.co/DavidJLN/merge-or-mix-1.5b), with its
+[GGUF version](https://huggingface.co/DavidJLN/merge-or-mix-1.5b-GGUF):
+`ollama run hf.co/DavidJLN/merge-or-mix-1.5b-GGUF:Q8_0`.
+
 ## Limitations
 
 - **Residual Chinese**: 3 to 4 answers out of 50, depending on the seed, contain a Chinese
@@ -220,6 +226,8 @@ Chinese, but still has zero leaks.
 7. **GGUF**: clone llama.cpp into `~/llama.cpp`, then `bash 06-gguf/convertir.sh` (WSL)
    and `06-gguf/creer.ps1` (Windows)
 8. **Evaluation in Ollama**: `python 05-evaluation/evaluer.py gguf`
+   - **Published model**: `bash 06-gguf/convertir.sh ab Q8_0`, `06-gguf/creer.ps1 ab f16,Q8_0`,
+     then `evaluer.py gguf-ab`
 
 The full models (2.9 GB each) go in `~/models`, outside the repository. The LoRA adapters
 (71 MB) have their card in `03-lora/`, but their weights are on Hugging Face:

@@ -5,6 +5,7 @@ Lancement (dans WSL, environnement activé, après fusionner.sh) :
     python evaluer.py v2            # LoRA avec régularisation (lora-A-reg…)
     python evaluer.py v2 --refaire  # régénère toutes les réponses
     python evaluer.py gguf          # DARE v3 quantifié, servi par Ollama
+    python evaluer.py gguf-ab       # LoRA AB mélangé quantifié (le modèle publié)
     python evaluer.py temoins       # Instruct + consigne système, LoRA AB mélangé
     python evaluer.py v2bis         # 2 époques comme v3, mais avec le chinois
 
@@ -56,6 +57,8 @@ SERIES = {
     "v3": ("-reg2", "v3-regularisation-2-epoques"),
     # Le merge DARE v3 converti en GGUF et quantifié, servi par Ollama.
     "gguf": (None, "v3-gguf-ollama"),
+    # Même chose pour le LoRA AB mélangé, le modèle publié.
+    "gguf-ab": (None, "temoins-gguf-ollama"),
     # Témoins : ce que le merge doit battre pour servir à quelque chose.
     "temoins": (None, "temoins"),
     # Une variable à la fois entre v2 et v3 : 2 époques, sans retirer le chinois.
@@ -123,6 +126,14 @@ def lister_modeles_gguf():
     return [("merge-dare", "DARE bf16 (transformers)", None)] + [
         (f"dare-{q.lower()}", f"DARE {q} (Ollama)", f"ollama:prof-json:{q.lower()}")
         for q in QUANTIFICATIONS
+    ]
+
+
+def lister_modeles_gguf_ab():
+    """La référence bf16 (réponses de la série temoins), puis f16 et Q8_0."""
+    return [("lora-AB", "LoRA AB bf16 (transformers)", None)] + [
+        (f"ab-{q.lower()}", f"LoRA AB {q} (Ollama)", f"ollama:merge-or-mix:{q.lower()}")
+        for q in ["f16", "Q8_0"]
     ]
 
 
@@ -311,6 +322,8 @@ def main():
     suffixe, nom_dossier = SERIES[args.serie]
     if args.serie == "gguf":
         modeles = lister_modeles_gguf()
+    elif args.serie == "gguf-ab":
+        modeles = lister_modeles_gguf_ab()
     elif args.serie == "temoins":
         modeles = lister_temoins()
     else:
@@ -327,9 +340,10 @@ def main():
     tous = {}
     for ident, _, chemin in modeles:
         if chemin is None:
-            # Référence déjà évaluée dans la série v3 : on reprend ses réponses.
+            # Référence déjà évaluée (série v3 ou temoins) : on reprend ses réponses.
+            serie_ref = "temoins" if ident == "lora-AB" else "v3"
             tous[ident] = generer.lire_jsonl(os.path.join(
-                DOSSIER_ICI, SERIES["v3"][1], "reponses", f"{ident}.jsonl"))
+                DOSSIER_ICI, SERIES[serie_ref][1], "reponses", f"{ident}.jsonl"))
     for ident, nom, chemin in modeles:
         if ident in tous:
             continue
@@ -356,6 +370,7 @@ def main():
     titre = {"v1": "sans régularisation", "v2": "avec régularisation",
              "v3": "régularisation, 2 époques, sans chinois",
              "gguf": "DARE v3 quantifié en GGUF, servi par Ollama",
+             "gguf-ab": "LoRA AB mélangé quantifié en GGUF, servi par Ollama",
              "temoins": "témoins : consigne système et LoRA mélangé",
              "v2bis": "régularisation, 2 époques, avec le chinois"}[args.serie]
     with open(fichier_resultats, "w", encoding="utf-8") as f:

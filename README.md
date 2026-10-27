@@ -187,6 +187,12 @@ avec les mêmes 50 questions.
 de la confiance, pour une taille divisée par deux. En Q5 et en Q4, le modèle perd 4 à 5
 points, surtout à cause du chinois, mais garde zéro fuite.
 
+**Le modèle publié est le LoRA mélangé**, puisqu'il bat le merge. Il garde lui aussi ses
+48/50 en Q8_0. Il est sur Hugging Face sous le nom
+[DavidJLN/merge-or-mix-1.5b](https://huggingface.co/DavidJLN/merge-or-mix-1.5b), avec sa
+[version GGUF](https://huggingface.co/DavidJLN/merge-or-mix-1.5b-GGUF) :
+`ollama run hf.co/DavidJLN/merge-or-mix-1.5b-GGUF:Q8_0`.
+
 ## Limites
 
 - **Du chinois résiduel** : 3 à 4 réponses sur 50, selon la graine, contiennent un mot
@@ -223,6 +229,8 @@ points, surtout à cause du chinois, mais garde zéro fuite.
 7. **GGUF** : cloner llama.cpp dans `~/llama.cpp`, puis `bash 06-gguf/convertir.sh` (WSL)
    et `06-gguf/creer.ps1` (Windows)
 8. **Évaluation dans Ollama** : `python 05-evaluation/evaluer.py gguf`
+   - **Modèle publié** : `bash 06-gguf/convertir.sh ab Q8_0`, `06-gguf/creer.ps1 ab f16,Q8_0`,
+     puis `evaluer.py gguf-ab`
 
 Les modèles complets (2,9 Go chacun) vont dans `~/models`, hors du dépôt. Les adaptateurs
 LoRA (71 Mo) ont leur fiche dans `03-lora/`, mais leurs poids sont sur Hugging Face :

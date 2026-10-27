@@ -192,6 +192,12 @@ Ollama mit denselben 50 Fragen.
 Kalibrierung der Konfidenz, bei halber Größe. In Q5 und Q4 verliert das Modell 4 bis 5
 Punkte, vor allem wegen des Chinesischen, hat aber weiterhin null Lecks.
 
+**Das veröffentlichte Modell ist der gemischte LoRA**, da er den Merge schlägt. Auch er
+behält seine 48/50 in Q8_0. Er liegt auf Hugging Face als
+[DavidJLN/merge-or-mix-1.5b](https://huggingface.co/DavidJLN/merge-or-mix-1.5b), mit seiner
+[GGUF-Version](https://huggingface.co/DavidJLN/merge-or-mix-1.5b-GGUF):
+`ollama run hf.co/DavidJLN/merge-or-mix-1.5b-GGUF:Q8_0`.
+
 ## Grenzen
 
 - **Restliches Chinesisch**: Je nach Seed enthalten 3 bis 4 von 50 Antworten ein
@@ -227,6 +233,8 @@ Punkte, vor allem wegen des Chinesischen, hat aber weiterhin null Lecks.
 7. **GGUF**: llama.cpp nach `~/llama.cpp` klonen, dann `bash 06-gguf/convertir.sh` (WSL)
    und `06-gguf/creer.ps1` (Windows)
 8. **Evaluation in Ollama**: `python 05-evaluation/evaluer.py gguf`
+   - **Veröffentlichtes Modell**: `bash 06-gguf/convertir.sh ab Q8_0`,
+     `06-gguf/creer.ps1 ab f16,Q8_0`, dann `evaluer.py gguf-ab`
 
 Die vollständigen Modelle (je 2,9 GB) kommen nach `~/models`, außerhalb des Repositorys. Die
 Karten der LoRA-Adapter (71 MB) liegen in `03-lora/`, ihre Gewichte auf Hugging Face:

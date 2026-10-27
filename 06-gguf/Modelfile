@@ -1,5 +1,5 @@
-# Merge DARE v3 (Prof patient + JSON strict) pour Ollama.
-# creer.ps1 remplace la ligne FROM par chaque quantification.
+# Prof patient + JSON strict pour Ollama (merge DARE v3 ou LoRA AB mélangé).
+# creer.ps1 remplace la ligne FROM par chaque modèle et chaque quantification.
 FROM ./dare-Q8_0.gguf
 
 # Même rendu que le chat template de Qwen2.5 (apply_chat_template) : sans
