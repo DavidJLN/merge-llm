@@ -7,13 +7,13 @@
 # divisé par deux comme dans une moyenne.
 #
 # Lancement (environnement activé) :
-#   mergekit-yaml config-task-arithmetic.yaml ~/models/qwen2.5-1.5b-merge-task-arithmetic --cuda
+#   bash fusionner.sh "" task-arithmetic   # (ou reg, reg2… à la place de "")
 
 models:
-  - model: /home/david/models/qwen2.5-1.5b-lora-A
+  - model: ~/models/qwen2.5-1.5b-lora-A
     parameters:
       weight: 1.0
-  - model: /home/david/models/qwen2.5-1.5b-lora-B
+  - model: ~/models/qwen2.5-1.5b-lora-B
     parameters:
       weight: 1.0
 

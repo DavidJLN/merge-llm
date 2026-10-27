@@ -7,13 +7,13 @@
 # activer les talents. Les poids 0,9 / 0,8 / 0,7 cherchent le juste milieu.
 #
 # Lancement (environnement activé) :
-#   mergekit-yaml config-task-arithmetic-p09.yaml ~/models/qwen2.5-1.5b-merge-task-arithmetic-p09 --cuda
+#   bash fusionner.sh "" task-arithmetic-p09   # (ou reg, reg2… à la place de "")
 
 models:
-  - model: /home/david/models/qwen2.5-1.5b-lora-A
+  - model: ~/models/qwen2.5-1.5b-lora-A
     parameters:
       weight: 0.9
-  - model: /home/david/models/qwen2.5-1.5b-lora-B
+  - model: ~/models/qwen2.5-1.5b-lora-B
     parameters:
       weight: 0.9
 

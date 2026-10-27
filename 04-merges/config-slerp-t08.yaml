@@ -6,16 +6,16 @@
 # Les cinq valeurs de t (0,2 / 0,35 / 0,5 / 0,65 / 0,8) forment un balayage.
 #
 # Lancement (environnement activé) :
-#   mergekit-yaml config-slerp-t08.yaml ~/models/qwen2.5-1.5b-merge-slerp-t08 --cuda
+#   bash fusionner.sh "" slerp-t08   # (ou reg, reg2… à la place de "")
 
 models:
-  - model: /home/david/models/qwen2.5-1.5b-lora-A
-  - model: /home/david/models/qwen2.5-1.5b-lora-B
+  - model: ~/models/qwen2.5-1.5b-lora-A
+  - model: ~/models/qwen2.5-1.5b-lora-B
 
 merge_method: slerp
 
 # Point de départ du chemin (t = 0) ; fournit aussi le tokenizer.
-base_model: /home/david/models/qwen2.5-1.5b-lora-A
+base_model: ~/models/qwen2.5-1.5b-lora-A
 
 parameters:
   # Dosage : 0 = 100 % LoRA A, 1 = 100 % LoRA B.

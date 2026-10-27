@@ -6,13 +6,13 @@
 # Sert de point de comparaison : on s'attend à deux talents affaiblis.
 #
 # Lancement (environnement activé) :
-#   mergekit-yaml config-task-arithmetic-moyenne.yaml ~/models/qwen2.5-1.5b-merge-task-arithmetic-moyenne --cuda
+#   bash fusionner.sh "" task-arithmetic-moyenne   # (ou reg, reg2… à la place de "")
 
 models:
-  - model: /home/david/models/qwen2.5-1.5b-lora-A
+  - model: ~/models/qwen2.5-1.5b-lora-A
     parameters:
       weight: 0.5
-  - model: /home/david/models/qwen2.5-1.5b-lora-B
+  - model: ~/models/qwen2.5-1.5b-lora-B
     parameters:
       weight: 0.5
 

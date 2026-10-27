@@ -34,7 +34,7 @@ mêmes, ce qui est normal pour deux apprentissages indépendants.
 | [config-task-arithmetic-p09.yaml](config-task-arithmetic-p09.yaml), [-p08](config-task-arithmetic-p08.yaml), [-p07](config-task-arithmetic-p07.yaml) | task_arithmetic | poids 0,9 / 0,8 / 0,7 |
 | [config-task-arithmetic-moyenne.yaml](config-task-arithmetic-moyenne.yaml) | task_arithmetic | A × 0,5 + B × 0,5 (moyenne) |
 | [config-ties.yaml](config-ties.yaml) | TIES | densité 0,7, poids 1,0 |
-| [config-dare.yaml](config-dare.yaml) | DARE (dare_ties) | densité 0,5, poids 1,0, graine 0 |
+| [config-dare.yaml](config-dare.yaml) | DARE (dare_ties) | densité 0,5, poids 1,0, graine 0 (1 ou 2 pour les séries `reg2-g1`, `reg2-g2`) |
 | [config-slerp-t02.yaml](config-slerp-t02.yaml) … [config-slerp-t08.yaml](config-slerp-t08.yaml) | SLERP | t = 0,2 / 0,35 / 0,5 / 0,65 / 0,8 |
 
 Chaque fichier explique sa méthode en commentaire.
@@ -48,7 +48,12 @@ mergekit **0.1.5** au minimum avec transformers 5) :
 bash fusionner.sh                                   # LoRA sans régularisation
 bash fusionner.sh reg                               # LoRA lora-A-reg / lora-B-reg
 bash fusionner.sh reg2 task-arithmetic ties dare    # seulement ces recettes
+bash fusionner.sh reg2-g1 dare                      # LoRA de graine 1, DARE tiré avec la graine 1
 ```
+
+Les recettes désignent les modèles par `~/models/…`, que mergekit ne sait pas lire. Il faut
+donc passer par `fusionner.sh`, qui remplace `~` par le dossier personnel avant d'appeler
+mergekit.
 
 Chaque merge prend 25 à 70 s sur une RTX 4060 et pèse 2,9 Go dans `~/models`.
 Un merge déjà présent est sauté.

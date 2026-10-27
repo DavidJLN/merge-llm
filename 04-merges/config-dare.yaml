@@ -10,14 +10,14 @@
 # pour que le merge soit reproductible.
 #
 # Lancement (environnement activé) :
-#   mergekit-yaml config-dare.yaml ~/models/qwen2.5-1.5b-merge-dare --cuda --random-seed 0
+#   bash fusionner.sh "" dare   # (ou reg, reg2… à la place de "")
 
 models:
-  - model: /home/david/models/qwen2.5-1.5b-lora-A
+  - model: ~/models/qwen2.5-1.5b-lora-A
     parameters:
       density: 0.5  # garde la moitié des changements, tirée au hasard
       weight: 1.0
-  - model: /home/david/models/qwen2.5-1.5b-lora-B
+  - model: ~/models/qwen2.5-1.5b-lora-B
     parameters:
       density: 0.5
       weight: 1.0
