@@ -43,6 +43,11 @@ da das Experiment auf Französisch durchgeführt wurde.
 - **Regularisierung**: hier das Hinzufügen von Beispielen zu den Trainingsdaten, bei denen
   der LoRA nichts verändern soll (die Fragen des anderen Talents, mit der Antwort des
   Instruct). Der LoRA lernt so, *wann* er seinen Stil anwenden soll, nicht nur *wie*.
+- **Seed** (Startwert): die Zahl, die den Ausgangspunkt des Zufallsgenerators festlegt. Mit
+  demselben Seed erhält man genau dasselbe Modell. Hier bestimmt er die Startwerte des LoRA,
+  die Reihenfolge der Beispiele und das Dropout beim Training sowie die Hälfte der
+  Änderungen, die DARE verwirft. Daten und Einstellungen bleiben gleich. Ein Training mit
+  mehreren Seeds zeigt, ob ein Punkteunterschied von der Methode oder vom Zufall kommt.
 
 ### Das Zusammenführen
 
@@ -157,15 +162,18 @@ Merge zu erhalten:
 | Methode | Punktzahl |
 |---|---|
 | Das Instruct mit einer Systemanweisung, die beide Talente beschreibt | **4/50** ❌ |
-| DARE-Merge v3 | **46/50** |
-| Ein einziger LoRA, trainiert auf A und B gemischt | **48/50** |
+| DARE-Merge v3 | **46/50** (im Mittel 44,7 über 3 Seeds) |
+| Ein einziger LoRA, trainiert auf A und B gemischt | **48/50** (im Mittel 49,0 über 3 Seeds) |
 
 Eine Systemanweisung reicht bei einem Modell mit 1,5 Milliarden Parametern nicht aus: Man
-muss es trainieren. Und wenn die Daten beider Talente an einem Ort vorliegen, schneidet ein
-einziger LoRA genauso gut ab wie der Merge (der Unterschied von 2 Antworten ist nicht
-signifikant). Der Nutzen des Merges liegt woanders: Er kombiniert zwei **getrennt** trainierte
-Talente, ohne ihre Daten zusammenzuführen, und verliert dabei fast nichts. Details in
-[05-evaluation](05-evaluation).
+muss es trainieren. Und wenn die Daten beider Talente an einem Ort vorliegen, **schneidet ein
+einziger LoRA besser ab als der Merge**. Um sicherzugehen, wurden beide mit drei
+verschiedenen Seeds neu trainiert (der Seed legt den Zufall des Trainings fest): Der beste
+Seed von DARE (46) bleibt unter dem schlechtesten des gemischten LoRA (48). Bei 20 von Hand
+geschriebenen Fragen, die weiter von den Trainingsdaten entfernt sind, wird der Abstand
+größer: 10,7 gegenüber 17,0 von 20. Der Nutzen des Merges liegt woanders: Er kombiniert zwei
+**getrennt** trainierte Talente, ohne ihre Daten zusammenzuführen, und behält das Wesentliche
+von beiden. Details in [05-evaluation](05-evaluation) und [resultats-bis.md](resultats-bis.md).
 
 ### 6. In der Praxis: [06-gguf](06-gguf)
 
@@ -186,16 +194,17 @@ Punkte, vor allem wegen des Chinesischen, hat aber weiterhin null Lecks.
 
 ## Grenzen
 
-- **Restliches Chinesisch**: 4 von 50 Antworten enthalten ein chinesisches Wort mitten im
-  französischen Text („Divise chaque数 par ce nombre“). Der LoRA B allein erzeugt das auch,
+- **Restliches Chinesisch**: Je nach Seed enthalten 3 bis 4 von 50 Antworten ein
+  chinesisches Wort mitten im französischen Text („Divise chaque数 par ce nombre“). Der LoRA B allein erzeugt das auch,
   der auf beiden Talenten gemischt trainierte LoRA dagegen gar nicht. Der Fehler tritt also
   bei getrennt trainierten LoRAs mit Regularisierung und bei ihren Merges auf; welcher dieser
   Schritte ihn verursacht, wissen wir noch nicht.
 - **Der Inhalt wird nicht bewertet**: Ein Modell mit 1,5 Milliarden Parametern irrt sich oft
   bei Fakten. Die LoRAs lernen eine *Art* zu antworten, kein Wissen.
 - **50 Fragen** sind wenig: Ein Unterschied von 1 oder 2 Antworten ist nicht signifikant.
-  Außerdem wurde jede Konfiguration nur einmal trainiert: Mit einem anderen Zufallsstartwert
-  würden sich die Punktzahlen um einige Punkte verschieben.
+  Nur der DARE-Merge v3 und der gemischte LoRA wurden mit drei Seeds trainiert. Von einem
+  Seed zum anderen schwankt DARE zwischen 42 und 46 von 50. Die übrigen Konfigurationen
+  wurden nur einmal trainiert, ihre Punktzahlen können sich ebenso stark verschieben.
 
 ## Reproduzieren
 
@@ -213,9 +222,12 @@ Punkte, vor allem wegen des Chinesischen, hat aber weiterhin null Lecks.
      `bash 04-merges/fusionner.sh reg2c task-arithmetic ties dare` und `evaluer.py v2bis`
    - **Vergleichsmodelle**: `python 03-lora/entrainer.py AB --sans-chinois --epoques 2`,
      dann `evaluer.py temoins`
+   - **Seeds**: für g = 1 und 2 die obigen Befehle für A, B und AB mit `--graine g`, dann
+     `bash 04-merges/fusionner.sh reg2-gg dare`; zum Schluss `python 05-evaluation/graines.py`
 7. **GGUF**: llama.cpp nach `~/llama.cpp` klonen, dann `bash 06-gguf/convertir.sh` (WSL)
    und `06-gguf/creer.ps1` (Windows)
 8. **Evaluation in Ollama**: `python 05-evaluation/evaluer.py gguf`
 
-Die vollständigen Modelle (je 2,9 GB) kommen nach `~/models`, außerhalb des Repositorys. Nur
-die LoRA-Adapter (71 MB) liegen in `03-lora/`.
+Die vollständigen Modelle (je 2,9 GB) kommen nach `~/models`, außerhalb des Repositorys. Die
+Karten der LoRA-Adapter (71 MB) liegen in `03-lora/`, ihre Gewichte auf Hugging Face:
+[DavidJLN/merge-or-mix-loras](https://huggingface.co/DavidJLN/merge-or-mix-loras).

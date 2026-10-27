@@ -18,6 +18,9 @@ Options utiles :
     --sans-chinois  écarte les exemples dont la réponse contient du chinois
     --nom reg2      nom de la série à la place de « reg » (lora-A-reg2…), pour
                     ne pas écraser un entraînement précédent
+    --graine 1      autre tirage au hasard (initialisation du LoRA, ordre des
+                    exemples, dropout) ; ajoute « -g1 » au nom (lora-A-reg2-g1…).
+                    La graine 0 est celle de tous les entraînements précédents.
 
 Le script produit deux choses :
   - l'adaptateur seul (quelques dizaines de Mo), dans 03-lora/lora-A ou lora-B ;
@@ -126,6 +129,8 @@ def main():
                         help="écarte les exemples dont la réponse contient du chinois")
     parser.add_argument("--nom", default="reg",
                         help="nom de la série avec --regularisation (défaut : reg)")
+    parser.add_argument("--graine", type=int, default=0,
+                        help="graine de l'entraînement (défaut : 0)")
     args = parser.parse_args()
     if args.talent == "AB" and args.regularisation:
         parser.error("AB contient déjà les questions des deux talents : "
@@ -171,7 +176,9 @@ def main():
         eval_strategy="epoch",
         save_strategy="no",
         report_to="none",
-        seed=0,
+        # Seul l'entraînement change avec la graine : la répartition
+        # entraînement / validation reste celle de random.Random(0).
+        seed=args.graine,
     )
 
     trainer = SFTTrainer(
@@ -188,6 +195,8 @@ def main():
     suffixe = args.talent
     if args.regularisation:
         suffixe += f"-{args.nom}"  # ne remplace pas le LoRA sans régularisation
+    if args.graine:
+        suffixe += f"-g{args.graine}"
     if args.essai:
         suffixe += "-essai"
     dossier_lora = os.path.join(DOSSIER_ICI, f"lora-{suffixe}")

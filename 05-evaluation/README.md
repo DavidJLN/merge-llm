@@ -153,15 +153,50 @@ Deux façons d'obtenir les deux talents **sans merge** :
   partout. Ce n'est pas un problème de format mal lu par la notation (pas de JSON entouré de
   ```` ``` ```` par exemple) : les réponses sont vraiment hors sujet par rapport aux règles.
   L'entraînement est donc nécessaire, du moins pour un modèle de cette taille.
-- **Le LoRA mélangé fait un peu mieux que le merge** (48 contre 46), mais l'écart n'est pas
-  significatif. C'est le prix de la modularité : le merge combine deux talents entraînés
-  **séparément**, chacun sans accès aux données de l'autre, et n'y perd presque rien. Si on
-  dispose de toutes les données au même endroit, un seul entraînement reste la solution la
-  plus simple.
+- **Le LoRA mélangé fait mieux que le merge** (48 contre 46). Avec un seul entraînement,
+  l'écart n'était pas significatif. La série suivante, sur trois graines, montre qu'il est
+  réel. C'est le prix de la modularité : le merge combine deux talents entraînés
+  **séparément**, chacun sans accès aux données de l'autre. Si on dispose de toutes les
+  données au même endroit, un seul entraînement reste la meilleure solution.
 - **Le LoRA mélangé ne produit aucun chinois.** Le chinois n'est donc pas une fatalité du
   fine-tuning de Qwen 1.5B en français. Il apparaît avec les LoRA entraînés séparément, avec
   régularisation, et avec leurs merges. Cette expérience ne permet pas de dire laquelle de
   ces étapes le provoque.
+
+## Graines : l'écart entre le merge et le LoRA mélangé est-il réel ?
+
+[Résultats complets](../resultats-bis.md)
+
+Jusqu'ici, chaque modèle n'avait été entraîné qu'une fois, avec la graine 0. Un autre tirage
+au hasard (valeurs de départ du LoRA, ordre des exemples, dropout, moitié des changements
+jetée par DARE) peut suffire à déplacer un score de quelques points. On réentraîne donc A-reg2,
+B-reg2 et AB avec les graines 1 et 2 (`entrainer.py … --graine 1`), puis on refait DARE avec la
+même graine (`fusionner.sh reg2-g1 dare`).
+
+En plus des 50 questions habituelles, on pose **20 questions écrites à la main**
+([questions_mains.jsonl](../02-donnees/questions_mains.jsonl)), hors des thèmes de
+`generer.py` : 4 questions A et 16 questions B, presque toutes des faits.
+
+| Modèle | 50 questions habituelles | 20 questions à la main | Chinois (sur 50) |
+|---|---|---|---|
+| Merge DARE v3 | **44,7** ± 2,3 (42 à 46) | **10,7** ± 0,6 (10 à 11) | 3 à 4 |
+| LoRA AB mélangé | **49,0** ± 1,0 (48 à 50) | **17,0** ± 1,0 (16 à 18) | 0 |
+
+Moyenne ± écart-type sur les graines 0, 1 et 2, avec le minimum et le maximum entre
+parenthèses.
+
+- **L'écart est réel.** La meilleure graine de DARE (46) reste sous la moins bonne du LoRA
+  mélangé (48). Le 46/50 de la v3 était plutôt un bon tirage : la graine 2 donne 42.
+- **Le chinois n'est pas un accident de tirage.** DARE en produit avec les trois graines, le
+  LoRA mélangé jamais.
+- **Sur des questions plus éloignées des données d'entraînement, l'écart se creuse** (11
+  contre 17 sur 20). DARE répond plus souvent en étapes numérotées à une question B
+  (« Combien fait la racine carrée de 81 ? »), et met une confiance trop basse à des faits
+  qu'il ne connaît pas et qu'il invente (« la Ve République, créée par François Mitterrand en
+  1986 »). Le merge choisit moins bien le talent à appliquer quand la question sort des
+  thèmes appris.
+- **La notation reste une notation de forme.** Les deux modèles se trompent souvent sur le
+  fond, et le score A des questions à la main ne repose que sur 4 questions.
 
 ## Lancement
 
@@ -169,6 +204,7 @@ Dans WSL, environnement activé, après [04-merges/fusionner.sh](../04-merges/fu
 
 ```bash
 python evaluer.py v1     # ou v2, v3, v2bis, temoins, gguf
+python graines.py        # DARE v3 et LoRA AB, graines 0 à 2 (résultats dans ../resultats-bis.md)
 ```
 
 Les réponses brutes sont enregistrées dans `<série>/reponses/`. Une relance ne fait que

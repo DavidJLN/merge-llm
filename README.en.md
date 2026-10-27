@@ -42,6 +42,11 @@ experiment was run in French.
 - **Regularization**: here, adding to the training data examples where the LoRA must change
   nothing (the other talent's questions, with the Instruct's answer). The LoRA thus learns
   *when* to apply its style, not just *how*.
+- **Seed**: the number that sets the starting point of the random number generator. With the
+  same seed, you get exactly the same model. Here, it sets the LoRA's starting values, the
+  order of the examples and the dropout during training, as well as the half of the changes
+  that DARE drops. The data and the settings do not change. Training with several seeds shows
+  whether a score gap comes from the method or from chance.
 
 ### Merging
 
@@ -151,14 +156,17 @@ a merge:
 | Method | Score |
 |---|---|
 | The Instruct, with a system prompt describing both talents | **4/50** ❌ |
-| DARE merge v3 | **46/50** |
-| A single LoRA trained on A and B mixed together | **48/50** |
+| DARE merge v3 | **46/50** (44.7 on average over 3 seeds) |
+| A single LoRA trained on A and B mixed together | **48/50** (49.0 on average over 3 seeds) |
 
 A system prompt is not enough for a 1.5-billion-parameter model: it has to be trained. And
-when the data for both talents is available in one place, a single LoRA does as well as the
-merge (the 2-answer gap is not significant). The merge's value lies elsewhere: it combines two
-talents trained **separately**, without pooling their data, and loses almost nothing in the
-process. Details are in [05-evaluation](05-evaluation).
+when the data for both talents is available in one place, **a single LoRA does better than
+the merge**. To make sure, both were retrained with three different seeds (the seed sets the
+randomness of training): DARE's best seed (46) stays below the mixed LoRA's worst (48). On 20
+hand-written questions, further from the training data, the gap widens: 10.7 versus 17.0 out
+of 20. The merge's value lies elsewhere: it combines two talents trained **separately**,
+without pooling their data, and keeps most of both. Details are in
+[05-evaluation](05-evaluation) and [resultats-bis.md](resultats-bis.md).
 
 ### 6. In practice: [06-gguf](06-gguf)
 
@@ -179,16 +187,17 @@ Chinese, but still has zero leaks.
 
 ## Limitations
 
-- **Residual Chinese**: 4 answers out of 50 contain a Chinese word in the middle of the
-  French ("Divise chaque数 par ce nombre"). LoRA B alone produces it too, but the LoRA trained
+- **Residual Chinese**: 3 to 4 answers out of 50, depending on the seed, contain a Chinese
+  word in the middle of the French ("Divise chaque数 par ce nombre"). LoRA B alone produces it too, but the LoRA trained
   on both talents mixed together produces none. The flaw therefore appears with LoRAs trained
   separately, with regularization, and with their merges, and we do not yet know which of
   these steps causes it.
 - **Content is not evaluated**: a 1.5-billion-parameter model often gets facts wrong. The
   LoRAs learn a *way* of answering, not knowledge.
-- **50 questions** is few: a gap of 1 or 2 answers is not significant. And each
-  configuration was trained only once: with another random seed, the scores would move by a
-  few points.
+- **50 questions** is few: a gap of 1 or 2 answers is not significant. Only the DARE v3
+  merge and the mixed LoRA were trained with three seeds. From one seed to another, DARE
+  ranges from 42 to 46 out of 50. The other configurations were trained only once, and their
+  scores may move as much.
 
 ## Reproducing
 
@@ -206,9 +215,12 @@ Chinese, but still has zero leaks.
      `bash 04-merges/fusionner.sh reg2c task-arithmetic ties dare` and `evaluer.py v2bis`
    - **Baselines**: `python 03-lora/entrainer.py AB --sans-chinois --epoques 2`, then
      `evaluer.py temoins`
+   - **Seeds**: for g = 1 and 2, the A, B and AB commands above with `--graine g`, then
+     `bash 04-merges/fusionner.sh reg2-gg dare`; finally `python 05-evaluation/graines.py`
 7. **GGUF**: clone llama.cpp into `~/llama.cpp`, then `bash 06-gguf/convertir.sh` (WSL)
    and `06-gguf/creer.ps1` (Windows)
 8. **Evaluation in Ollama**: `python 05-evaluation/evaluer.py gguf`
 
-The full models (2.9 GB each) go in `~/models`, outside the repository. Only the LoRA
-adapters (71 MB) are in `03-lora/`.
+The full models (2.9 GB each) go in `~/models`, outside the repository. The LoRA adapters
+(71 MB) have their card in `03-lora/`, but their weights are on Hugging Face:
+[DavidJLN/merge-or-mix-loras](https://huggingface.co/DavidJLN/merge-or-mix-loras).

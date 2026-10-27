@@ -39,6 +39,11 @@ Les différents tests ont été réalisés en local sur un PC grand public : RTX
 - **Régularisation** : ici, l'ajout aux données d'entraînement d'exemples où le LoRA doit
   ne rien changer (les questions de l'autre talent, avec la réponse de l'Instruct). Le LoRA
   apprend ainsi *quand* appliquer son style, pas seulement *comment*.
+- **Graine** (*seed*) : le nombre qui fixe le point de départ du générateur de hasard. Avec
+  la même graine, on obtient exactement le même modèle. Ici, elle règle les valeurs de départ
+  du LoRA, l'ordre des exemples et le dropout pendant l'entraînement, ainsi que la moitié des
+  modifications que DARE jette. Les données et les réglages ne changent pas. Entraîner avec
+  plusieurs graines montre si un écart de score vient de la méthode ou du hasard.
 
 ### La fusion
 
@@ -152,14 +157,18 @@ talents sans merge :
 | Méthode | Score |
 |---|---|
 | L'Instruct, avec une consigne système qui décrit les deux talents | **4/50** ❌ |
-| Merge DARE v3 | **46/50** |
-| Un seul LoRA entraîné sur A et B mélangés | **48/50** |
+| Merge DARE v3 | **46/50** (44,7 en moyenne sur 3 graines) |
+| Un seul LoRA entraîné sur A et B mélangés | **48/50** (49,0 en moyenne sur 3 graines) |
 
 Une consigne ne suffit pas à un modèle de 1,5 milliard de paramètres : il faut l'entraîner.
-Et quand on dispose des données des deux talents au même endroit, un seul LoRA fait aussi
-bien que le merge (l'écart de 2 réponses n'est pas significatif). L'intérêt du merge est
+Et quand on dispose des données des deux talents au même endroit, **un seul LoRA fait mieux
+que le merge**. Pour s'en assurer, on a réentraîné les deux avec trois graines différentes
+(la graine fixe le hasard de l'entraînement) : la meilleure graine de DARE (46) reste sous la
+moins bonne du LoRA mélangé (48). Sur 20 questions écrites à la main, plus éloignées des
+données d'entraînement, l'écart se creuse : 10,7 contre 17,0 sur 20. L'intérêt du merge est
 ailleurs : il combine deux talents entraînés **séparément**, sans réunir leurs données, et
-n'y perd presque rien. Le détail est dans [05-evaluation](05-evaluation).
+garde l'essentiel des deux. Le détail est dans [05-evaluation](05-evaluation) et
+[resultats-bis.md](resultats-bis.md).
 
 ### 6. En pratique : [06-gguf](06-gguf)
 
@@ -180,16 +189,18 @@ points, surtout à cause du chinois, mais garde zéro fuite.
 
 ## Limites
 
-- **Du chinois résiduel** : 4 réponses sur 50 contiennent un mot chinois au milieu du
-  français (« Divise chaque数 par ce nombre »). Le LoRA B seul en produit aussi, mais le LoRA
+- **Du chinois résiduel** : 3 à 4 réponses sur 50, selon la graine, contiennent un mot
+  chinois au milieu du français (« Divise chaque数 par ce nombre »). Le LoRA B seul en
+  produit aussi, mais le LoRA
   entraîné sur les deux talents mélangés n'en produit aucun. Le défaut apparaît donc avec les
   LoRA entraînés séparément, avec régularisation, et avec leurs merges, sans qu'on sache
   encore laquelle de ces étapes le provoque.
 - **Le fond n'est pas évalué** : un modèle de 1,5 milliard de paramètres se trompe souvent
   sur les faits. Les LoRA apprennent une *manière* de répondre, pas des connaissances.
-- **50 questions**, c'est peu : un écart de 1 ou 2 réponses n'est pas significatif. Et
-  chaque configuration n'a été entraînée qu'une fois : avec une autre graine aléatoire, les
-  scores bougeraient de quelques points.
+- **50 questions**, c'est peu : un écart de 1 ou 2 réponses n'est pas significatif. Seuls
+  le merge DARE v3 et le LoRA mélangé ont été entraînés avec trois graines. D'une graine à
+  l'autre, DARE varie de 42 à 46 sur 50. Les autres configurations n'ont été entraînées
+  qu'une fois, et leurs scores peuvent bouger d'autant.
 
 ## Reproduire
 
@@ -207,9 +218,12 @@ points, surtout à cause du chinois, mais garde zéro fuite.
      `bash 04-merges/fusionner.sh reg2c task-arithmetic ties dare` et `evaluer.py v2bis`
    - **Témoins** : `python 03-lora/entrainer.py AB --sans-chinois --epoques 2`, puis
      `evaluer.py temoins`
+   - **Graines** : pour g = 1 et 2, les commandes A, B et AB ci-dessus avec `--graine g`,
+     puis `bash 04-merges/fusionner.sh reg2-gg dare` ; enfin `python 05-evaluation/graines.py`
 7. **GGUF** : cloner llama.cpp dans `~/llama.cpp`, puis `bash 06-gguf/convertir.sh` (WSL)
    et `06-gguf/creer.ps1` (Windows)
 8. **Évaluation dans Ollama** : `python 05-evaluation/evaluer.py gguf`
 
-Les modèles complets (2,9 Go chacun) vont dans `~/models`, hors du dépôt. Seuls les
-adaptateurs LoRA (71 Mo) sont dans `03-lora/`.
+Les modèles complets (2,9 Go chacun) vont dans `~/models`, hors du dépôt. Les adaptateurs
+LoRA (71 Mo) ont leur fiche dans `03-lora/`, mais leurs poids sont sur Hugging Face :
+[DavidJLN/merge-or-mix-loras](https://huggingface.co/DavidJLN/merge-or-mix-loras).
