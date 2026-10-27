@@ -12,3 +12,10 @@ __pycache__/
 
 # Notes personnelles
 Merge de LLM.txt
+
+#Questions de test
+Questions-mains.txt
+
+# Poids des adaptateurs LoRA (74 Mo chacun) : publiés sur Hugging Face,
+# https://huggingface.co/DavidJLN/merge-or-mix-loras. Les fiches restent ici.
+03-lora/lora-*/adapter_model.safetensors

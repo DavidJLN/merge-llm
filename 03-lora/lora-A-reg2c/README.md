@@ -14,13 +14,13 @@ tags:
 
 Adaptateur LoRA pour `Qwen/Qwen2.5-1.5B-Instruct` : le modèle explique pas à pas en étapes numérotées, en tutoyant, avec un « Exemple : ».
 
-Fait partie de l'expérience [merge-llm](../../README.md). La série v2-bis ne change qu'une
+Fait partie de l'expérience [merge-llm](https://github.com/DavidJLN/merge-llm/blob/main/README.md). La série v2-bis ne change qu'une
 chose par rapport à la v2 : **2 époques au lieu de 3**. Les exemples contenant du chinois sont
 gardés, contrairement à la v3. Elle sert à savoir lequel des deux changements de la v3 fait
 le gain. Résultats :
-[05-evaluation/v2bis-2-epoques-avec-chinois](../../05-evaluation/v2bis-2-epoques-avec-chinois/resultats.md).
+[05-evaluation/v2bis-2-epoques-avec-chinois](https://github.com/DavidJLN/merge-llm/blob/main/05-evaluation/v2bis-2-epoques-avec-chinois/resultats.md).
 
-Le talent B de cette série est [lora-B-reg2](../lora-B-reg2) : ses données ne contenaient
+Le talent B de cette série est [lora-B-reg2](https://github.com/DavidJLN/merge-llm/blob/main/03-lora/lora-B-reg2) : ses données ne contenaient
 aucun exemple en chinois, il est donc identique à ce qu'aurait donné un « B-reg2c ».
 
 ## Entraînement

@@ -14,8 +14,8 @@ tags:
 
 Adaptateur LoRA pour `Qwen/Qwen2.5-1.5B-Instruct` : le modèle répond en JSON `{"reponse", "confiance", "sujets"}`, avec une confiance qui dépend du type de question.
 
-Fait partie de l'expérience [merge-llm](../../README.md). Résultats de la série v2 :
-[05-evaluation/v2-avec-regularisation](../../05-evaluation/v2-avec-regularisation/resultats.md).
+Fait partie de l'expérience [merge-llm](https://github.com/DavidJLN/merge-llm/blob/main/README.md). Résultats de la série v2 :
+[05-evaluation/v2-avec-regularisation](https://github.com/DavidJLN/merge-llm/blob/main/05-evaluation/v2-avec-regularisation/resultats.md).
 
 ## Entraînement
 

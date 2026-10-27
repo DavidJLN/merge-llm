@@ -16,9 +16,9 @@ Adaptateur LoRA pour `Qwen/Qwen2.5-1.5B-Instruct`, entraîné sur les deux talen
 explication pas à pas (« Prof patient ») pour les questions de cours, JSON strict pour les
 questions directes.
 
-C'est un **témoin** de l'expérience [merge-llm](../../README.md) : ce qu'on obtient quand on
+C'est un **témoin** de l'expérience [merge-llm](https://github.com/DavidJLN/merge-llm/blob/main/README.md) : ce qu'on obtient quand on
 a accès aux données des deux talents en même temps et qu'on n'a pas besoin de merge.
-Résultats : [05-evaluation/temoins](../../05-evaluation/temoins/resultats.md).
+Résultats : [05-evaluation/temoins](https://github.com/DavidJLN/merge-llm/blob/main/05-evaluation/temoins/resultats.md).
 
 ## Entraînement
 

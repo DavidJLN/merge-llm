@@ -14,8 +14,8 @@ tags:
 
 Adaptateur LoRA pour `Qwen/Qwen2.5-1.5B-Instruct` : le modèle explique pas à pas en étapes numérotées, en tutoyant, avec un « Exemple : ».
 
-Fait partie de l'expérience [merge-llm](../../README.md). Résultats de la série v1 :
-[05-evaluation/v1-sans-regularisation](../../05-evaluation/v1-sans-regularisation/resultats.md).
+Fait partie de l'expérience [merge-llm](https://github.com/DavidJLN/merge-llm/blob/main/README.md). Résultats de la série v1 :
+[05-evaluation/v1-sans-regularisation](https://github.com/DavidJLN/merge-llm/blob/main/05-evaluation/v1-sans-regularisation/resultats.md).
 
 ## Entraînement
 
