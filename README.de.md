@@ -69,6 +69,10 @@ da das Experiment auf Französisch durchgeführt wurde.
   entlang eines Kreisbogens statt einer Geraden, was die Größe der Gewichte besser erhält.
   Ein Parameter `t` regelt die Mischung (0 = das erste Modell, 1 = das zweite); man probiert
   mehrere Werte aus, daher der *Sweep*. SLERP führt immer nur zwei Modelle zusammen.
+- **Modell-Suppe** (*model soup*): der Mittelwert mehrerer Modelle, die dasselbe gelernt
+  haben, zum Beispiel mit verschiedenen Seeds. Man hofft, dass sich ihre Fehler ausgleichen.
+  **Model Stock** ist eine Variante: Es behält nur, was die Modelle gemeinsam gelernt haben,
+  und kehrt dort zur Basis zurück, wo sie auseinandergehen.
 
 ### Die Evaluation
 
@@ -84,7 +88,7 @@ da das Experiment auf Französisch durchgeführt wurde.
 - **Quantisierung**: jedes Gewicht mit weniger Bits speichern (8, 5 oder 4 statt 16), um ein
   leichteres und schnelleres Modell zu erhalten, auf Kosten von etwas Genauigkeit.
 
-## Die Geschichte in sechs Schritten
+## Die Geschichte in sieben Schritten
 
 ### 1. Ein erster Merge, der scheitert: [01-echec-coder](01-echec-coder)
 
@@ -198,6 +202,32 @@ behält seine 48/50 in Q8_0. Er liegt auf Hugging Face als
 [GGUF-Version](https://huggingface.co/DavidJLN/merge-or-mix-1.5b-GGUF):
 `ollama run hf.co/DavidJLN/merge-or-mix-1.5b-GGUF:Q8_0`.
 
+### 7. Eine Seed-Suppe: [07-soupe](07-soupe)
+
+Die drei Seeds des gemischten LoRA erreichen 48, 49 und 50 von 50. Erhält man, wenn man sie
+zu einer **Suppe** zusammenführt, ein Modell, das besser ist als der beste Seed?
+
+| Modell | 50 Fragen | 20 von Hand geschriebene Fragen |
+|---|---|---|
+| Gemischter LoRA, Seeds 0 / 1 / 2 | 48 / 49 / 50 | 18 / 17 / 16 |
+| Linear-Suppe (einfacher Mittelwert) | **48/50** | **17/20** |
+| Karcher-Suppe (Mittelwert auf der Kugel) | **48/50** | **16/20** |
+| Model-Stock-Suppe | **1/50** ❌ | **0/20** ❌ |
+
+**Nein**: Die Suppe schneidet so gut ab wie der Mittelwert der Seeds, nicht besser. Mit Model
+Stock verliert sie sogar beide Talente.
+
+Eine Zahl erklärt das. [angles.py](07-soupe/angles.py) misst Schicht für Schicht den Winkel
+zwischen dem, was zwei Seeds am Instruct verändert haben: Der Kosinus liegt bei **0,04 bis
+0,14**, die Richtungen stehen also fast senkrecht zueinander. Die drei Seeds lernen dieselben
+Talente mit denselben Daten, aber jeder auf einem anderen Weg. Sie zu mitteln heißt, von
+jedem ein Drittel zu behalten: Die Talente überstehen das, aber nichts addiert sich. Model
+Stock hält diese nicht übereinstimmenden Richtungen für Rauschen, kehrt zum Instruct zurück
+und löscht die Talente.
+
+**Lektion**: Bei einem LoRA bleibt der beste Seed die beste Wahl. Aus diesem Experiment wird
+kein Modell veröffentlicht.
+
 ## Grenzen
 
 - **Restliches Chinesisch**: Je nach Seed enthalten 3 bis 4 von 50 Antworten ein
@@ -235,6 +265,8 @@ behält seine 48/50 in Q8_0. Er liegt auf Hugging Face als
 8. **Evaluation in Ollama**: `python 05-evaluation/evaluer.py gguf`
    - **Veröffentlichtes Modell**: `bash 06-gguf/convertir.sh ab Q8_0`,
      `06-gguf/creer.ps1 ab f16,Q8_0`, dann `evaluer.py gguf-ab`
+9. **Seed-Suppe** (nach den Seeds aus Schritt 6): `bash 07-soupe/fusionner.sh`, dann
+   `python 07-soupe/evaluer_soupe.py` und `python 07-soupe/angles.py`
 
 Die vollständigen Modelle (je 2,9 GB) kommen nach `~/models`, außerhalb des Repositorys. Die
 Karten der LoRA-Adapter (71 MB) liegen in `03-lora/`, ihre Gewichte auf Hugging Face:

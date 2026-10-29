@@ -67,6 +67,10 @@ experiment was run in French.
   following an arc of a circle rather than a straight line, which better preserves the size
   of the weights. A parameter `t` sets the mix (0 = the first model, 1 = the second); several
   values are tried, hence the *sweep*. SLERP only merges two models at a time.
+- **Model soup**: the average of several models that learned the same thing, for example
+  with different seeds. The hope is that their errors cancel out. **Model Stock** is a
+  variant: it keeps only what the models learned in common and falls back to the base where
+  they diverge.
 
 ### Evaluation
 
@@ -82,7 +86,7 @@ experiment was run in French.
 - **Quantization**: storing each weight with fewer bits (8, 5 or 4 instead of 16) to get a
   lighter and faster model, at the cost of some precision.
 
-## The story in six steps
+## The story in seven steps
 
 ### 1. A first merge that fails: [01-echec-coder](01-echec-coder)
 
@@ -191,6 +195,31 @@ in Q8_0. It is on Hugging Face as
 [GGUF version](https://huggingface.co/DavidJLN/merge-or-mix-1.5b-GGUF):
 `ollama run hf.co/DavidJLN/merge-or-mix-1.5b-GGUF:Q8_0`.
 
+### 7. A seed soup: [07-soupe](07-soupe)
+
+The mixed LoRA's three seeds score 48, 49 and 50 out of 50. By merging them into a **soup**,
+do we get a model better than the best seed?
+
+| Model | 50 questions | 20 hand-written questions |
+|---|---|---|
+| Mixed LoRA, seeds 0 / 1 / 2 | 48 / 49 / 50 | 18 / 17 / 16 |
+| Linear soup (plain average) | **48/50** | **17/20** |
+| Karcher soup (average on the sphere) | **48/50** | **16/20** |
+| Model Stock soup | **1/50** ❌ | **0/20** ❌ |
+
+**No**: the soup does as well as the average seed, not better. With Model Stock, it even
+loses both talents.
+
+One number explains it. [angles.py](07-soupe/angles.py) measures, layer by layer, the angle
+between what two seeds changed in the Instruct: the cosine is **0.04 to 0.14**, meaning the
+directions are almost perpendicular. The three seeds learn the same talents, on the same
+data, but each by a different path. Averaging them amounts to keeping a third of each: the
+talents survive, but nothing adds up. Model Stock, for its part, takes these disagreeing
+directions for noise, falls back to the Instruct and erases the talents.
+
+**Lesson**: for a LoRA, the best seed remains the best choice. No model is published from
+this experiment.
+
 ## Limitations
 
 - **Residual Chinese**: 3 to 4 answers out of 50, depending on the seed, contain a Chinese
@@ -228,6 +257,8 @@ in Q8_0. It is on Hugging Face as
 8. **Evaluation in Ollama**: `python 05-evaluation/evaluer.py gguf`
    - **Published model**: `bash 06-gguf/convertir.sh ab Q8_0`, `06-gguf/creer.ps1 ab f16,Q8_0`,
      then `evaluer.py gguf-ab`
+9. **Seed soup** (after the seeds in step 6): `bash 07-soupe/fusionner.sh`, then
+   `python 07-soupe/evaluer_soupe.py` and `python 07-soupe/angles.py`
 
 The full models (2.9 GB each) go in `~/models`, outside the repository. The LoRA adapters
 (71 MB) have their card in `03-lora/`, but their weights are on Hugging Face:

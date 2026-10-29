@@ -1,0 +1,28 @@
+# Recette de la soupe : moyenne simple des trois graines du LoRA AB.
+#
+# Les trois modèles ont appris les mêmes talents sur les mêmes données ; seuls
+# changent l'initialisation du LoRA, l'ordre des exemples et le dropout. Chaque
+# poids de la soupe est la moyenne des trois poids correspondants (« model
+# soup », Wortsman et al. 2022). Si les graines se trompent chacune sur des
+# questions différentes, la moyenne peut corriger une partie de ces erreurs.
+#
+# Lancement (environnement activé) :
+#   bash fusionner.sh linear
+
+models:
+  - model: ~/models/qwen2.5-1.5b-lora-AB
+    parameters:
+      weight: 1.0
+  - model: ~/models/qwen2.5-1.5b-lora-AB-g1
+    parameters:
+      weight: 1.0
+  - model: ~/models/qwen2.5-1.5b-lora-AB-g2
+    parameters:
+      weight: 1.0
+
+merge_method: linear
+
+parameters:
+  normalize: true  # divise par la somme des poids : moyenne, pas somme
+
+dtype: bfloat16

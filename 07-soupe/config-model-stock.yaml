@@ -1,0 +1,23 @@
+# Recette de la soupe : Model Stock (Jang et al. 2024) sur les trois graines.
+#
+# Pour chaque couche, Model Stock regarde l'angle entre les changements des
+# graines par rapport à l'Instruct :
+#   - changements alignés (les graines ont appris la même chose) : on garde
+#     presque leur moyenne ;
+#   - changements dispersés (surtout du bruit propre à chaque graine) : on
+#     revient vers l'Instruct.
+# La moyenne simple garde tout ; Model Stock tente de ne garder que la partie
+# commune aux trois graines.
+#
+# Lancement (environnement activé) :
+#   bash fusionner.sh model-stock
+
+models:
+  - model: ~/models/qwen2.5-1.5b-lora-AB
+  - model: ~/models/qwen2.5-1.5b-lora-AB-g1
+  - model: ~/models/qwen2.5-1.5b-lora-AB-g2
+
+merge_method: model_stock
+base_model: Qwen/Qwen2.5-1.5B-Instruct
+
+dtype: bfloat16

@@ -65,6 +65,10 @@ Les différents tests ont été réalisés en local sur un PC grand public : RTX
   suivant un arc de cercle plutôt qu'une ligne droite, ce qui préserve mieux la taille des
   poids. Un paramètre `t` règle le dosage (0 = le premier modèle, 1 = le second) ; on en
   essaie plusieurs, c'est le *balayage*. SLERP ne fusionne que deux modèles à la fois.
+- **Soupe de modèles** (*model soup*) : la moyenne de plusieurs modèles qui ont appris la
+  même chose, par exemple avec des graines différentes. On espère que leurs erreurs se
+  compensent. **Model Stock** est une variante : il ne garde que ce que les modèles ont
+  appris en commun et revient vers la base là où ils divergent.
 
 ### L'évaluation
 
@@ -80,7 +84,7 @@ Les différents tests ont été réalisés en local sur un PC grand public : RTX
 - **Quantification** : stocker chaque poids avec moins de bits (8, 5 ou 4 au lieu de 16)
   pour obtenir un modèle plus léger et plus rapide, au prix d'un peu de précision.
 
-## L'histoire en six étapes
+## L'histoire en sept étapes
 
 ### 1. Un premier merge qui échoue : [01-echec-coder](01-echec-coder)
 
@@ -193,6 +197,32 @@ points, surtout à cause du chinois, mais garde zéro fuite.
 [version GGUF](https://huggingface.co/DavidJLN/merge-or-mix-1.5b-GGUF) :
 `ollama run hf.co/DavidJLN/merge-or-mix-1.5b-GGUF:Q8_0`.
 
+### 7. Une soupe de graines : [07-soupe](07-soupe)
+
+Les trois graines du LoRA mélangé obtiennent 48, 49 et 50 sur 50. En les fusionnant en une
+**soupe**, obtient-on un modèle meilleur que la meilleure graine ?
+
+| Modèle | 50 questions | 20 questions écrites à la main |
+|---|---|---|
+| LoRA mélangé, graines 0 / 1 / 2 | 48 / 49 / 50 | 18 / 17 / 16 |
+| Soupe linear (moyenne simple) | **48/50** | **17/20** |
+| Soupe karcher (moyenne sur la sphère) | **48/50** | **16/20** |
+| Soupe Model Stock | **1/50** ❌ | **0/20** ❌ |
+
+**Non** : la soupe fait aussi bien que la moyenne des graines, pas mieux. Avec Model Stock,
+elle perd même les deux talents.
+
+L'explication tient dans un chiffre. [angles.py](07-soupe/angles.py) mesure, couche par
+couche, l'angle entre ce que deux graines ont changé dans l'Instruct : le cosinus vaut **0,04
+à 0,14**, c'est-à-dire que les directions sont presque perpendiculaires. Les trois graines
+apprennent les mêmes talents, sur les mêmes données, mais chacune par un chemin différent.
+Les moyenner revient à garder un tiers de chacune : les talents y résistent, mais rien ne
+s'additionne. Model Stock, lui, prend ces directions qui ne s'accordent pas pour du bruit,
+revient vers l'Instruct et efface les talents.
+
+**Leçon** : pour un LoRA, la meilleure graine reste le meilleur choix. Aucun modèle n'est
+publié à partir de cette expérience.
+
 ## Limites
 
 - **Du chinois résiduel** : 3 à 4 réponses sur 50, selon la graine, contiennent un mot
@@ -231,6 +261,8 @@ points, surtout à cause du chinois, mais garde zéro fuite.
 8. **Évaluation dans Ollama** : `python 05-evaluation/evaluer.py gguf`
    - **Modèle publié** : `bash 06-gguf/convertir.sh ab Q8_0`, `06-gguf/creer.ps1 ab f16,Q8_0`,
      puis `evaluer.py gguf-ab`
+9. **Soupe de graines** (après les graines du point 6) : `bash 07-soupe/fusionner.sh`, puis
+   `python 07-soupe/evaluer_soupe.py` et `python 07-soupe/angles.py`
 
 Les modèles complets (2,9 Go chacun) vont dans `~/models`, hors du dépôt. Les adaptateurs
 LoRA (71 Mo) ont leur fiche dans `03-lora/`, mais leurs poids sont sur Hugging Face :

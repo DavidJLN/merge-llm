@@ -1,0 +1,27 @@
+# Recette de la soupe : moyenne de Karcher des trois graines.
+#
+# Chaque couche est vue comme une direction (sa norme mise à part) ; la
+# moyenne de Karcher cherche la direction « au milieu » des trois sur la
+# sphère, comme SLERP le fait pour deux modèles, puis remet la norme moyenne.
+# La moyenne simple, elle, coupe en ligne droite et raccourcit un peu les
+# vecteurs quand ils divergent.
+#
+# Ici, les trois graines diffèrent très peu (même base, LoRA de rang faible) :
+# on s'attend à un résultat presque identique à la moyenne simple. Si c'est le
+# cas, c'est déjà une réponse.
+#
+# Lancement (environnement activé) :
+#   bash fusionner.sh karcher
+
+models:
+  - model: ~/models/qwen2.5-1.5b-lora-AB
+  - model: ~/models/qwen2.5-1.5b-lora-AB-g1
+  - model: ~/models/qwen2.5-1.5b-lora-AB-g2
+
+merge_method: karcher
+
+parameters:
+  max_iter: 10
+  tol: 1.0e-5
+
+dtype: bfloat16
