@@ -1,0 +1,20 @@
+# DARE-TIES Instruct + Reasoning, à partir de la Base commune.
+# Chaque modèle garde au hasard la moitié de ses changements par rapport à la
+# Base (densité 0,5, remise à l'échelle pour compenser) ; les conflits de signe
+# entre les deux sont tranchés par TIES. Même dosage que linear-r03 (0,7 / 0,3),
+# le meilleur compromis linéaire avec la consigne de l'Instruct, pour isoler
+# l'effet de la méthode. Le changement du Reasoning étant 3 fois plus grand
+# (voir angles.py), ce dosage donne aux deux modèles un poids réel comparable.
+# Le tirage dépend de la graine passée par fusionner.sh (--random-seed 0).
+models:
+  - model: mistralai/Ministral-3-3B-Instruct-2512-BF16
+    parameters:
+      weight: 0.7
+      density: 0.5
+  - model: mistralai/Ministral-3-3B-Reasoning-2512
+    parameters:
+      weight: 0.3
+      density: 0.5
+merge_method: dare_ties
+base_model: mistralai/Ministral-3-3B-Base-2512
+dtype: bfloat16

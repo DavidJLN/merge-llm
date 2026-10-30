@@ -1,0 +1,10 @@
+# Merge linéaire Instruct + Reasoning, 30 % de Reasoning.
+models:
+  - model: mistralai/Ministral-3-3B-Instruct-2512-BF16
+    parameters:
+      weight: 0.7
+  - model: mistralai/Ministral-3-3B-Reasoning-2512
+    parameters:
+      weight: 0.3
+merge_method: linear
+dtype: bfloat16

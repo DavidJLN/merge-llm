@@ -21,3 +21,5 @@ accelerate
 safetensors
 huggingface_hub
 mergekit
+# Notation des réponses mathématiques (08-ministral), testée en 0.9.0
+math-verify
