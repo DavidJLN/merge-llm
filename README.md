@@ -50,6 +50,8 @@ Les différents tests ont été réalisés en local sur un PC grand public : RTX
 - **Merge** (fusion) : combiner les poids de plusieurs modèles pour en obtenir un seul, sans
   aucun entraînement supplémentaire. Ça prend moins d'une minute.
 - **mergekit** : l'outil qui réalise les merges à partir d'une recette YAML.
+- **linear** : la moyenne pondérée des poids de plusieurs modèles (par exemple 70 % de
+  l'un, 30 % de l'autre), sans passer par leur base.
 - **task_arithmetic** : la méthode la plus simple. On additionne les différences de poids de
   chaque fine-tune à la base, chacune multipliée par un poids (1+1 = les deux à pleine
   force, 0,5+0,5 = à demi-force).
@@ -76,6 +78,10 @@ Les différents tests ont été réalisés en local sur un PC grand public : RTX
   patient » et le « JSON strict »).
 - **Fuite** : un talent qui déborde sur les questions de l'autre, par exemple une réponse en
   JSON à une question de cours.
+- **Modèle qui réfléchit** (*reasoning*) : un modèle entraîné à écrire d'abord un brouillon
+  de réflexion, entre des balises `[THINK]` et `[/THINK]`, avant sa réponse. Il se trompe
+  moins, mais ses réponses sont bien plus longues et peuvent être **coupées** par la limite
+  de longueur avant d'arriver à la réponse.
 
 ### L'utilisation
 
@@ -84,7 +90,7 @@ Les différents tests ont été réalisés en local sur un PC grand public : RTX
 - **Quantification** : stocker chaque poids avec moins de bits (8, 5 ou 4 au lieu de 16)
   pour obtenir un modèle plus léger et plus rapide, au prix d'un peu de précision.
 
-## L'histoire en sept étapes
+## L'histoire en huit étapes
 
 ### 1. Un premier merge qui échoue : [01-echec-coder](01-echec-coder)
 
@@ -223,6 +229,52 @@ revient vers l'Instruct et efface les talents.
 **Leçon** : pour un LoRA, la meilleure graine reste le meilleur choix. Aucun modèle n'est
 publié à partir de cette expérience.
 
+### 8. Une autre famille, des modèles qui réfléchissent : [08-ministral](08-ministral)
+
+Mistral publie Ministral 3 3B en deux fine-tunes de la même base : l'**Instruct**, qui répond
+directement, et le **Reasoning**, qui réfléchit d'abord dans `[THINK]…[/THINK]`. En les
+fusionnant, obtient-on un modèle qui « réfléchit un peu », plus juste que l'Instruct et plus
+court que le Reasoning ? On essaie quatre merges linear (10, 20, 30 et 50 % de Reasoning) et
+un DARE-TIES, sur 100 problèmes GSM8K et 50 problèmes MATH (réponse vérifiable), en GGUF Q8
+dans Ollama, avec au plus 4096 tokens par réponse.
+
+| Avec la consigne de l'Instruct | GSM8K (100) | MATH (50) | Longueur médiane MATH |
+|---|---|---|---|
+| **Instruct** | **92** | **33** | 1276 tokens |
+| linear 20 % Reasoning | **92** | 31 | 934 tokens |
+| linear 30 % | 90 | 32 | 1094 tokens |
+| DARE-TIES 70 / 30 | 90 | 31 | **824 tokens** |
+| linear 50 % | 87 | 32 | 1046 tokens |
+
+**Non** : aucun merge ne bat l'Instruct utilisé avec sa propre consigne. Les écarts sont de
+quelques problèmes, dans le bruit ; le seul gain est des réponses MATH 14 à 35 % plus
+courtes. DARE-TIES fait comme le merge linear au même dosage : les changements des deux
+modèles sont à moitié alignés (cosinus de 0,5, mesuré par
+[angles.py](08-ministral/angles.py)), et TIES a peu de conflits à trancher.
+
+La découverte est ailleurs. Quand on demande à chaque modèle de réfléchir (consigne du
+Reasoning), la part de Reasoning dessine une courbe nette :
+
+| Part de Reasoning | 0 % | 10 % | 20 % | 30 % | 50 % | 100 % |
+|---|---|---|---|---|---|---|
+| GSM8K juste | 40 %¹ | 41 % | 70 % | 78 % | **88 %** | 87 % |
+| GSM8K coupées | 56 %¹ | 58 % | 26 % | 20 % | 10 % | 10 % |
+
+¹ Sur 52 problèmes : l'évaluation a été arrêtée en cours de route, la moitié des réponses
+allant jusqu'à la limite.
+
+Les réponses coupées ne tournent pas en boucle : le modèle **trouve la bonne réponse, puis
+doute** (« et si l'énoncé voulait dire autre chose ? ») jusqu'à la limite. À 10 % de
+Reasoning, 51 des 58 réponses coupées contenaient déjà la bonne réponse. L'Instruct seul fait
+de même : la consigne suffit à le faire réfléchir, mais il ne sait pas conclure. **Réfléchir
+et conclure sont deux choses distinctes** : la consigne apporte la première, et il faut 30 à
+50 % des poids du Reasoning pour apporter la seconde. Quand un modèle conclut, il a presque
+toujours raison (par exemple 41 sur 42 à 10 % de Reasoning).
+
+**Leçon** : fusionner un modèle qui réfléchit avec son Instruct ne crée pas de meilleur
+modèle, mais montre ce que chacun apporte. Aucun modèle n'est publié à partir de cette
+expérience.
+
 ## Limites
 
 - **Du chinois résiduel** : 3 à 4 réponses sur 50, selon la graine, contiennent un mot
@@ -263,6 +315,10 @@ publié à partir de cette expérience.
      puis `evaluer.py gguf-ab`
 9. **Soupe de graines** (après les graines du point 6) : `bash 07-soupe/fusionner.sh`, puis
    `python 07-soupe/evaluer_soupe.py` et `python 07-soupe/angles.py`
+10. **Ministral** : voir [08-ministral](08-ministral). Pour chaque recette,
+    `bash 08-ministral/fusionner.sh <nom>` (WSL), `08-ministral/creer.ps1 <nom>` (Windows),
+    puis `python 08-ministral/eval_justesse.py evaluer …` ; enfin `eval_justesse.py synthese`,
+    `analyser.py` et `angles.py`
 
 Les modèles complets (2,9 Go chacun) vont dans `~/models`, hors du dépôt. Les adaptateurs
 LoRA (71 Mo) ont leur fiche dans `03-lora/`, mais leurs poids sont sur Hugging Face :

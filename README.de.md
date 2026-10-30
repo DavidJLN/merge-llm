@@ -54,6 +54,8 @@ da das Experiment auf Französisch durchgeführt wurde.
 - **Merge** (Zusammenführung): die Gewichte mehrerer Modelle zu einem einzigen kombinieren,
   ganz ohne zusätzliches Training. Das dauert weniger als eine Minute.
 - **mergekit**: das Werkzeug, das die Merges anhand eines YAML-Rezepts durchführt.
+- **linear**: der gewichtete Mittelwert der Gewichte mehrerer Modelle (zum Beispiel 70 % des
+  einen, 30 % des anderen), ohne Umweg über ihre Basis.
 - **task_arithmetic**: die einfachste Methode. Man addiert die Gewichtsdifferenzen der
   einzelnen Fine-Tunes zur Basis, jede mit einem Gewicht multipliziert (1+1 = beide mit
   voller Stärke, 0,5+0,5 = mit halber Stärke).
@@ -80,6 +82,10 @@ da das Experiment auf Französisch durchgeführt wurde.
   „Geduldige Lehrer“ und das „Strikte JSON“).
 - **Leck**: ein Talent, das auf die Fragen des anderen überschwappt, zum Beispiel eine
   JSON-Antwort auf eine Lernfrage.
+- **Reasoning-Modell**: ein Modell, das darauf trainiert ist, vor seiner Antwort zuerst einen
+  Denkentwurf zwischen den Tags `[THINK]` und `[/THINK]` zu schreiben. Es irrt sich seltener,
+  aber seine Antworten sind viel länger und können von der Längengrenze **abgeschnitten**
+  werden, bevor sie bei der Antwort ankommen.
 
 ### Die Nutzung
 
@@ -88,7 +94,7 @@ da das Experiment auf Französisch durchgeführt wurde.
 - **Quantisierung**: jedes Gewicht mit weniger Bits speichern (8, 5 oder 4 statt 16), um ein
   leichteres und schnelleres Modell zu erhalten, auf Kosten von etwas Genauigkeit.
 
-## Die Geschichte in sieben Schritten
+## Die Geschichte in acht Schritten
 
 ### 1. Ein erster Merge, der scheitert: [01-echec-coder](01-echec-coder)
 
@@ -228,6 +234,53 @@ und löscht die Talente.
 **Lektion**: Bei einem LoRA bleibt der beste Seed die beste Wahl. Aus diesem Experiment wird
 kein Modell veröffentlicht.
 
+### 8. Eine andere Familie, Reasoning-Modelle: [08-ministral](08-ministral)
+
+Mistral veröffentlicht Ministral 3 3B als zwei Fine-Tunes derselben Basis: das **Instruct**,
+das direkt antwortet, und das **Reasoning**, das zuerst in `[THINK]…[/THINK]` nachdenkt.
+Erhält man durch ihr Zusammenführen ein Modell, das „ein bisschen nachdenkt“, genauer als das
+Instruct und kürzer als das Reasoning? Wir probieren vier lineare Merges (10, 20, 30 und 50 %
+Reasoning) und einen DARE-TIES aus, mit 100 GSM8K-Aufgaben und 50 MATH-Aufgaben (überprüfbare
+Antworten), als GGUF Q8 in Ollama, mit höchstens 4096 Tokens pro Antwort.
+
+| Mit der Systemanweisung des Instruct | GSM8K (100) | MATH (50) | Mediane Länge MATH |
+|---|---|---|---|
+| **Instruct** | **92** | **33** | 1276 Tokens |
+| linear 20 % Reasoning | **92** | 31 | 934 Tokens |
+| linear 30 % | 90 | 32 | 1094 Tokens |
+| DARE-TIES 70 / 30 | 90 | 31 | **824 Tokens** |
+| linear 50 % | 87 | 32 | 1046 Tokens |
+
+**Nein**: Kein Merge schlägt das Instruct mit seiner eigenen Systemanweisung. Die Abstände
+betragen wenige Aufgaben und liegen im Rauschen; der einzige Gewinn sind um 14 bis 35 %
+kürzere MATH-Antworten. DARE-TIES verhält sich wie der lineare Merge mit derselben Mischung:
+Die Änderungen der beiden Modelle sind zur Hälfte gleichgerichtet (Kosinus 0,5, gemessen mit
+[angles.py](08-ministral/angles.py)), und TIES hat wenige Konflikte zu entscheiden.
+
+Die Entdeckung liegt woanders. Wenn man jedes Modell zum Nachdenken auffordert
+(Systemanweisung des Reasoning), zeichnet der Reasoning-Anteil eine klare Kurve:
+
+| Reasoning-Anteil | 0 % | 10 % | 20 % | 30 % | 50 % | 100 % |
+|---|---|---|---|---|---|---|
+| GSM8K richtig | 40 %¹ | 41 % | 70 % | 78 % | **88 %** | 87 % |
+| GSM8K abgeschnitten | 56 %¹ | 58 % | 26 % | 20 % | 10 % | 10 % |
+
+¹ Bei 52 Aufgaben: Die Evaluation wurde unterwegs abgebrochen, weil die Hälfte der Antworten
+bis an die Grenze lief.
+
+Die abgeschnittenen Antworten hängen nicht in einer Schleife fest: Das Modell **findet die
+richtige Antwort und zweifelt dann** („und wenn die Aufgabe etwas anderes meinte?“), bis die
+Grenze erreicht ist. Bei 10 % Reasoning enthielten 51 der 58 abgeschnittenen Antworten
+bereits die richtige Antwort. Das Instruct allein verhält sich genauso: Die Systemanweisung
+genügt, damit es nachdenkt, aber es kann nicht abschließen. **Nachdenken und Abschließen sind
+zwei verschiedene Dinge**: Die Systemanweisung bringt das Erste, und es braucht 30 bis 50 %
+der Gewichte des Reasoning für das Zweite. Wenn ein Modell abschließt, hat es fast immer
+recht (zum Beispiel 41 von 42 bei 10 % Reasoning).
+
+**Lektion**: Ein Reasoning-Modell mit seinem Instruct zusammenzuführen, ergibt kein besseres
+Modell, zeigt aber, was jedes von beiden beiträgt. Aus diesem Experiment wird kein Modell
+veröffentlicht.
+
 ## Grenzen
 
 - **Restliches Chinesisch**: Je nach Seed enthalten 3 bis 4 von 50 Antworten ein
@@ -267,6 +320,10 @@ kein Modell veröffentlicht.
      `06-gguf/creer.ps1 ab f16,Q8_0`, dann `evaluer.py gguf-ab`
 9. **Seed-Suppe** (nach den Seeds aus Schritt 6): `bash 07-soupe/fusionner.sh`, dann
    `python 07-soupe/evaluer_soupe.py` und `python 07-soupe/angles.py`
+10. **Ministral**: siehe [08-ministral](08-ministral). Für jedes Rezept
+    `bash 08-ministral/fusionner.sh <Name>` (WSL), `08-ministral/creer.ps1 <Name>` (Windows),
+    dann `python 08-ministral/eval_justesse.py evaluer …`; zum Schluss
+    `eval_justesse.py synthese`, `analyser.py` und `angles.py`
 
 Die vollständigen Modelle (je 2,9 GB) kommen nach `~/models`, außerhalb des Repositorys. Die
 Karten der LoRA-Adapter (71 MB) liegen in `03-lora/`, ihre Gewichte auf Hugging Face:

@@ -53,6 +53,8 @@ experiment was run in French.
 - **Merge**: combining the weights of several models into a single one, with no additional
   training. It takes less than a minute.
 - **mergekit**: the tool that performs the merges from a YAML recipe.
+- **linear**: the weighted average of the weights of several models (for example 70% of one,
+  30% of the other), without going through their base.
 - **task_arithmetic**: the simplest method. You add each fine-tune's weight difference to the
   base, each multiplied by a weight (1+1 = both at full strength, 0.5+0.5 = at half
   strength).
@@ -78,6 +80,9 @@ experiment was run in French.
   and the "Strict JSON").
 - **Leak**: a talent spilling over onto the other one's questions, for example a JSON answer
   to a lesson question.
+- **Reasoning model**: a model trained to first write a draft of its thinking, between
+  `[THINK]` and `[/THINK]` tags, before its answer. It makes fewer mistakes, but its answers
+  are much longer and can be **cut off** by the length limit before reaching the answer.
 
 ### Usage
 
@@ -86,7 +91,7 @@ experiment was run in French.
 - **Quantization**: storing each weight with fewer bits (8, 5 or 4 instead of 16) to get a
   lighter and faster model, at the cost of some precision.
 
-## The story in seven steps
+## The story in eight steps
 
 ### 1. A first merge that fails: [01-echec-coder](01-echec-coder)
 
@@ -220,6 +225,51 @@ directions for noise, falls back to the Instruct and erases the talents.
 **Lesson**: for a LoRA, the best seed remains the best choice. No model is published from
 this experiment.
 
+### 8. Another family, reasoning models: [08-ministral](08-ministral)
+
+Mistral releases Ministral 3 3B as two fine-tunes of the same base: the **Instruct**, which
+answers directly, and the **Reasoning**, which first thinks inside `[THINK]…[/THINK]`. By
+merging them, do we get a model that "thinks a little", more accurate than the Instruct and
+shorter than the Reasoning? We try four linear merges (10, 20, 30 and 50% Reasoning) and one
+DARE-TIES, on 100 GSM8K problems and 50 MATH problems (verifiable answers), in GGUF Q8 in
+Ollama, with at most 4096 tokens per answer.
+
+| With the Instruct's system prompt | GSM8K (100) | MATH (50) | Median MATH length |
+|---|---|---|---|
+| **Instruct** | **92** | **33** | 1276 tokens |
+| linear 20% Reasoning | **92** | 31 | 934 tokens |
+| linear 30% | 90 | 32 | 1094 tokens |
+| DARE-TIES 70 / 30 | 90 | 31 | **824 tokens** |
+| linear 50% | 87 | 32 | 1046 tokens |
+
+**No**: no merge beats the Instruct used with its own system prompt. The gaps are a few
+problems, within noise; the only gain is MATH answers 14 to 35% shorter. DARE-TIES does the
+same as the linear merge at the same mix: the two models' changes are half aligned (cosine
+of 0.5, measured by [angles.py](08-ministral/angles.py)), and TIES has few conflicts to
+settle.
+
+The finding lies elsewhere. When each model is asked to think (the Reasoning's system
+prompt), the share of Reasoning draws a clear curve:
+
+| Share of Reasoning | 0% | 10% | 20% | 30% | 50% | 100% |
+|---|---|---|---|---|---|---|
+| GSM8K correct | 40%¹ | 41% | 70% | 78% | **88%** | 87% |
+| GSM8K cut off | 56%¹ | 58% | 26% | 20% | 10% | 10% |
+
+¹ On 52 problems: the evaluation was stopped midway, half of the answers running up to the
+limit.
+
+The cut-off answers are not stuck in a loop: the model **finds the right answer, then
+doubts** ("what if the problem meant something else?") until the limit. At 10% Reasoning, 51
+of the 58 cut-off answers already contained the right answer. The Instruct alone does the
+same: the system prompt is enough to make it think, but it cannot conclude. **Thinking and
+concluding are two separate things**: the system prompt brings the first, and it takes 30 to
+50% of the Reasoning's weights to bring the second. When a model concludes, it is almost
+always right (for example 41 out of 42 at 10% Reasoning).
+
+**Lesson**: merging a reasoning model with its Instruct does not create a better model, but
+it shows what each one brings. No model is published from this experiment.
+
 ## Limitations
 
 - **Residual Chinese**: 3 to 4 answers out of 50, depending on the seed, contain a Chinese
@@ -259,6 +309,10 @@ this experiment.
      then `evaluer.py gguf-ab`
 9. **Seed soup** (after the seeds in step 6): `bash 07-soupe/fusionner.sh`, then
    `python 07-soupe/evaluer_soupe.py` and `python 07-soupe/angles.py`
+10. **Ministral**: see [08-ministral](08-ministral). For each recipe,
+    `bash 08-ministral/fusionner.sh <name>` (WSL), `08-ministral/creer.ps1 <name>` (Windows),
+    then `python 08-ministral/eval_justesse.py evaluer …`; finally `eval_justesse.py synthese`,
+    `analyser.py` and `angles.py`
 
 The full models (2.9 GB each) go in `~/models`, outside the repository. The LoRA adapters
 (71 MB) have their card in `03-lora/`, but their weights are on Hugging Face:
